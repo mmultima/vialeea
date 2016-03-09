@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>
+            PFS character builder
+        </TITLE>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css">
+        <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-route.js"></script>
+        <script src="BootstrapChars.js"></script>
+        <script src="controllers/featsController.js"></script>
+        <script src="controllers/statsController.js"></script>
+        <script src="controllers/animalCompanionController.js"></script>
+        <script src="controllers/damageController.js"></script>
+        <script src="controllers/skillsController.js"></script>
+        <script src="controllers/spellsController.js"></script>
+        <script src="controllers/equipmentController.js"></script>
+        <script src="data/coreFeatsJson.js"></script>
+        <script src="data/animals.js"></script>
+        <script src="data/skills.js"></script>
+        <script src="data/classesJson.js"></script>
+        <script src="lib/underscore-min.js"></script>
+    </HEAD>
+    <BODY ng-app="myApp">
+        <div ng-controller="myController">
+            <ul class="nav nav-tabs">
+                <LI role="presentation" class="{{active_tab(1)}}"><A HREF="#/stats" ng-click="tab_page=1">Stats</A></LI>
+                <LI role="presentation" class="{{active_tab(2)}}"><A HREF="#/feats" ng-click="tab_page=2">Feats</A></LI>
+                <LI role="presentation" class="{{active_tab(3)}}"><A HREF="#/damage" ng-click="tab_page=3">Damage</A></LI>
+                <LI role="presentation" class="{{active_tab(4)}}"><A HREF="#/skills" ng-click="tab_page=4">Skills</A></LI>
+                <LI role="presentation" class="{{active_tab(5)}}"><A HREF="#/animalCompanion" ng-click="tab_page=5">Animal</A></LI>
+                <LI role="presentation" class="{{active_tab(6)}}"><A HREF="#/spells" ng-click="tab_page=6">Spells</A></LI>
+                <LI role="presentation" class="{{active_tab(7)}}"><A HREF="#/equipment" ng-click="tab_page=7">Equipment</A></LI>
+            </ul>
+            <div ng-view></div>
+            <!--div ng-show="tab_page===1">
+                Yksi
+            {{test}}
+            <input type=text ng-model="test"></input>
+            </div -->
+        </div>
+    </BODY>
+</HTML>
+

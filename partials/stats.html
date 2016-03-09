@@ -1,0 +1,124 @@
+<!-- div ng-controller="statsController" -->
+<div>
+    <input type="button" value="Reset" ng-click="reset(10)"/>
+    <table>
+        <tr>
+            <td>
+            <table>
+                <tr>
+                    <th colspan="4">
+                        Base stat
+                    </th>
+                    <th>
+                        Race
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Bonus
+                    </th>
+                    <th ng-if='$parent.race.freescores > 0'>
+                        Race bonus ({{$parent.$parent.freestat}})
+                    </th>
+                    <th ng-if='$parent.race.freescores > 1'>
+                        Second race bonus ({{$parent.$parent.freestat2}})
+                    </th>
+                </tr>
+
+                <tr ng-repeat='stat in stats'>
+                    <td>
+                        {{stat}}
+                    </td>
+                    <td>
+                        <input type="button" value="-" ng-click="maybeAdjust(stat, -1)" />
+                    </td>
+                    <td>
+                        {{$parent.base[stat]}}
+                    </td>
+                    <td>
+                        <input type="button" value="+" ng-click="maybeAdjust(stat, 1)" />
+                    </td>
+
+                    <td>
+                        {{racestat[stat]=$parent.$parent.race.scores[stat]}}
+                    </td>
+                    <td>
+                        {{$parent.$parent.totalstat[stat]=$parent.base[stat]+racestat[stat]}}
+                    </td>
+                    <td>
+                        <span ng-show="atleast(totalstat[stat],10)">+</span>{{statBonus($parent.$parent.totalstat[stat])}}
+                    </td>
+                    <!-- td ng-if='race.scores === "free"' -->
+                    <td ng-if='race.freescores > 0'>
+                        <input type='radio' ng-model='$parent.$parent.$parent.freestat' value='{{$parent.stat}}'>
+                    </td>
+                    <td ng-if='race.freescores > 1'>
+                        <input type='radio' ng-model='$parent.$parent.$parent.freestat2' value='{{$parent.stat}}'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Point Buy
+                    </td>
+                    <td>
+                        {{calculatePointBuy($parent.base['str'])+calculatePointBuy($parent.base['dex'])+calculatePointBuy($parent.base['con'])+calculatePointBuy($parent.base['int'])+calculatePointBuy($parent.base['wis'])+calculatePointBuy($parent.base['cha'])}}
+                    </td>
+                    <td colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='4'>
+                        Limit to Point Buy ranges
+                    </td>
+                    <td>
+                        <input type='checkbox' ng-model='$parent.pblimit'>
+                    </td>
+                    <td colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan ='4'>
+                        Carrying capacity
+                    </td>
+                    <td colspan='5'>
+                        ({{floor(calculateCarryingCapacity(totalstat['str'])/3)}}/
+                        {{floor(2*calculateCarryingCapacity(totalstat['str'])/3)}}/
+                        {{(calculateCarryingCapacity(totalstat['str']))}})
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            Classes <div ng-repeat="myclass in classes">
+                {{myclass.name}}
+                <input type="button" value="-" ng-click="changeLevel(myclass,-1)"/>
+                {{showLevel(myclass)}}
+                <input type="button" value="+" ng-click="changeLevel(myclass, 1)"/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr ng-repeat="thisrace in $parent.races">
+                    <td>
+                        <input type="radio" name="race" ng-model="$parent.$parent.race" ng-value="thisrace"/>
+                    </td>
+                    <td>
+                        {{thisrace.name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Race:
+                    </td>
+                    <td>
+                        {{$parent.race.name}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>

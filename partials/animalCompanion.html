@@ -1,0 +1,72 @@
+<div ng-controller="animalCompanionController">
+<input type="button" value="-" ng-click="(level=maybeAdjust(level,-1,1,20))" />
+{{level}}
+<input type="button" value="+" ng-click="(level=maybeAdjust(level,1,1,20))" />
+HD: {{hd=calculateHd(level)}}
+BAB: {{bab=calculateBab(hd)}}
+Stat incs: {{statincs = calculateStatIncs()}}
+<table border="1">
+<tr>
+<th ng-repeat="stat in stats">
+{{stat}}
+</th>
+</tr>
+<tr ng-if='level>3'>
+<td ng-repeat="stat2 in stats">
+<input type='radio' ng-model='$parent.$parent.level4stat' value='{{stat2}}'>
+</td>
+</tr>
+<tr ng-if='level>8'>
+<td ng-repeat="stat2 in stats">
+<input type='radio' ng-model='$parent.$parent.level9stat' value='{{stat2}}'>
+</td>
+</tr>
+<tr ng-if='level>13'>
+<td ng-repeat="stat2 in stats">
+<input type='radio' ng-model='$parent.$parent.level14stat' value='{{stat2}}'>
+</td>
+</tr>
+<tr ng-if='level>19'>
+<td ng-repeat="stat2 in stats">
+<input type='radio' ng-model='$parent.$parent.level20stat' value='{{stat2}}'>
+</td>
+</tr>
+</table>
+<table border="1">
+<tr>
+<th>name</th>
+<th>str</th>
+<th>dex</th>
+<th>con</th>
+<th>int</th>
+<th>wis</th>
+<th>cha</th>
+<th>size</th>
+<th>AC</th>
+<th>HP</th>
+<th>speed</th>
+<th>Fort</th>
+<th>Ref</th>
+<th>Will</th>
+<th>Advanced</th>
+<th>Attacks</th>
+</tr>
+<tr ng-repeat="animal in animals">
+<td>{{animal.name}}</td>
+<td>{{animal.stats.curstr=animal.stats.str+calculateLowSave(level) + animal.advanced*animal.advancement.str + incs.str}}</td>
+<td>{{animal.stats.curdex=animal.stats.dex+calculateLowSave(level)+animal.advanced*animal.advancement.dex + incs.dex}}</td>
+<td>{{animal.stats.curcon=animal.stats.con + animal.advanced*animal.advancement.con + incs.con}}</td>
+<td>{{animal.stats.int + incs.int}}</td>
+<td>{{animal.stats.wis + incs.wis}}</td>
+<td>{{animal.stats.cha + incs.cha}}</td>
+<td>{{animal.cursize=choose(isAdvanced(level,animal), animal.size, animal.advancement.size)}}</td>
+<td>{{animal.armor + 10 + statBonus(animal.stats.curdex) + sizeToAc(animal.cursize) + calculateLowSave(level)*2 + isAdvanced(level, animal) * animal.advancement.armor}}</td>
+<td>{{calculateHp(animal)}}</td>
+<td>{{animal.speed}}</td>
+<td>{{calculateHighSave(hd)+statBonus(animal.stats.curcon)}}</td>
+<td>{{calculateHighSave(hd)+statBonus(animal.stats.curdex)}}</td>
+<td>{{calculateLowSave(hd)+statBonus(animal.stats.wis)}}</td>
+<td>{{animal.advanced=isAdvanced(level, animal)}}</td>
+<td>{{calculateAttacks(animal, animal.advanced)}}</td>
+</tr>
+</div>

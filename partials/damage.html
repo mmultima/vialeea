@@ -1,0 +1,129 @@
+<div ng-controller="damageController">
+    Gunslinger {{gunslinger}} / Druid {{druid}}
+    <span ng-repeat='stat in stats'>
+        {{stat}} {{$parent.$parent.totalstat[stat]}}
+    </span>
+
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+Point Blank
+</td>
+<td>
+<input type="checkbox" ng-model="pointblank"/>
+</td>
+</tr>
+<tr>
+<td>
+Studied target
+</td>
+<td>
+<input type="checkbox" ng-model="studiedtarget"/>
+</td>
+</tr>
+<tr>
+<td>
+Goblin
+</td>
+<td>
+<input type="checkbox" ng-model="goblin"/>
+</td>
+</tr>
+<tr>
+<td>
+Cover
+</td>
+<td>
+<input type="checkbox" ng-model="cover"/>
+</td>
+</tr>
+</table>
+
+<table>
+<td>
+Musket
+</td>
+<td>
+<input type="radio" ng-model="weapon" value="12"/>
+</td>
+</tr>
+<td>
+Bow
+</td>
+<td>
+<input type="radio" ng-model="weapon" value="8"/>
+</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td>
+Gunslinger
+</td>
+<td>
+<input type="button" value="+" ng-click="(gunslinger=gunslinger+1)" />
+</td>
+<td>
+{{gunslinger}}
+</td>
+<td>
+<input type="button" value="-" ng-click="(gunslinger=gunslinger-1)" />
+</td>
+</tr>
+<tr>
+<td>
+Druid
+</td>
+<td>
+<input type="button" value="+" ng-click="(druid=druid+1);(druidbab=(druid*3/4))"/>
+</td>
+<td>
+{{druid}}
+</td>
+<td>
+<input type="button" value="-" ng-click="(druid=druid-1);(druidbab=(druid*3/4))"/>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+BAB: +{{BAB=threequarterbab(druid)+gunslinger}}
+<span ng-show="atleast(BAB,6)">/+{{BAB-5}}</span>
+<span ng-show="atleast(BAB,11)">/+{{BAB-10}}</span>
+<span ng-show="atleast(BAB,16)">/+{{BAB-15}}</span>
+<BR>
+<span ng-show="atleast(attack,0)">+</span>{{attack=(statBonus(totalstat['dex']))+(BAB)+(pointblank?1:0)+(studiedtarget?1:0)+(goblin?1:0)+(cover?-4:0)|number:0}}
+1d{{weapon}}+{{(pointblank?1:0)+(studiedtarget?1:0)}}
+  <!-- p>Name: <input type="text" ng-model="name"></p>
+  <p ng-bind="name"></p -->
+
+<table>
+<table>
+<tr ng-repeat="thisfeat in feats">
+<td>
+{{thisfeat.name}}
+</td>
+<td>
+<input type='checkbox' ng-model='thisfeat.selected'>
+</td>
+</tr>
+</table>
+<table>
+<th>
+Chosen feats
+</th>
+<tr ng-repeat="feat in feats | filter:{selected:true}">
+<td>
+{{feat.name}}
+</td>
+</tr>
+</table>
+</table>
+</div>
