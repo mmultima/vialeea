@@ -1,14 +1,18 @@
 <!-- div ng-controller="statsController" -->
-<div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Stats</h3>
+                    </div>
+                    <div class="panel-body">
     <input type="button" value="Reset" ng-click="reset(10)"/>
-    <table>
-        <tr>
-            <td>
-            <table>
-                <tr>
-                    <th colspan="4">
-                        Base stat
-                    </th>
+                        <table class="table">
+                        <tr>
+                            <th colspan="4">
+                                Base stat
+                            </th>
                     <th>
                         Race
                     </th>
@@ -85,21 +89,33 @@
                         ({{floor(calculateCarryingCapacity(totalstat['str'])/3)}}/
                         {{floor(2*calculateCarryingCapacity(totalstat['str'])/3)}}/
                         {{(calculateCarryingCapacity(totalstat['str']))}})
-                    </td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            Classes <div ng-repeat="myclass in classes">
-                {{myclass.name}}
-                <input type="button" value="-" ng-click="changeLevel(myclass,-1)"/>
-                {{showLevel(myclass)}}
-                <input type="button" value="+" ng-click="changeLevel(myclass, 1)"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
+        </div>
+    <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Classes</h3>
+                </div>
+                <div class="panel-body">
+                    <div ng-repeat="myclass in classes">
+                        {{myclass.name}}
+                        <input type="button" value="-" ng-click="changeLevel(myclass,-1)"/>
+                        {{showLevel(myclass)}}
+                        <input type="button" value="+" ng-click="changeLevel(myclass, 1)"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Race</h3>
+                </div>
+                <div class="panel-body">
             <table>
                 <tr ng-repeat="thisrace in $parent.races">
                     <td>
@@ -118,7 +134,9 @@
                     </td>
                 </tr>
             </table>
-        </td>
-    </tr>
-</table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

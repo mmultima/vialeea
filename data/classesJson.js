@@ -17,7 +17,7 @@ var classes =
             'light', 'medium', 'shields'
             ],
         'Weapon proficiencies': [
-            'light', 'deity'
+            'simple', 'deity'
             ],
         'Skills': {
             'Points': 2,
