@@ -3,6 +3,30 @@ var app = angular.module('myApp', ['ngRoute']);
 app.controller("myController", function($scope) {
     $scope.tab_page=1;
 
+	if (!$scope.char) {
+		$scope.char = {};
+	}
+
+	if (!$scope.char.classes) {
+		$scope.char.classes = {};
+}
+
+	$scope.classes = classes;
+
+$scope.hasAnimal = function() {
+	var animal = false;
+	if ($scope.char) {
+		if ($scope.char.classes) {
+			if ($scope.char.classes.Druid) {
+				animal = true;
+}
+}
+}
+
+
+	return animal;
+}
+
     $scope.active_tab = function(page) {
         if(page===$scope.tab_page) {
            return 'active';

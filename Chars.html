@@ -29,10 +29,18 @@
                 <LI role="presentation" class="{{active_tab(2)}}"><A HREF="#/feats" ng-click="tab_page=2">Feats</A></LI>
                 <LI role="presentation" class="{{active_tab(3)}}"><A HREF="#/damage" ng-click="tab_page=3">Damage</A></LI>
                 <LI role="presentation" class="{{active_tab(4)}}"><A HREF="#/skills" ng-click="tab_page=4">Skills</A></LI>
-                <LI role="presentation" class="{{active_tab(5)}}"><A HREF="#/animalCompanion" ng-click="tab_page=5">Animal</A></LI>
+                <LI ng-show="hasAnimal()" role="presentation" class="{{active_tab(5)}}"><A HREF="#/animalCompanion" ng-click="tab_page=5">Animal</A></LI>
                 <LI role="presentation" class="{{active_tab(6)}}"><A HREF="#/spells" ng-click="tab_page=6">Spells</A></LI>
                 <LI role="presentation" class="{{active_tab(7)}}"><A HREF="#/equipment" ng-click="tab_page=7">Equipment</A></LI>
             </ul>
+<div>
+	{{char.name}} <span ng-show="!char.name">&lt;no name&gt;</span> 
+	<span ng-repeat="myclass in classes">
+<span ng-show="char.classes[myclass.name]">
+{{myclass.name}} {{char.classes[myclass.name]}} 
+</span>	
+	</span>
+</div>
             <div ng-view></div>
             <!--div ng-show="tab_page===1">
                 Yksi

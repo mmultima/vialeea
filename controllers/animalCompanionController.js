@@ -1,9 +1,16 @@
 app.controller('animalCompanionController', function ($scope) {
 $scope.animals = mmdata.animals;
 
+if ($scope.$parent.char.classes.Druid) {
+$scope.level = $scope.$parent.char.classes.Druid;
+}
+else {
+$scope.level=1;
+}
+
 $scope.test='testt';
 
-$scope.level=1;
+//$scope.level=1;
 
 //Make a "calculate3/4 function
 $scope.calculateHd=function(level) {
