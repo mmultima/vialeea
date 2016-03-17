@@ -1,3 +1,113 @@
 <div>
-    <H1>Nothing yet!</H1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Weapons
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Damage
+                            </th>
+                        </tr>
+                        <tr ng-repeat="weapon in char.equipment.weapons">
+                            <td>
+                                {{weapon.name}}
+                            </td>
+                            <td>
+                                {{weapon.damage}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Armor
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Bonus
+                            </th>
+                            <th>
+                                ACP
+                            </th>
+                            <th>
+                                Arcane fail
+                            </th>
+                        </tr>
+                        <tr ng-repeat="armor in char.equipment.armors">
+                            <td>
+                                {{armor.name}}
+                            </td>
+                            <td>
+                                {{armor.bonus}}
+                            </td>
+                            <td>
+                                {{armor.ACP}}
+                            </td>
+                            <td>
+                                {{armor.arcanefail}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        All items
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Weight
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                        </tr>
+                        <tr ng-repeat="item in char.equipment.all">
+                            <td>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                {{item.weight}}
+                            </td>
+                            <td>
+                                {{item.price}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -13,6 +13,21 @@ app.controller("myController", function($scope) {
 
 	$scope.classes = classes;
 
+    $scope.isFirst = function(classname) {
+        for (var i = 0; i < classes.length; i++) {
+            var cur = classes[i];
+            if ($scope.char.classes[cur.name]) {
+                if (classname === cur.name) {
+                    return true;
+                }
+                else { 
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 $scope.hasAnimal = function() {
 	var animal = false;
 	if ($scope.char) {

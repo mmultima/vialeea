@@ -39,8 +39,9 @@
                         <div class="panel-body">
 	                        {{char.name}} 
                             <span ng-show="!char.name">&lt;no name&gt;</span> 
-	                        <span ng-repeat="myclass in classes">
+                            <span ng-repeat="myclass in classes">
                                 <span ng-show="char.classes[myclass.name]">
+                                    <span ng-show="!isFirst(myclass.name)">/</span>
                                     {{myclass.name}} {{char.classes[myclass.name]}} 
                                 </span>	
 	                        </span>
