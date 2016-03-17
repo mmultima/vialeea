@@ -2,7 +2,7 @@
 <HTML>
     <HEAD>
         <TITLE>
-            PFS character builder
+            Vialeea Pathfinder character builder
         </TITLE>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css">
         <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
@@ -33,20 +33,22 @@
                 <LI role="presentation" class="{{active_tab(6)}}"><A HREF="#/spells" ng-click="tab_page=6">Spells</A></LI>
                 <LI role="presentation" class="{{active_tab(7)}}"><A HREF="#/equipment" ng-click="tab_page=7">Equipment</A></LI>
             </ul>
-<div>
-	{{char.name}} <span ng-show="!char.name">&lt;no name&gt;</span> 
-	<span ng-repeat="myclass in classes">
-<span ng-show="char.classes[myclass.name]">
-{{myclass.name}} {{char.classes[myclass.name]}} 
-</span>	
-	</span>
-</div>
-            <div ng-view></div>
-            <!--div ng-show="tab_page===1">
-                Yksi
-            {{test}}
-            <input type=text ng-model="test"></input>
-            </div -->
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+	                        {{char.name}} 
+                            <span ng-show="!char.name">&lt;no name&gt;</span> 
+	                        <span ng-repeat="myclass in classes">
+                                <span ng-show="char.classes[myclass.name]">
+                                    {{myclass.name}} {{char.classes[myclass.name]}} 
+                                </span>	
+	                        </span>
+                        </div>
+                    </div>
+                    <div ng-view></div>
+                </div>
+            </div>
         </div>
     </BODY>
 </HTML>
