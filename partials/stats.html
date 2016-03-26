@@ -109,6 +109,15 @@
                             <th colspan="3">
                                 Levels
                             </th>
+			    <th>
+				Fort
+			    </th>
+			    <th>
+				Ref
+			    </th>
+			    <th>
+				Will
+			    </th>
                         </tr>
                         <tr ng-repeat="myclass in classes">
                             <td>
@@ -123,7 +132,52 @@
                             <td>
                                 <input type="button" value="+" ng-click="changeLevel(myclass, 1)"/>
                             </td>
+			    <td>
+				{{calculateSave(myclass, 'Fort')}}
+			    </td>
+			    <td>
+				{{calculateSave(myclass, 'Ref')}}
+			    </td>
+			    <td>
+				{{calculateSave(myclass, 'Will')}}
+			    </td>
                         </tr>
+			<tr>
+			    <td>
+			        Stats
+			    </td>
+			    <td colspan="3">
+			        
+			    </td>
+			    <td>
+			        
+                        <span ng-show="atleast(totalstat['con'],10)">+</span>{{statBonus(totalstat['con'])}}
+			    </td>
+			    <td>
+                        <span ng-show="atleast(totalstat['dex'],10)">+</span>{{statBonus(totalstat['dex'])}}
+			        
+			    </td>
+			    <td>
+                        <span ng-show="atleast(totalstat['wis'],10)">+</span>{{statBonus(totalstat['wis'])}}
+			        
+			    </td>
+			</tr>
+			<tr>
+			    <td>
+				Total
+			    </td>
+			    <td></td>
+			    <td>
+				{{calculateHd()}}
+			    </td>
+			    <td></td>
+			    <td>{{calculateTotalSave('Fort')}}</td>
+			    <td>{{calculateTotalSave('Ref')}}</td>
+			    <td>{{calculateTotalSave('Will')}}</td>
+			</tr>	
+
+
+
                     </table>
                 </div>
             </div>

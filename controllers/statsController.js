@@ -1,4 +1,46 @@
 app.controller('statsController', function ($scope) {
+    $scope.calculateTotalSave = function(save) {
+        var value = 0;
+
+         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
+             var level = $scope.$parent.char.classes[classes[classIndex].name]||0;
+             if (level) {
+                value += $scope.calculateSave(classes[classIndex], save); 
+             }
+         }
+ 
+        var stat = 'Fort'===save?'con':'Ref'===save?'dex':'wis';
+        value += $scope.statBonus($scope.$parent.totalstat[stat]);	
+        return value;
+    }
+
+    $scope.calculateSave = function(myclass, save) {
+	var level = $scope.showLevel(myclass);
+	if (level === 0) {
+            return 0;
+        }
+
+        var value = 0;
+
+        if (myclass.Saves[save]==='Good') {
+            value = 2+Math.floor(level/2);
+        }
+	else {
+            value = Math.floor(level/3);
+        }
+
+        return value;
+    }
+
+    $scope.calculateHd = function() {
+         var hd = 0;
+
+         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
+             hd += $scope.$parent.char.classes[classes[classIndex].name]||0;
+         }
+         return hd;
+    }
+
     if (typeof $scope.$parent.pblimit === 'undefined') {
         $scope.$parent.pblimit = true;
     }
