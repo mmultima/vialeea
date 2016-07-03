@@ -21,6 +21,13 @@ app.controller("myController", function($scope, $resource) {
         $scope.char.$save();  
     };
 
+    $scope.load = function(id) {
+        $scope.char = Character.get({charId: id}, function() {
+            //$scope.char = character;
+            //console.log(character);
+        });
+    };
+
 	$scope.classes = classes;
 
     $scope.isFirst = function(classname) {
@@ -89,6 +96,10 @@ app.config(['$routeProvider',
             $routeProvider.when('/equipment', {
                 templateUrl: 'partials/equipment.html',
                 controller: 'equipmentController'
+            });
+            $routeProvider.when('/load', {
+                templateUrl: 'partials/load.html',
+                controller: 'loadController'
             });
             $routeProvider.otherwise({
                 redirectTo: '/stats'

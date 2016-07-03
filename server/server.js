@@ -99,6 +99,8 @@ var getOneChar = function(req, res) {
 app.get('/rest/char/:id', getOneChar);
 app.get('/rest/allchars', charlist);
 
+app.get('/rest/char', getOneChar);
+
 app.post('/rest/char', store);
 app.post('/rest/char/:id', update);
 

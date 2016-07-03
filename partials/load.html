@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Characters
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Load
+                            </th>
+                        </tr>
+                        <tr ng-repeat="character in allCharacters">
+                            <td>
+                                {{character.name}}
+                            </td>
+                            <td>
+                                {{character._id}}
+                            </td>
+                            <td>
+                                <button ng-click='load(character._id)'>Load</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
