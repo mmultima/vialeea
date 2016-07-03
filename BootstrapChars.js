@@ -1,15 +1,25 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngResource']);
 
-app.controller("myController", function($scope) {
+app.controller("myController", function($scope, $resource) {
+    var Character = $resource('/rest/char/:charId',
+        {charId:'@_id'},
+        {} 
+    );
+
     $scope.tab_page=1;
 
 	if (!$scope.char) {
-		$scope.char = {};
+		//$scope.char = {};
+        $scope.char = new Character({});
 	}
 
 	if (!$scope.char.classes) {
 		$scope.char.classes = {};
 }
+
+    $scope.save = function() {
+        $scope.char.$save();  
+    };
 
 	$scope.classes = classes;
 
