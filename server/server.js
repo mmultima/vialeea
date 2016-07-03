@@ -64,7 +64,6 @@ var update = function(req, res) {
     id = new mongo.ObjectID(id);
     character._id = id;
     db.collection('characters', function(err, collection) {
-        //collection.update({'_id':new BSON.ObjectID(id)}, character, {safe:true}, function(err, result) {
         collection.update({'_id':id}, character, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating character: ' + err);
@@ -78,6 +77,27 @@ var update = function(req, res) {
     });
 };
 
+var charlist = function(req, res) {
+
+    db.collection('characters', function(err, collection) {
+        collection.find({}, {name:1, _id:1}).toArray(function (err, items) {
+            res.send(items);
+        });
+    });
+};
+
+var getOneChar = function(req, res) {
+    var id = req.params.id;
+    id = new mongo.ObjectID(id);
+    db.collection('characters', function(err, collection) {
+        collection.findOne({'_id': id}, function (err, item) {
+            res.send(item);
+        }); 
+    });
+};
+
+app.get('/rest/char/:id', getOneChar);
+app.get('/rest/allchars', charlist);
 
 app.post('/rest/char', store);
 app.post('/rest/char/:id', update);
@@ -85,12 +105,3 @@ app.post('/rest/char/:id', update);
 app.use(express.static('..'));
 
 app.listen(28888);
-
-//var http = require("http");
-//var server = http.createServer(function (request, response) {
-//    response.write("{ jotain: 'arvo' }");
-//    response.writeHead(200, {"Content-Type": "application/json"});
-//    response.end();
-//});
-
-//server.listen(28888);
