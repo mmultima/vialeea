@@ -15,7 +15,7 @@ app.controller('skillsController', function ($scope) {
     $scope.calculatePoints = function() {
         var points = 0;
 
-        points += $scope.calculateHd() * $scope.statBonus($scope.$parent.totalstat['int']);
+        points += $scope.calculateHd() * $scope.statBonus($scope.$parent.char.totalstat['int']);
 
         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
             var levels = $scope.$parent.char.classes[classes[classIndex].name];

@@ -10,7 +10,7 @@ app.controller('statsController', function ($scope) {
          }
  
         var stat = 'Fort'===save?'con':'Ref'===save?'dex':'wis';
-        value += $scope.statBonus($scope.$parent.totalstat[stat]);	
+        value += $scope.statBonus($scope.$parent.char.totalstat[stat]);	
         return value;
     }
 
@@ -73,15 +73,15 @@ app.controller('statsController', function ($scope) {
     $scope.stats=['str', 'dex', 'con', 'int', 'wis', 'cha'];
     
     $scope.reset = function(value) {
-        if (!$scope.$parent.base) {
-            $scope.$parent.base = {};
+        if (!$scope.$parent.char.base) {
+            $scope.$parent.char.base = {};
         }
         for (var i = 0; i < $scope.stats.length; i++) {
-            $scope.$parent.base[$scope.stats[i]]=value+0;
+            $scope.$parent.char.base[$scope.stats[i]]=value+0;
         }
     };
 
-    if (!$scope.$parent.base) {
+    if (!$scope.$parent.char.base) {
         $scope.reset(10);
     }
 
@@ -105,9 +105,9 @@ app.controller('statsController', function ($scope) {
     };
 
     $scope.maybeAdjust = function (stat, amount) {
-        var cur = $scope.$parent.base[stat];
+        var cur = $scope.$parent.char.base[stat];
 	if ((cur+amount >= 7 && cur+amount <= 18)||(!$scope.$parent.pblimit)) {
-            $scope.$parent.base[stat] = cur+amount;
+            $scope.$parent.char.base[stat] = cur+amount;
         }
     }
 

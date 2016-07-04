@@ -38,7 +38,7 @@
                         <input type="button" value="-" ng-click="maybeAdjust(stat, -1)" />
                     </td>
                     <td>
-                        {{$parent.base[stat]}}
+                        {{$parent.char.base[stat]}}
                     </td>
                     <td>
                         <input type="button" value="+" ng-click="maybeAdjust(stat, 1)" />
@@ -48,10 +48,10 @@
                         {{racestat[stat]=$parent.$parent.race.scores[stat]}}
                     </td>
                     <td>
-                        {{$parent.$parent.totalstat[stat]=$parent.base[stat]+racestat[stat]}}
+                        {{$parent.$parent.char.totalstat[stat]=$parent.char.base[stat]+racestat[stat]}}
                     </td>
                     <td>
-                        <span ng-show="atleast(totalstat[stat],10)">+</span>{{statBonus($parent.$parent.totalstat[stat])}}
+                        <span ng-show="atleast(totalstat[stat],10)">+</span>{{statBonus($parent.$parent.char.totalstat[stat])}}
                     </td>
                     <!-- td ng-if='race.scores === "free"' -->
                     <td ng-if='race.freescores > 0'>
@@ -66,7 +66,7 @@
                         Point Buy
                     </td>
                     <td>
-                        {{calculatePointBuy($parent.base['str'])+calculatePointBuy($parent.base['dex'])+calculatePointBuy($parent.base['con'])+calculatePointBuy($parent.base['int'])+calculatePointBuy($parent.base['wis'])+calculatePointBuy($parent.base['cha'])}}
+                        {{calculatePointBuy($parent.char.base['str'])+calculatePointBuy($parent.char.base['dex'])+calculatePointBuy($parent.char.base['con'])+calculatePointBuy($parent.char.base['int'])+calculatePointBuy($parent.char.base['wis'])+calculatePointBuy($parent.char.base['cha'])}}
                     </td>
                     <td colspan="4">
                     </td>
@@ -86,9 +86,9 @@
                         Carrying capacity
                     </td>
                     <td colspan='5'>
-                        ({{floor(calculateCarryingCapacity(totalstat['str'])/3)}}/
-                        {{floor(2*calculateCarryingCapacity(totalstat['str'])/3)}}/
-                        {{(calculateCarryingCapacity(totalstat['str']))}})
+                        ({{floor(calculateCarryingCapacity(char.totalstat['str'])/3)}}/
+                        {{floor(2*calculateCarryingCapacity(char.totalstat['str'])/3)}}/
+                        {{(calculateCarryingCapacity(char.totalstat['str']))}})
                             </td>
                         </tr>
                     </table>
@@ -151,14 +151,14 @@
 			    </td>
 			    <td>
 			        
-                        <span ng-show="atleast(totalstat['con'],10)">+</span>{{statBonus(totalstat['con'])}}
+                        <span ng-show="atleast(char.totalstat['con'],10)">+</span>{{statBonus(char.totalstat['con'])}}
 			    </td>
 			    <td>
-                        <span ng-show="atleast(totalstat['dex'],10)">+</span>{{statBonus(totalstat['dex'])}}
+                        <span ng-show="atleast(char.totalstat['dex'],10)">+</span>{{statBonus(char.totalstat['dex'])}}
 			        
 			    </td>
 			    <td>
-                        <span ng-show="atleast(totalstat['wis'],10)">+</span>{{statBonus(totalstat['wis'])}}
+                        <span ng-show="atleast(char.totalstat['wis'],10)">+</span>{{statBonus(char.totalstat['wis'])}}
 			        
 			    </td>
 			</tr>
