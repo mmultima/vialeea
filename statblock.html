@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>
+            Vialeea Pathfinder character builder statblock sheet
+        </TITLE>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css">
+        <script src="lib/jquery-1.12.2.js"></script>
+        <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-route.js"></script>
+        <script src="lib/angular-resource.js"></script>
+        <script src="BootstrapChars.js"></script>
+        <script src="controllers/featsController.js"></script>
+        <script src="controllers/statsController.js"></script>
+        <script src="controllers/animalCompanionController.js"></script>
+        <script src="controllers/damageController.js"></script>
+        <script src="controllers/skillsController.js"></script>
+        <script src="controllers/spellsController.js"></script>
+        <script src="controllers/equipmentController.js"></script>
+        <script src="controllers/loadController.js"></script>
+        <script src="controllers/statblockController.js"></script>
+        <script src="data/coreFeatsJson.js"></script>
+        <script src="data/animals.js"></script>
+        <script src="data/skills.js"></script>
+        <script src="data/classesJson.js"></script>
+        <script src="lib/underscore.js"></script>
+    </HEAD>
+    <BODY ng-app="myApp">
+        <div class="container-fluid" ng-controller='myController'>
+            <div class="row" ng-controller='statblockController'>
+                <div class="col-md-12">
+                        <p>
+                        Pathfinder character creator statblock sheet.
+                        </p>
+                        <p>
+                        {{charId}}
+                        </p>
+                        <p>
+                        {{$parent.char}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BODY>
+</HTML>
+
