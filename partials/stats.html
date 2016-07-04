@@ -22,11 +22,11 @@
                     <th>
                         Bonus
                     </th>
-                    <th ng-if='$parent.race.freescores > 0'>
-                        Race bonus ({{$parent.$parent.freestat}})
+                    <th ng-if='$parent.char.race.freescores > 0'>
+                        Race bonus ({{$parent.$parent.char.freestat}})
                     </th>
-                    <th ng-if='$parent.race.freescores > 1'>
-                        Second race bonus ({{$parent.$parent.freestat2}})
+                    <th ng-if='$parent.char.race.freescores > 1'>
+                        Second race bonus ({{$parent.$parent.char.freestat2}})
                     </th>
                 </tr>
 
@@ -45,7 +45,7 @@
                     </td>
 
                     <td>
-                        {{racestat[stat]=$parent.$parent.race.scores[stat]}}
+                        {{racestat[stat]=$parent.$parent.char.race.scores[stat]}}
                     </td>
                     <td>
                         {{$parent.$parent.char.totalstat[stat]=$parent.char.base[stat]+racestat[stat]}}
@@ -54,11 +54,11 @@
                         <span ng-show="atleast(totalstat[stat],10)">+</span>{{statBonus($parent.$parent.char.totalstat[stat])}}
                     </td>
                     <!-- td ng-if='race.scores === "free"' -->
-                    <td ng-if='race.freescores > 0'>
-                        <input type='radio' ng-model='$parent.$parent.$parent.freestat' value='{{$parent.stat}}'>
+                    <td ng-if='char.race.freescores > 0'>
+                        <input type='radio' ng-model='$parent.$parent.$parent.char.freestat' value='{{$parent.stat}}'>
                     </td>
-                    <td ng-if='race.freescores > 1'>
-                        <input type='radio' ng-model='$parent.$parent.$parent.freestat2' value='{{$parent.stat}}'>
+                    <td ng-if='char.race.freescores > 1'>
+                        <input type='radio' ng-model='$parent.$parent.$parent.char.freestat2' value='{{$parent.stat}}'>
                     </td>
                 </tr>
                 <tr>
@@ -206,7 +206,7 @@
             <table>
                 <tr ng-repeat="thisrace in $parent.races">
                     <td>
-                        <input type="radio" name="race" ng-model="$parent.$parent.race" ng-value="thisrace"/>
+                        <input type="radio" name="race" ng-model="$parent.$parent.char.race" ng-value="thisrace"/>
                     </td>
                     <td>
                         {{thisrace.name}}
@@ -217,7 +217,7 @@
                         Race:
                     </td>
                     <td>
-                        {{$parent.race.name}}
+                        {{$parent.char.race.name}}
                     </td>
                 </tr>
             </table>

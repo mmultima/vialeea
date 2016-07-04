@@ -97,7 +97,7 @@ app.controller('statsController', function ($scope) {
         else {
             total = $scope.baseCarrys[strenght%10]*Math.pow(4,Math.floor(strenght/10)-1);
         }
-	if ($scope.$parent.race.size && $scope.$parent.race.size === 'S') {
+	if ($scope.$parent.char.race.size && $scope.$parent.char.race.size === 'S') {
             total = Math.floor(3*total/4); 
         }
         
@@ -113,35 +113,35 @@ app.controller('statsController', function ($scope) {
 
 
 
-    $scope.$watch('$parent.race', function(race) {
-        if ($scope.$parent.freestat) {
+    $scope.$watch('$parent.char.race', function(race) {
+        if ($scope.$parent.char.freestat) {
             if (race.freescores) {
-                race.scores[$scope.$parent.freestat]=2;
+                race.scores[$scope.$parent.char.freestat]=2;
             }
             if (race.freescores > 1) {
-                race.scores[$scope.$parent.freestat2]=2;
+                race.scores[$scope.$parent.char.freestat2]=2;
             }
 	}
     });
 
 
-    $scope.$watch('$parent.freestat', function(value) {
-        if ($scope.$parent.race.freescores) {
+    $scope.$watch('$parent.char.freestat', function(value) {
+        if ($scope.$parent.char.race.freescores) {
 	        $scope.clearRacials();
-            $scope.$parent.race.scores[value]=2;
-            $scope.$parent.race.scores[$scope.$parent.freestat2]=2;
+            $scope.$parent.char.race.scores[value]=2;
+            $scope.$parent.char.race.scores[$scope.$parent.char.freestat2]=2;
         }
     });
 
-    $scope.$watch('$parent.freestat2', function(value) {
-        if ($scope.$parent.race.freescores) {
+    $scope.$watch('$parent.char.freestat2', function(value) {
+        if ($scope.$parent.char.race.freescores) {
 	        $scope.clearRacials();
-            $scope.$parent.race.scores[$scope.$parent.freestat]=2;
-            $scope.$parent.race.scores[$scope.$parent.freestat2]=2;
+            $scope.$parent.char.race.scores[$scope.$parent.char.freestat]=2;
+            $scope.$parent.char.race.scores[$scope.$parent.char.freestat2]=2;
         }
     });
     $scope.clearRacials = function() {
-        $scope.$parent.race.scores = {};
+        $scope.$parent.char.race.scores = {};
     };
 
     $scope.statBonus=function(stat){
@@ -274,15 +274,15 @@ app.controller('statsController', function ($scope) {
         }
     ];
 
-    if (typeof $scope.$parent.race === 'undefined') {
-        $scope.$parent.race = $scope.$parent.races[0];
+    if (typeof $scope.$parent.char.race === 'undefined') {
+        $scope.$parent.char.race = $scope.$parent.races[0];
     }    
 
     $scope.$parent.races = _.sortBy($scope.$parent.races, 'name');
 
     for (var why = 0; why < $scope.$parent.races.length; why++) {
-        if ($scope.$parent.race.name === $scope.$parent.races[why].name) {
-            $scope.$parent.race = $scope.$parent.races[why];
+        if ($scope.$parent.char.race.name === $scope.$parent.races[why].name) {
+            $scope.$parent.char.race = $scope.$parent.races[why];
         }
     }
 
