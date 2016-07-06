@@ -49,7 +49,8 @@
                             {{$parent.char.alignment}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
                         </div>
                         <div>
-                            <b>Init</b> {{calculateInit()}} <b>Senses</b> Perception {{}}
+                            <b>Init</b> {{calculateInit()}} 
+                            <span ng-controller='skillsController'><b>Senses</b> Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
                         </div>
                         <div>
                             <b>Defense</b>
@@ -57,6 +58,19 @@
                         <div ng-controller='statsController'>
                             <b>AC</b> {{10 + statBonus($parent.char.totalstat['dex'])}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10}}
                         </div>
+                        <div>
+                            <b>hp</b>
+                            {{$parent.char.hp}}
+                        </div>
+                        <div ng-controller='statsController'>
+                            <b>Fort</b>
+                            +{{calculateTotalSave('Fort')}}
+                            <b>Ref</b>
+                            +{{calculateTotalSave('Ref')}}
+                            <b>Will</b>
+                            +{{calculateTotalSave('Will')}}
+                        </div>
+
                 </div>
             </div>
         </div>
