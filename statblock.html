@@ -30,16 +30,33 @@
         <div class="container-fluid" ng-controller='myController'>
             <div class="row" ng-controller='statblockController'>
                 <div class="col-md-12">
-                        <p>
-                        Pathfinder character creator statblock sheet.
-                        </p>
-                        <p>
-                        {{charId}}
-                        </p>
-                        <p>
-                        {{$parent.char}}
-                        </p>
-                    </div>
+                        <div>
+                            Pathfinder character creator statblock sheet. Id={{charId}}
+                        </div>
+                        <div>
+                        {{$parent.char.name}}
+                        </div>
+                        <div>
+                            {{$parent.char.sex}} {{$parent.char.race.name}} 
+                            <span ng-repeat="myclass in classes">
+                                <span ng-show="char.classes[myclass.name]">
+                                    <span ng-show="!isFirst(myclass.name)">/</span>
+                                    {{myclass.name}} {{char.classes[myclass.name]}}
+                                </span>
+                            </span>
+                        </div>
+                        <div>
+                            {{$parent.char.alignment}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
+                        </div>
+                        <div>
+                            <b>Init</b> {{calculateInit()}} <b>Senses</b> Perception {{}}
+                        </div>
+                        <div>
+                            <b>Defense</b>
+                        </div>
+                        <div ng-controller='statsController'>
+                            <b>AC</b> {{10 + statBonus($parent.char.totalstat['dex'])}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10}}
+                        </div>
                 </div>
             </div>
         </div>

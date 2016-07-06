@@ -203,6 +203,9 @@
                     </div>
                 </div>
                 <div class="panel-body">
+                    <table>
+                        <tr>
+                            <td>
             <table>
                 <tr ng-repeat="thisrace in $parent.races">
                     <td>
@@ -221,6 +224,21 @@
                     </td>
                 </tr>
             </table>
+        </td>
+        <td>
+            <div>
+                Alignment: <input type="text" ng-model="$parent.char.alignment"></input>
+            </div>
+            <div>
+                Sex: <input type="text" ng-model="$parent.char.sex"></input>
+            </div>
+            <div>
+                Types: {{$parent.char.race.types}}
+            </div>
+        </td>
+    </tr>
+</table>
+
                 </div>
             </div>
         </div>

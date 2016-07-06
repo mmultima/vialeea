@@ -159,14 +159,16 @@ app.controller('statsController', function ($scope) {
             freescores: 1,
             scores: {},
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (human)'
         },
         {
             name: "Human (dualtalent)",
             freescores: 2,
             scores: {},
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (human)'
         },
         {
             name: "Dwarf",
@@ -177,7 +179,8 @@ app.controller('statsController', function ($scope) {
                 cha: -2
             },
             speed: 20,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (dwarf)'
         },
         {
             name: "Gnome",
@@ -188,7 +191,8 @@ app.controller('statsController', function ($scope) {
                 str: -2
             },
             speed: 20,
-            size: 'S'
+            size: 'S',
+            types: 'humanoid (gnome)'
         },
         {
             name: "Half-orc",
@@ -196,7 +200,8 @@ app.controller('statsController', function ($scope) {
             scores: {
             },
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (orc, human)'
         },
         {
             name: "Half-elf",
@@ -204,7 +209,8 @@ app.controller('statsController', function ($scope) {
             scores: {
             },
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (elf, human)'
         },
         {
             name: "Tengu",
@@ -215,7 +221,8 @@ app.controller('statsController', function ($scope) {
                 wis: 2
             },
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (XX)'
         },
         {
             name: "Kitsune",
@@ -226,7 +233,8 @@ app.controller('statsController', function ($scope) {
                 str: -2
             },
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (XX)'
         },
         {
             name: "Wayang",
@@ -237,7 +245,8 @@ app.controller('statsController', function ($scope) {
                 wis: -2
             },
             speed: 20,
-            size: 'S'
+            size: 'S',
+            types: 'humanoid (XX)'
         },
         {
             name: "Nagaji",
@@ -248,7 +257,8 @@ app.controller('statsController', function ($scope) {
                 int: -2
             },
             speed: 20,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (XX)'
         },
         {
             name: "Halfling",
@@ -259,7 +269,8 @@ app.controller('statsController', function ($scope) {
                 str: -2
             },
             speed: 20,
-            size: 'S'
+            size: 'S',
+            types: 'humanoid (halfling)'
         },
 	{
             name: "Elf", 
@@ -270,7 +281,8 @@ app.controller('statsController', function ($scope) {
                 int: 2
             },
             speed: 30,
-            size: 'M'
+            size: 'M',
+            types: 'humanoid (elf)'
         }
     ];
 

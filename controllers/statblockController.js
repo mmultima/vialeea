@@ -9,4 +9,9 @@ app.controller('statblockController', function ($scope) {
     else {
         $scope.$parent.load($scope.charId);
     }
+
+    $scope.getSizeName = function(size) {
+        return size==='M'?'Medium':'Small';
+    };
+
 });
