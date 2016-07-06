@@ -33,8 +33,8 @@
                         <div>
                             Pathfinder character creator statblock sheet. Id={{charId}}
                         </div>
-                        <div>
-                        {{$parent.char.name}}
+                    <div>
+                        <b>{{$parent.char.name}}</b>
                         </div>
                         <div>
                             {{$parent.char.sex}} {{$parent.char.race.name}} 
@@ -70,7 +70,76 @@
                             <b>Will</b>
                             +{{calculateTotalSave('Will')}}
                         </div>
+                        <div>
+                            <b>Offense</b>
+                        </div>
+                        <div>
+                            <b>Speed</b> {{$parent.char.race.speed}} ft
+                        </div>
+                        <div ng-controller='statsController'>
+                            <b>Melee</b> dagger +{{statBonus($parent.char.totalstat['str'])}} (1d4+{{statBonus($parent.char.totalstat['str'])}}/19-20) 
+                        </div>
+                        <div>
+                            <b>Statistics</b>
+                        </div>
+                        <div>
+                            <b>Str</b> {{$parent.char.totalstat['str']}}
+                            <b>Dex</b> {{$parent.char.totalstat['dex']}}
+                            <b>Con</b> {{$parent.char.totalstat['con']}}
+                            <b>Int</b> {{$parent.char.totalstat['int']}}
+                            <b>Wis</b> {{$parent.char.totalstat['wis']}}
+                            <b>Cha</b> {{$parent.char.totalstat['cha']}}
+                        </div>
+                        <div ng-controller='statsController'>
+                            <b>Base Atk</b> {{bab=0}}
+                            <b>CMB</b> {{cmb = bab + statBonus($parent.char.totalstat['str'])}}
+                            <b>CMD</b> {{10+cmb+statBonus($parent.char.totalstat['dex'])}}
+                        </div>
+                        <div>
+                            <b>Feats</b> Impoved Initiative, Run
+                        </div>
+                        <div ng-controller='skillsController'>
+                            <b>Skills</b>
+                            <span ng-repeat='skill in skills'>
+                                <span ng-if='char.skills[skill.name]'>
+                                    {{skill.name}}
+                                    +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}},
+                                </span>
+                            </span>
+                            Knowledge (local) +8, Knowledge (history) +8
+                        </div>
+                        <div>
+                            <b>Languages</b>
+                            Abyssal, Common, Elven, Sylvan
+                        </div>
+                        <div>
+                            <b>Special abilities</b>
+                        </div>
+                        <p>
+                        <b>Inspiration</b>
+                        An investigator is beyond knowledgeable and skilled—he also possesses keen powers of observation and deduction that far surpass the abilities of others. An investigator typically uses these powers to aid in their investigations, but can also use these flashes of inspiration in other situations.
 
+                        <p>An investigator has the ability to augment skill checks and ability checks through his brilliant inspiration. The investigator has an inspiration pool equal to 1/2 his investigator level + his Intelligence modifier (minimum 1). An investigator's inspiration pool refreshes each day, typically after he gets a restful night's sleep. As a free action, he can expend one use of inspiration from his pool to add 1d6 to the result of that check, including any on which he takes 10 or 20. This choice is made after the check is rolled and before the results are revealed. An investigator can only use inspiration once per check or roll. The investigator can use inspiration on any Knowledge, Linguistics, or Spellcraft skill checks without expending a use of inspiration, provided he's trained in the skill.
+
+                        <p>Inspiration can also be used on attack rolls and saving throws, at the cost of expending two uses of inspiration each time from the investigator's pool. In the case of saving throws, using inspiration is an immediate action rather than a free action.
+                        <p>
+                        <b>Trapfinding</b>
+                        An investigator adds 1/2 his level to Perception skill checks made to locate traps and to Disable Device checks (minimum 1). An investigator can use Disable Device to disarm magical traps.
+                        <p>
+                        <b>Sleuth's luck</b>
+                        At 1st level, a sleuth gains a fluctuating pool of luck, measuring her ability to get out of scrapes. At the start of each day, a sleuth has a number of luck points equal to her Charisma modifier (minimum 1). Her luck goes up or down throughout the day, but usually cannot go higher than her Charisma modifier (minimum 1), though feats, magic items, and spells that grant either grit or panache points can also grant a sleuth luck points equal to the amount of grit or panache they grant. A sleuth spends luck to accomplish deeds (see below), and regains luck in the following ways.<p>
+
+                        Rolling a Natural 20 on a Knowledge or Sense Motive Check: While on an investigation, a sleuth regains luck by uncovering secrets. Rolling a natural 20 on these skill checks while actively investigating causes the sleuth to regain 1 luck point. Such skill checks made for more mundane reasons (such as normal research or using Sense Motive to gain information during normal bargaining or while gambling) do not regain luck for the sleuth. Determining which skill checks qualify is up to the GM.
+                        <p>
+                        Rolling a 6 or Higher on an Inspiration Roll: When a sleuth rolls an inspiration die while on an investigation and the die comes up a 6 or higher, she regains 1 luck point. (If she rolls multiple inspiration dice at a time, she regains 1 luck point if the total is 6 or higher.) Like regaining luck via a natural 20 on a qualifying skill check, inspiration checks made for more mundane reasons don't qualify for regaining luck. The GM is the final arbitrator for what rolls qualify. It's possible for a investigator to regain 2 luck points on the same Skill check, if both the qualifying skill check is a natural 20 and any inspiration roll made is a 6 or higher.
+                        <p>
+                        Daring (Ex): At 1st level, a sleuth can spend 1 luck point when he makes an Acrobatics, Climb, Escape Artist, Fly, Ride, or Swim check to roll d6 and add the result to the check. He can choose to add this die after he rolls. If the d6 roll is a natural 6, he rolls another d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Intelligence modifier (minimum 1).
+                        <p>
+                        Opportunistic Evasion (Ex): At 1st level, when a sleuth succeeds at a Reflex saving throw against an effect that still deals damage on a successful save, he can spend 1 luck point as an immediate action to instead take no damage for that effect.
+                        <p>
+                        Sleuth's Initiative (Ex): At 1st level, as long as the sleuth has at least 1 luck point, he gains a +2 bonus on initiative checks. Furthermore, if he has the Quick Draw feat, his hands are free and unrestrained, and the weapon is not hidden, he can draw a single light or one-handed melee weapon as part of the initiative check. (Unlike with swashbuckler deeds, this does not have to be a piercing weapon.) At 4th level, a sleuth gains the following deeds. These abilities replace swift alchemy.
+                        <p>
+                        Make It Count (Ex): When a sleuth uses studied strike inspired strike, he can spend 1 luck point to apply an investigator talent that he doesn't already know and which affects studied strike inspired strike to his studied strike inspired strike. He must be able to fulfill that talent's prerequisites.
                 </div>
             </div>
         </div>

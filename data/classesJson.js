@@ -27,6 +27,50 @@ var classes =
         }
     },
     {
+        'name': 'Commoner',
+        'class abilities': {
+        },
+        'BAB': 'medium', 
+        'Saves': {
+            'Fort': 'Bad',
+            'Ref': 'Bad',
+            'Will': 'Bad'
+        },
+        'Armor proficiencies': [
+            ],
+        'Weapon proficiencies': [
+            ],
+        'Skills': {
+            'Points': 5,
+            'Class skills': [
+                'Climb','Craft','Handle Animal','Perception','Profession','Ride','Swim'
+                        ]
+        }
+    },
+
+    {
+        'name': 'Investigator (sleuth)',
+        'class abilities': {
+        },
+        'BAB': 'medium', 
+        'Saves': {
+            'Fort': 'Bad',
+            'Ref': 'Good',
+            'Will': 'Good'
+        },
+        'Armor proficiencies': [
+            ],
+        'Weapon proficiencies': [
+            ],
+        'Skills': {
+            'Points': 6,
+            'Class skills': [
+                'Acrobatics','Appraise','Bluff','Climb','Craft','Diplomacy','Disable Device','Disguise','Escape Artist','Heal','Intimidate','Knowledge (local)','Knowledge (history)', 'Linguistics','Perception','Perform','Profession','Sense Motive','Sleight of Hand','Spellcraft','Stealth','Use Magic Device'
+                        ]
+        }
+    },
+
+    {
         'name': 'Druid',
         'class abilities': {
            'spells': 'druid',
