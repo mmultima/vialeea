@@ -96,7 +96,10 @@
                             <b>CMD</b> {{10+cmb+statBonus($parent.char.totalstat['dex'])}}
                         </div>
                         <div>
-                            <b>Feats</b> Impoved Initiative, Run
+                            <b>Feats</b> 
+                            <span ng-repeat="feat in char.feats">
+                                {{feat.name}}<span ng-if="!$last">,</span>
+                            </span>
                         </div>
                         <div ng-controller='skillsController'>
                             <b>Skills</b>
