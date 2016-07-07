@@ -1,5 +1,10 @@
 app.controller('featsController', function($scope) {
 	$scope.selectedFeats = [];
+
+    if ($scope.$parent.char.feats === undefined) {
+        $scope.$parent.char.feats = [];
+    }
+
 	$scope.feats = [
 		{
 			name: 'Power attack',
@@ -62,7 +67,7 @@ app.controller('featsController', function($scope) {
 					prereqFeat = $scope.feats[i];
 				}
 }
-			if (!inArray(prereqFeat, $scope.selectedFeats)) {
+			if (!inArray(prereqFeat, $scope.$parent.char.feats)) {
 				return false;
 			}
 			}
@@ -93,8 +98,8 @@ app.controller('featsController', function($scope) {
 	};
 
 	$scope.addFeat = function(feat) {
-		if (!inArray(feat, $scope.selectedFeats)) {				if ($scope.prereqsValid(feat) && $scope.babValid(feat)) {
-				$scope.selectedFeats.push(feat);
+		if (!inArray(feat, $scope.$parent.char.feats)) {				if ($scope.prereqsValid(feat) && $scope.babValid(feat)) {
+				$scope.$parent.char.feats.push(feat);
 			}
 		}
 	}
@@ -102,12 +107,12 @@ app.controller('featsController', function($scope) {
 	$scope.removeFeat = function (feat) {
 		var newList = [];
 
-		for (var i = 0; i < $scope.selectedFeats.length; i++) {
-			if ($scope.selectedFeats[i] !== feat) {
-				newList.push($scope.selectedFeats[i]);
+		for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
+			if ($scope.$parent.char.feats[i] !== feat) {
+				newList.push($scope.$parent.char.feats[i]);
 			}
 		}
-		$scope.selectedFeats = newList;
+		$scope.$parent.char.feats = newList;
 	}	
 
 });

@@ -45,6 +45,10 @@ app.controller("myController", function($scope, $resource) {
         return true;
     }
 
+    $scope.calculateInit = function() {
+        return 8;
+    };
+
 $scope.hasAnimal = function() {
 	var animal = false;
 	if ($scope.char) {

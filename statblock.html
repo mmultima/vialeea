@@ -49,7 +49,7 @@
                             {{$parent.char.alignment}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
                         </div>
                         <div>
-                            <b>Init</b> {{calculateInit()}} 
+                            <b>Init</b> +{{calculateInit()}} 
                             <span ng-controller='skillsController'><b>Senses</b> Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
                         </div>
                         <div>
@@ -133,13 +133,13 @@
                         <p>
                         Rolling a 6 or Higher on an Inspiration Roll: When a sleuth rolls an inspiration die while on an investigation and the die comes up a 6 or higher, she regains 1 luck point. (If she rolls multiple inspiration dice at a time, she regains 1 luck point if the total is 6 or higher.) Like regaining luck via a natural 20 on a qualifying skill check, inspiration checks made for more mundane reasons don't qualify for regaining luck. The GM is the final arbitrator for what rolls qualify. It's possible for a investigator to regain 2 luck points on the same Skill check, if both the qualifying skill check is a natural 20 and any inspiration roll made is a 6 or higher.
                         <p>
-                        Daring (Ex): At 1st level, a sleuth can spend 1 luck point when he makes an Acrobatics, Climb, Escape Artist, Fly, Ride, or Swim check to roll d6 and add the result to the check. He can choose to add this die after he rolls. If the d6 roll is a natural 6, he rolls another d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Intelligence modifier (minimum 1).
+                        <b>Daring (Ex):</b> At 1st level, a sleuth can spend 1 luck point when he makes an Acrobatics, Climb, Escape Artist, Fly, Ride, or Swim check to roll d6 and add the result to the check. He can choose to add this die after he rolls. If the d6 roll is a natural 6, he rolls another d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Intelligence modifier (minimum 1).
                         <p>
-                        Opportunistic Evasion (Ex): At 1st level, when a sleuth succeeds at a Reflex saving throw against an effect that still deals damage on a successful save, he can spend 1 luck point as an immediate action to instead take no damage for that effect.
+                        <b>Opportunistic Evasion (Ex):</b> At 1st level, when a sleuth succeeds at a Reflex saving throw against an effect that still deals damage on a successful save, he can spend 1 luck point as an immediate action to instead take no damage for that effect.
                         <p>
-                        Sleuth's Initiative (Ex): At 1st level, as long as the sleuth has at least 1 luck point, he gains a +2 bonus on initiative checks. Furthermore, if he has the Quick Draw feat, his hands are free and unrestrained, and the weapon is not hidden, he can draw a single light or one-handed melee weapon as part of the initiative check. (Unlike with swashbuckler deeds, this does not have to be a piercing weapon.) At 4th level, a sleuth gains the following deeds. These abilities replace swift alchemy.
+                        <b>Sleuth's Initiative (Ex):</b> At 1st level, as long as the sleuth has at least 1 luck point, he gains a +2 bonus on initiative checks. Furthermore, if he has the Quick Draw feat, his hands are free and unrestrained, and the weapon is not hidden, he can draw a single light or one-handed melee weapon as part of the initiative check. (Unlike with swashbuckler deeds, this does not have to be a piercing weapon.) At 4th level, a sleuth gains the following deeds. These abilities replace swift alchemy.
                         <p>
-                        Make It Count (Ex): When a sleuth uses studied strike inspired strike, he can spend 1 luck point to apply an investigator talent that he doesn't already know and which affects studied strike inspired strike to his studied strike inspired strike. He must be able to fulfill that talent's prerequisites.
+                        <b>Make It Count (Ex):</b> When a sleuth uses studied strike inspired strike, he can spend 1 luck point to apply an investigator talent that he doesn't already know and which affects studied strike inspired strike to his studied strike inspired strike. He must be able to fulfill that talent's prerequisites.
                 </div>
             </div>
         </div>
