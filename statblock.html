@@ -37,7 +37,7 @@
                         <b>{{$parent.char.name}}</b>
                         </div>
                         <div>
-                            {{$parent.char.sex}} {{$parent.char.race.name}} 
+                            {{sexName($parent.char.sex)}} {{$parent.char.race.name}} 
                             <span ng-repeat="myclass in classes">
                                 <span ng-show="char.classes[myclass.name]">
                                     <span ng-show="!isFirst(myclass.name)">/</span>
@@ -49,7 +49,10 @@
                             {{$parent.char.alignment}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
                         </div>
                         <div>
-                            <b>Init</b> +{{calculateInit()}} 
+                            <b>Init</b>
+                            <span ng-controller='statsController'>
+                                +{{calculateInit()}}
+                            </span> 
                             <span ng-controller='skillsController'><b>Senses</b> Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
                         </div>
                         <div>

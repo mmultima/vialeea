@@ -1,4 +1,22 @@
 app.controller('statsController', function ($scope) {
+   //$scope.init = 5;
+
+    $scope.calculateInit = function() {
+        //return 6;
+        var init = $scope.statBonus($scope.$parent.char.totalstat['dex']);
+        
+        for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
+           if ($scope.$parent.char.feats[i].name === 'Improved Initiative') {
+               init += 4;
+           }
+        }
+        if ($scope.$parent.char.classes['Investigator (sleuth)']) {
+            init += 2;
+        }
+        return init;
+    };
+
+
     $scope.calculateTotalSave = function(save) {
         var value = 0;
 

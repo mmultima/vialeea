@@ -6,6 +6,23 @@ app.controller("myController", function($scope, $resource) {
         {} 
     );
 
+    $scope.alignments = [ {abbr: 'LG', name: 'Lawful Good'},
+                          {abbr: 'LN', name: 'Lawful Neutral'},
+                          {abbr: 'LE', name: 'Lawful Evil'},
+                          {abbr: 'NG', name: 'Neutral Good'},
+                          {abbr: 'N', name: 'Neutral'},
+                          {abbr: 'NE', name: 'Neutral Evil'},
+                          {abbr: 'CG', name: 'Chaotic Good'},
+                          {abbr: 'CN', name: 'Chaotic Neutral'},
+                          {abbr: 'CE', name: 'Chaotic Evil'} ];
+
+
+    $scope.sexes = ['F', 'M'];
+    $scope.sexName = function(sex) {
+        var nameMap = { 'F':'Female', 'M':'Male'};
+        return nameMap[sex];
+    };
+
     $scope.tab_page=1;
 
 	if (!$scope.char) {
@@ -44,10 +61,6 @@ app.controller("myController", function($scope, $resource) {
         }
         return true;
     }
-
-    $scope.calculateInit = function() {
-        return 8;
-    };
 
 $scope.hasAnimal = function() {
 	var animal = false;
