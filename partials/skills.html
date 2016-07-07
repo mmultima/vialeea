@@ -1,5 +1,11 @@
 <div ng-controller='skillsController'>
-    <H1>Points: {{usedPoints()}}/{{calculatePoints()}} HD: {{calculateHd()}}</H1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <H3 class="panel-title">Skills <span class="pull-right">Points: {{usedPoints()}}/{{calculatePoints()}} HD: {{calculateHd()}}</span></H3>
+                </div>
+                <div class="panel-body">
     <table>
         <tr>
             <th>
@@ -44,4 +50,47 @@
             </td>
         </tr>
     </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Skill additional choices</h3>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        Languages {{0+char.languages.length+char.race.languages.length}}/{{maxLanguages()}}
+                    </div>
+                    <div ng-repeat="racelang in char.race.languages">
+                        {{racelang}}
+                    </div>
+                    <div ng-repeat="language in char.languages">
+                        {{language}}
+                    </div>
+                    <div>
+                        <button type="button" data-toggle="modal" data-target="#languageModal">Add new</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="languageModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose a language</h4>
+                </div>
+            <div class="modal-body">
+                <input type="text" ng-model='newLanguage'/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="addLanguageAndClose(newLanguage)">Add</button>
+                <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
+            </div>
+        </div>
+    </div>
+
 </div>

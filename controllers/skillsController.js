@@ -1,4 +1,25 @@
 app.controller('skillsController', function ($scope) {
+    $scope.addLanguageAndClose = function(language) {
+        $scope.$parent.char.languages.push(language);
+        $("#languageModal .mmclose").click();
+    };
+
+
+    if (!$scope.$parent.char.languages) {
+        $scope.$parent.char.languages = [  ];
+    }
+
+    $scope.maxLanguages = function() {
+        var max = $scope.statBonus($scope.$parent.char.totalstat['int']);
+        if ($scope.$parent.char.skills.linguistics) {
+            max += $scope.$parent.char.skills.linguistics;
+        }
+        if ($scope.$parent.char.race.languages) {
+            max += $scope.$parent.char.race.languages.length;
+        }
+        return max;
+    };
+
     $scope.statBonus=function(stat){
         return (Math.floor(stat/2))-5;
     };

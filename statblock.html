@@ -116,7 +116,8 @@
                         </div>
                         <div>
                             <b>Languages</b>
-                            Abyssal, Common, Elven, Sylvan
+                            <span ng-repeat='language in char.race.languages'>{{language}}<span ng-if="!$last">, </span></span><span ng-if="char.languages.length > 0">,</span>
+                            <span ng-repeat='language in char.languages'>{{language}}<span ng-if="!$last">, </span></span>
                         </div>
                         <div>
                             <b>Special abilities</b>

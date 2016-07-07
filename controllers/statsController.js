@@ -178,7 +178,8 @@ app.controller('statsController', function ($scope) {
             scores: {},
             speed: 30,
             size: 'M',
-            types: 'humanoid (human)'
+            types: 'humanoid (human)',
+            languages: ['Common']
         },
         {
             name: "Human (dualtalent)",
@@ -186,7 +187,8 @@ app.controller('statsController', function ($scope) {
             scores: {},
             speed: 30,
             size: 'M',
-            types: 'humanoid (human)'
+            types: 'humanoid (human)',
+            languages: ['Common']
         },
         {
             name: "Dwarf",
@@ -198,7 +200,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 20,
             size: 'M',
-            types: 'humanoid (dwarf)'
+            types: 'humanoid (dwarf)',
+            languages: ['Common', 'Dwarven']
         },
         {
             name: "Gnome",
@@ -210,7 +213,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 20,
             size: 'S',
-            types: 'humanoid (gnome)'
+            types: 'humanoid (gnome)',
+            languages: ['Common', 'Gnome', 'Sylvan']
         },
         {
             name: "Half-orc",
@@ -219,7 +223,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 30,
             size: 'M',
-            types: 'humanoid (orc, human)'
+            types: 'humanoid (orc, human)',
+            languages: ['Common','Orc']
         },
         {
             name: "Half-elf",
@@ -228,7 +233,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 30,
             size: 'M',
-            types: 'humanoid (elf, human)'
+            types: 'humanoid (elf, human)',
+            languages: ['Common','Elven']
         },
         {
             name: "Tengu",
@@ -240,7 +246,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 30,
             size: 'M',
-            types: 'humanoid (XX)'
+            types: 'humanoid (XX)',
+            languages: ['Common']
         },
         {
             name: "Kitsune",
@@ -252,7 +259,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 30,
             size: 'M',
-            types: 'humanoid (XX)'
+            types: 'humanoid (XX)',
+            languages: ['Common']
         },
         {
             name: "Wayang",
@@ -264,7 +272,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 20,
             size: 'S',
-            types: 'humanoid (XX)'
+            types: 'humanoid (XX)',
+            languages: ['Common']
         },
         {
             name: "Nagaji",
@@ -276,7 +285,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 20,
             size: 'M',
-            types: 'humanoid (XX)'
+            types: 'humanoid (XX)',
+            languages: ['Common']
         },
         {
             name: "Halfling",
@@ -288,7 +298,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 20,
             size: 'S',
-            types: 'humanoid (halfling)'
+            types: 'humanoid (halfling)',
+            languages: ['Common', 'Halfling']
         },
 	{
             name: "Elf", 
@@ -300,7 +311,8 @@ app.controller('statsController', function ($scope) {
             },
             speed: 30,
             size: 'M',
-            types: 'humanoid (elf)'
+            types: 'humanoid (elf)',
+            languages: ['Common', 'Elven']
         }
     ];
 
