@@ -65,7 +65,7 @@ var classes =
         'Skills': {
             'Points': 6,
             'Class skills': [
-                'Acrobatics','Appraise','Bluff','Climb','Craft','Diplomacy','Disable Device','Disguise','Escape Artist','Heal','Intimidate','Knowledge(local)','Knowledge(history)', 'Linguistics','Perception','Perform','Profession','Sense Motive','Sleight of Hand','Spellcraft','Stealth','Use Magic Device'
+                'Acrobatics','Appraise','Bluff','Climb','Craft','Diplomacy','Disable Device','Disguise','Escape Artist','Heal','Intimidate','Knowledge(arcana)','Knowledge(dungeoneering)','Knowledge(engineering)','Knowledge(geography)','Knowledge(history)','Knowledge(local)','Knowledge(nature)','Knowledge(nobility)','Knowledge(planes)','Knowledge(religion)','Linguistics','Perception','Perform','Profession','Sense Motive','Sleight of Hand','Spellcraft','Stealth','Use Magic Device'
                         ]
         }
     },

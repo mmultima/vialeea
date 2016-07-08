@@ -117,7 +117,7 @@
                                     <span ng-repeat='subtype in skill.subtypes'>
                                         <span ng-if="char.skills[skill.name+'('+subtype+')']">
                                             {{skill.name+'('+subtype+')'}}
-                                            +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}},
+                                            +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name+'('+subtype+')']&&isClassSkill(skill.name+'('+subtype+')'))*3}},
                                         </span>
                                     </span>
                                 </span>
@@ -153,9 +153,7 @@
                         <p>
                         <b>Opportunistic Evasion (Ex):</b> At 1st level, when a sleuth succeeds at a Reflex saving throw against an effect that still deals damage on a successful save, he can spend 1 luck point as an immediate action to instead take no damage for that effect.
                         <p>
-                        <b>Sleuth's Initiative (Ex):</b> At 1st level, as long as the sleuth has at least 1 luck point, he gains a +2 bonus on initiative checks. Furthermore, if he has the Quick Draw feat, his hands are free and unrestrained, and the weapon is not hidden, he can draw a single light or one-handed melee weapon as part of the initiative check. (Unlike with swashbuckler deeds, this does not have to be a piercing weapon.) At 4th level, a sleuth gains the following deeds. These abilities replace swift alchemy.
-                        <p>
-                        <b>Make It Count (Ex):</b> When a sleuth uses studied strike inspired strike, he can spend 1 luck point to apply an investigator talent that he doesn't already know and which affects studied strike inspired strike to his studied strike inspired strike. He must be able to fulfill that talent's prerequisites.
+                        <b>Sleuth's Initiative (Ex):</b> At 1st level, as long as the sleuth has at least 1 luck point, he gains a +2 bonus on initiative checks. Furthermore, if he has the Quick Draw feat, his hands are free and unrestrained, and the weapon is not hidden, he can draw a single light or one-handed melee weapon as part of the initiative check. (Unlike with swashbuckler deeds, this does not have to be a piercing weapon.)
                 </div>
             </div>
         </div>
