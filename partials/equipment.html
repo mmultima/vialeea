@@ -22,10 +22,13 @@
                                 {{weapon.name}}
                             </td>
                             <td>
-                                {{weapon.damage}}
+                                {{weapon.dicenum}}d{{weapon.dice}}
                             </td>
                         </tr>
                     </table>
+                    <div>
+                        <button type="button" data-toggle="modal" data-target="#weaponModal">Add new</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,6 +109,29 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="weaponModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose a weapon</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="weapon in weapons">
+                        {{weapon.name}}
+                        <input type="radio" ng-model='$parent.newWeapon' ng-value='weapon' name='newWeaponRadio'/>
+                    </div>
+                </div>
+                <div>
+                    Chosen weapon: {{newWeapon.name}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addWeaponAndClose(newWeapon)">Add</button>
+                    <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>
         </div>
