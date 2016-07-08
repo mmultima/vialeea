@@ -28,7 +28,13 @@ app.controller('skillsController', function ($scope) {
         var used = 0;
 
         for (var skillIndex = 0; skillIndex < skillData.length; skillIndex++) {
+            var skill = skillData[skillIndex];
             used += $scope.char.skills[skillData[skillIndex].name];
+            if (skill.subtype && skill.subtypes) {
+                for (var subtypeIndex = 0; subtypeIndex < skill.subtypes.length; subtypeIndex++) {
+                    used+= $scope.char.skills[skill.name+'('+skill.subtypes[subtypeIndex]+')'];
+                }
+            }
         }   
         return used;     
     }
@@ -91,11 +97,19 @@ app.controller('skillsController', function ($scope) {
         }
     }
 
-    $scope.maybeAdjust = function(skill, amount) {
+    $scope.checkSkill =  function (myChar, skill, subtype) {
+        if (!myChar.skills[skill.name+'('+subtype+')']) {
+            myChar.skills[skill.name+'('+subtype+')'] = 0;
+        }
+        return 0;
+    }
+
+    $scope.maybeAdjust = function(skill, amount, subtype) {
+        var name = subtype?skill.name+'('+subtype+')':skill.name;
         
-        var newValue = $scope.char.skills[skill.name] + amount;
+        var newValue = $scope.char.skills[name] + amount;
         if ((newValue >= 0) && (newValue <= $scope.calculateHd())) {
-            $scope.char.skills[skill.name] = newValue;
+            $scope.char.skills[name] = newValue;
         }
 
     }

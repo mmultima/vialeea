@@ -28,7 +28,7 @@ var skillData =
         'name': 'Craft',
         'stat': 'int', 
         'trainedOnly': false, 
-        'subtype': true
+        'subtype': 'freeform'
     },
     {
         'name': 'Diplomacy',
@@ -82,7 +82,19 @@ var skillData =
         'name': 'Knowledge',
         'stat': 'int', 
         'trainedOnly': true, 
-        'subtype': true
+        'subtype': 'preset',
+        'subtypes': [
+            'arcana',
+            'dungeoneering',
+            'engineering',
+            'geography',
+            'history',
+            'local',
+            'nature',
+            'nobility',
+            'planes',
+            'religion'
+                ]
     },
     {
         'name': 'Linguistics',
@@ -100,13 +112,24 @@ var skillData =
         'name': 'Perform',
         'stat': 'cha', 
         'trainedOnly': false ,
-        'subtype': true
+        'subtype': 'preset',
+        'subtypes': [
+            'act',
+            'comedy',
+            'dance',
+            'keyboard',
+            'oratory',
+            'percussion',
+            'string',
+            'wind',
+            'sing'
+        ]
     },
     {
         'name': 'Profession',
         'stat': 'wis', 
         'trainedOnly': true,
-        'subtype': true
+        'subtype': 'freeform'
     },
     {
         'name': 'Ride',

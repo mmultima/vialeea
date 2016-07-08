@@ -6,50 +6,76 @@
                     <H3 class="panel-title">Skills <span class="pull-right">Points: {{usedPoints()}}/{{calculatePoints()}} HD: {{calculateHd()}}</span></H3>
                 </div>
                 <div class="panel-body">
-    <table>
-        <tr>
-            <th>
-                Skill
-            </th>
-            <th>
-                Stat
-            </th>
-            <th>
-                Ranks
-            </th>
-            <th>
-                Bonus
-            </th>
-            <th>
-                Class
-            </th>
-            <th>
-                Untrained
-            </th>
-        </tr>
-        <tr ng-repeat='skill in skills'>
-            <td>
-                {{skill.name}}
-            </td>
-            <td>
-                {{skill.stat}}
-            </td>
-            <td>
-                <input type="button" value="-" ng-click="maybeAdjust(skill, -1)"/>
-                {{$parent.char.skills[skill.name]}}
-                <input type="button" value="+" ng-click="maybeAdjust(skill, 1)"/>
-            </td>
-            <td>
-                {{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}}
-            </td>
-            <td>
-                {{isClassSkill(skill.name)}}
-            </td>
-            <td>
-                {{!skill.trainedOnly}}
-            </td>
-        </tr>
-    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Skill
+                                </th>
+                                <th>
+                                    Stat
+                                </th>
+                                <th>
+                                    Ranks
+                                </th>
+                                <th>
+                                    Bonus
+                                </th>
+                                <th>
+                                    Class
+                                </th>
+                                <th>
+                                    Untrained
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat='skill in skills'>
+                            <tr ng-if='!skill.subtype'>
+                                <td>
+                                    {{skill.name}}
+                                </td>
+                                <td>
+                                    {{skill.stat}}
+                                </td>
+                                <td>
+                                    <input type="button" value="-" ng-click="maybeAdjust(skill, -1)"/>
+                                    {{$parent.char.skills[skill.name]}}
+                                    <input type="button" value="+" ng-click="maybeAdjust(skill, 1)"/>
+                                </td>
+                                <td>
+                                    {{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}}
+                                </td>
+                                <td>
+                                    {{isClassSkill(skill.name)}}
+                                </td>
+                                <td>
+                                    {{!skill.trainedOnly}}
+                                </td>
+                            </tr>
+                            <tr ng-repeat='subtype in skill.subtypes'>
+                                <td>
+                                    {{skill.name}} ({{subtype}})
+                                </td>
+                                <td>
+                                    {{skill.stat}}
+                                </td>
+                                <td>
+                                    <input type="button" value="-" ng-click="maybeAdjust(skill, -1, subtype)"/>
+                                    {{checkSkill($parent.char, skill, subtype)+$parent.char.skills[skill.name+'('+subtype+')']}}
+                                    <input type="button" value="+" ng-click="maybeAdjust(skill, 1, subtype)"/>
+                                </td>
+                                <td>
+                                    {{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name+'('+subtype+')']&&isClassSkill(skill.name+'('+subtype+')'))*3}}
+                                </td>
+                                <td>
+                                    {{isClassSkill(skill.name)}}
+                                </td>
+                                <td>
+                                    {{!skill.trainedOnly}}
+                                </td> 
+                            </tr>           
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
