@@ -80,7 +80,7 @@
                             <b>Speed</b> {{$parent.char.race.speed}} ft
                         </div>
                         <div ng-controller='statsController'>
-                            <b>Melee</b> dagger +{{statBonus($parent.char.totalstat['str'])}} (1d4+{{statBonus($parent.char.totalstat['str'])}}/19-20) 
+                            <b>Melee</b> dagger +{{char.BAB + statBonus($parent.char.totalstat['str'])}} (1d4+{{statBonus($parent.char.totalstat['str'])}}/19-20) 
                         </div>
                         <div>
                             <b>Statistics</b>
@@ -94,8 +94,8 @@
                             <b>Cha</b> {{$parent.char.totalstat['cha']}}
                         </div>
                         <div ng-controller='statsController'>
-                            <b>Base Atk</b> {{bab=0}}
-                            <b>CMB</b> {{cmb = bab + statBonus($parent.char.totalstat['str'])}}
+                            <b>Base Atk</b> {{char.BAB}}
+                            <b>CMB</b> {{cmb = char.BAB + statBonus($parent.char.totalstat['str'])}}
                             <b>CMD</b> {{10+cmb+statBonus($parent.char.totalstat['dex'])}}
                         </div>
                         <div>

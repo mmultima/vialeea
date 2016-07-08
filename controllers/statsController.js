@@ -1,5 +1,18 @@
 app.controller('statsController', function ($scope) {
    //$scope.init = 5;
+    $scope.calculateBab = function(char) {
+        var bab=0;
+        for (var i = 0; i < classes.length; i++) {
+            var myClass = classes[i];
+            var level = char.classes[myClass.name];
+            if (level) {
+                bab += Math.floor(level * (myClass.BAB === 'full'?1:myClass.BAB==='medium'?0.75:0.5));
+            }
+        }
+
+        return bab;
+    };
+
 
     $scope.calculateInit = function() {
         //return 6;
