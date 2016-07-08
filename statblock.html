@@ -107,12 +107,21 @@
                         <div ng-controller='skillsController'>
                             <b>Skills</b>
                             <span ng-repeat='skill in skills'>
-                                <span ng-if='char.skills[skill.name]'>
-                                    {{skill.name}}
-                                    +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}},
+                                <span ng-if='!skill.subtype'>
+                                    <span ng-if='char.skills[skill.name]'>
+                                        {{skill.name}}
+                                        +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}},
+                                    </span>
+                                </span>
+                                <span ng-if='skill.subtype'>
+                                    <span ng-repeat='subtype in skill.subtypes'>
+                                        <span ng-if="char.skills[skill.name+'('+subtype+')']">
+                                            {{skill.name+'('+subtype+')'}}
+                                            +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}},
+                                        </span>
+                                    </span>
                                 </span>
                             </span>
-                            Knowledge (local) +8, Knowledge (history) +8
                         </div>
                         <div>
                             <b>Languages</b>

@@ -22,7 +22,7 @@ var classes =
         'Skills': {
             'Points': 2,
             'Class skills': [
-                'Diplomacy', 'Heal', 'Knowledge: Planes', 'Knowledge: Religion'
+                'Diplomacy', 'Heal', 'Knowledge(planes)', 'Knowledge(religion)'
                 ]
         }
     },
@@ -65,7 +65,7 @@ var classes =
         'Skills': {
             'Points': 6,
             'Class skills': [
-                'Acrobatics','Appraise','Bluff','Climb','Craft','Diplomacy','Disable Device','Disguise','Escape Artist','Heal','Intimidate','Knowledge (local)','Knowledge (history)', 'Linguistics','Perception','Perform','Profession','Sense Motive','Sleight of Hand','Spellcraft','Stealth','Use Magic Device'
+                'Acrobatics','Appraise','Bluff','Climb','Craft','Diplomacy','Disable Device','Disguise','Escape Artist','Heal','Intimidate','Knowledge(local)','Knowledge(history)', 'Linguistics','Perception','Perform','Profession','Sense Motive','Sleight of Hand','Spellcraft','Stealth','Use Magic Device'
                         ]
         }
     },
