@@ -16,6 +16,9 @@
                             <th>
                                 Damage
                             </th>
+                            <th>
+                                Critical
+                            </th>
                         </tr>
                         <tr ng-repeat="weapon in char.equipment.weapons">
                             <td>
@@ -23,6 +26,9 @@
                             </td>
                             <td>
                                 {{weapon.dicenum}}d{{weapon.dice}}
+                            </td>
+                            <td>
+                                {{weapon.critrange}}
                             </td>
                         </tr>
                     </table>
