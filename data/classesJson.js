@@ -51,6 +51,9 @@ var classes =
     {
         'name': 'Investigator (sleuth)',
         'class abilities': {
+            'Inspiration' : 'normal',
+            'Trapfinding' : 'normal',
+            "Sleuth's luck" : 'normal'
         },
         'BAB': 'medium', 
         'Saves': {
