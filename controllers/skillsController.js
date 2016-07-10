@@ -3,7 +3,11 @@ app.controller('skillsController', function ($scope) {
         $scope.$parent.char.languages.push(language);
         $("#languageModal .mmclose").click();
     };
-
+   
+    $scope.removeLanguage = function (language) {
+        $scope.$parent.char.languages.splice(
+            $scope.$parent.char.languages.indexOf(language), 1);
+    };
 
     if (!$scope.$parent.char.languages) {
         $scope.$parent.char.languages = [  ];

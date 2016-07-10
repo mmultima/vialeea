@@ -89,10 +89,11 @@
                         Languages {{0+char.languages.length+char.race.languages.length}}/{{maxLanguages()}}
                     </div>
                     <div ng-repeat="racelang in char.race.languages">
-                        {{racelang}}
+                        {{racelang}} (racial)
                     </div>
                     <div ng-repeat="language in char.languages">
                         {{language}}
+                        <button type="button" ng-click="removeLanguage(language)">Remove</button>
                     </div>
                     <div>
                         <button type="button" data-toggle="modal" data-target="#languageModal">Add new</button>
