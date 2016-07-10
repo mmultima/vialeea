@@ -19,6 +19,8 @@
                             <th>
                                 Critical
                             </th>
+                            <th>
+                            </th>
                         </tr>
                         <tr ng-repeat="weapon in char.equipment.weapons">
                             <td>
@@ -29,6 +31,11 @@
                             </td>
                             <td>
                                 {{weapon.critrange}}
+                            </td>
+                            <td>
+                                <button type="button" ng-click="removeWeapon(weapon)">
+                                    Remove
+                                </button>
                             </td>
                         </tr>
                     </table>

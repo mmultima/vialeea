@@ -12,4 +12,9 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.weapons.push(weapon);
         $("#weaponModal .mmclose").click();
     };
+
+    $scope.removeWeapon = function (weapon) {
+        $scope.$parent.char.equipment.weapons.splice(
+            $scope.$parent.char.equipment.weapons.indexOf(weapon), 1);
+    };
 });
