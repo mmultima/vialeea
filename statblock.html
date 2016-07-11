@@ -139,13 +139,15 @@
                             <b>Special abilities</b>
                         </div>
                         <div ng-repeat='ability in getClassAbilities(char)'>
-                            <div ng-repeat='pg in ability.Text'>
+                            <p ng-repeat='pg in ability.Text'>
                                 <span ng-if='$first'><b>{{ability.name}}</b></span>
                                 {{pg}}
-                            </div>
+                            </p>
                             <div ng-repeat='deed in ability.deeds'>
-                                <b>{{deed}}</b>
-                                <span ng-repeat="deedtext in deeds[deed]">{{deedtext}}</span>
+                                <p ng-repeat="deedtext in deeds[deed]">
+                                    <span ng-if="$first"><b>{{deed}}</b></span>
+                                    {{deedtext}}
+                                </p>
                             </div>
                         </div>
                     </div>
