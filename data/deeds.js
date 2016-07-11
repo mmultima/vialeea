@@ -1,3 +1,5 @@
+var mmWTF = "WTF";
+
 var deeds = {
     "Daring (Ex)": [
         "At 1st level, a sleuth can spend 1 luck point when he makes an Acrobatics, Climb, Escape Artist, Fly, Ride, or Swim check to roll d6 and add the result to the check. He can choose to add this die after he rolls. If the d6 roll is a natural 6, he rolls another d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Intelligence modifier (minimum 1)."

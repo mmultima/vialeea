@@ -1,36 +1,36 @@
 app.controller('abilityController', function ($scope) {
     $scope.deeds = deeds;
 
-    $scope.mmtest = "Whee";
+    var getClass = function(key) {
+        for (var i = 0; i < classes.length; i++) {
+            if (key === classes[i].name) {
+                return classes[i];
+            }
+        }
+    };
 
     $scope.getClassAbilities = function(character) {
         var value = [];
         for (var key in character.classes) {
             if (character.classes.hasOwnProperty(key)) {
-                //value.push(key);
                 if (character.classes[key]>0) {
-                    //value.push(key);
-                    /*
-                    for (var abil in classes[key]["class abilities"]) {
-                        if (classes[key]["class abilities"].hasOwnProperty(abil)) {
+                    var myClass = getClass(key);
+                    var abilities = myClass["class abilities"];
+                     
+                    for (var abil in abilities) {
+                        if (abilities.hasOwnProperty(abil)) {
                             value.push(
                                 {
-                                    name: abil, 
+                                    name: abil,
                                     Text: classAbilityDescriptions[abil].Text,
-                                    deeds: classAbilityDescriptions[abil].deeds
+                                    deeds: classAbilityDescriptions[abil].Deeds
                                 }
-                                );
+                            );
                         } 
                     }
-                    */
                 }
             }
         }
-        if (value.length ===0) {
-            //value = [1,2,3,character.name];
-        }
-
-
         return value;
     };
 });
