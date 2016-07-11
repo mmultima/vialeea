@@ -72,7 +72,28 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    Level: {{myClass.level}}
+                    <table ng-if='char.classMeta.favourite===myClass.name'>
+                        <tr>
+                            <th>
+                                Level
+                            </th>
+                            <th>
+                                HP
+                            </th>
+                            <th>
+                                Skill
+                            </th>
+                        </tr>
+                        <tr ng-repeat="index in getRange(myClass.level)">
+                            <td>{{index}}</td>
+                            <td>
+                                <input type="radio"/>
+                            </td>
+                            <td>
+                                <input type="radio"/>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ app.controller('classController', function ($scope) {
     }
     if (!$scope.$parent.char.classMeta) {
         $scope.$parent.char.classMeta = {};
+        $scope.$parent.char.favouriteBonuses={};
     }
 
     $scope.util = util;
@@ -37,5 +38,13 @@ app.controller('classController', function ($scope) {
         //value = ['a', 'b', 'c'];
 
         return value;
-    }
+    };
+
+    $scope.getRange = function(end) {
+        var value = [];
+        for (var i =1; i <= end; i++) {
+            value.push(i);
+        }
+        return value;
+    };
 });
