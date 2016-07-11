@@ -1,5 +1,4 @@
 app.controller('statsController', function ($scope) {
-   //$scope.init = 5;
     $scope.calculateBab = function(char) {
         var bab=0;
         for (var i = 0; i < classes.length; i++) {
@@ -9,13 +8,10 @@ app.controller('statsController', function ($scope) {
                 bab += Math.floor(level * (myClass.BAB === 'full'?1:myClass.BAB==='medium'?0.75:0.5));
             }
         }
-
         return bab;
     };
 
-
     $scope.calculateInit = function() {
-        //return 6;
         var init = $scope.statBonus($scope.$parent.char.totalstat['dex']);
         
         for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
@@ -29,43 +25,37 @@ app.controller('statsController', function ($scope) {
         return init;
     };
 
-
     $scope.calculateTotalSave = function(save) {
         var value = 0;
 
-         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
-             var level = $scope.$parent.char.classes[classes[classIndex].name]||0;
-             if (level) {
-                value += $scope.calculateSave(classes[classIndex], save); 
-             }
-         }
- 
+        for (var classIndex = 0; classIndex < classes.length; classIndex++) {
+            var level = $scope.$parent.char.classes[classes[classIndex].name]||0;
+            if (level) {
+               value += $scope.calculateSave(classes[classIndex], save); 
+            }
+        }
         var stat = 'Fort'===save?'con':'Ref'===save?'dex':'wis';
         value += $scope.statBonus($scope.$parent.char.totalstat[stat]);	
         return value;
     }
 
     $scope.calculateSave = function(myclass, save) {
-	var level = $scope.showLevel(myclass);
-	if (level === 0) {
+	    var level = $scope.showLevel(myclass);
+	    if (level === 0) {
             return 0;
         }
-
         var value = 0;
-
         if (myclass.Saves[save]==='Good') {
             value = 2+Math.floor(level/2);
         }
-	else {
+	    else {
             value = Math.floor(level/3);
         }
-
         return value;
     }
 
     $scope.calculateHd = function() {
          var hd = 0;
-
          for (var classIndex = 0; classIndex < classes.length; classIndex++) {
              hd += $scope.$parent.char.classes[classes[classIndex].name]||0;
          }
@@ -98,7 +88,6 @@ app.controller('statsController', function ($scope) {
         }
     } 
 
-
     $scope.classes = classes;
 
     $scope.stats=['str', 'dex', 'con', 'int', 'wis', 'cha'];
@@ -128,10 +117,9 @@ app.controller('statsController', function ($scope) {
         else {
             total = $scope.baseCarrys[strenght%10]*Math.pow(4,Math.floor(strenght/10)-1);
         }
-	if ($scope.$parent.char.race.size && $scope.$parent.char.race.size === 'S') {
+	    if ($scope.$parent.char.race.size && $scope.$parent.char.race.size === 'S') {
             total = Math.floor(3*total/4); 
         }
-        
         return total;
     };
 
@@ -142,8 +130,6 @@ app.controller('statsController', function ($scope) {
         }
     }
 
-
-
     $scope.$watch('$parent.char.race', function(race) {
         if ($scope.$parent.char.freestat) {
             if (race.freescores) {
@@ -152,9 +138,8 @@ app.controller('statsController', function ($scope) {
             if (race.freescores > 1) {
                 race.scores[$scope.$parent.char.freestat2]=2;
             }
-	}
+	    }
     });
-
 
     $scope.$watch('$parent.char.freestat', function(value) {
         if ($scope.$parent.char.race.freescores) {
@@ -171,6 +156,7 @@ app.controller('statsController', function ($scope) {
             $scope.$parent.char.race.scores[$scope.$parent.char.freestat2]=2;
         }
     });
+
     $scope.clearRacials = function() {
         $scope.$parent.char.race.scores = {};
     };

@@ -1,4 +1,14 @@
 app.controller('classController', function ($scope) {
+    if (!$scope.$parent.char) {
+        $scope.$parent.char = {};
+    }
+    if (!$scope.$parent.char.classMeta) {
+        $scope.$parent.char.classMeta = {};
+    }
+
+    $scope.util = util;
+    $scope.classes = classes;
+
     $scope.getClassArray = function() {
         var character = $scope.$parent.char;
         var value = [];
@@ -12,12 +22,20 @@ app.controller('classController', function ($scope) {
                 }
             }
         }
-        /*
-        value.push({
-            name: 'Test',
-            level: 1
-        });
-*/
         return value;
     };
+
+    $scope.getClasses = function() {
+        var value = [];
+        for (var key in $scope.$parent.char.classes) {
+            if ($scope.$parent.char.classes.hasOwnProperty(key)) {
+                if ($scope.$parent.char.classes[key]) {
+                    value.push({name:key});
+                }
+            }
+        }
+        //value = ['a', 'b', 'c'];
+
+        return value;
+    }
 });
