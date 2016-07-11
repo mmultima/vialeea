@@ -26,13 +26,12 @@ app.controller("myController", function($scope, $resource) {
     $scope.tab_page=1;
 
 	if (!$scope.char) {
-		//$scope.char = {};
         $scope.char = new Character({});
 	}
 
 	if (!$scope.char.classes) {
 		$scope.char.classes = {};
-}
+    }
 
     $scope.save = function() {
         $scope.char.$save();  
@@ -40,8 +39,6 @@ app.controller("myController", function($scope, $resource) {
 
     $scope.load = function(id) {
         $scope.char = Character.get({charId: id}, function() {
-            //$scope.char = character;
-            //console.log(character);
         });
     };
 
@@ -62,19 +59,17 @@ app.controller("myController", function($scope, $resource) {
         return true;
     }
 
-$scope.hasAnimal = function() {
-	var animal = false;
-	if ($scope.char) {
-		if ($scope.char.classes) {
-			if ($scope.char.classes.Druid) {
-				animal = true;
-}
-}
-}
-
-
-	return animal;
-}
+    $scope.hasAnimal = function() {
+	    var animal = false;
+	    if ($scope.char) {
+		    if ($scope.char.classes) {
+			    if ($scope.char.classes.Druid) {
+				    animal = true;
+                }
+            }
+        }
+	    return animal;
+    }
 
     $scope.active_tab = function(page) {
         if(page===$scope.tab_page) {
@@ -118,8 +113,12 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/load.html',
                 controller: 'loadController'
             });
+            $routeProvider.when('/class', {
+                templateUrl: 'partials/class.html',
+                controller: 'classController'
+            });
             $routeProvider.otherwise({
                 redirectTo: '/stats'
             });
         }
-        ]);
+]);
