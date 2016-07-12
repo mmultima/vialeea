@@ -46,12 +46,12 @@
                         {{char.classMeta.first}}
                     </div>
                     <div>
-                        <input type="checkbox" ng-model="averageHP">Average HP</input>
+                        <input type="checkbox" ng-model="$parent.char.averageHP">Average HP</input>
                     </div>
-                    <div ng-if="averageHP">
+                    <div ng-if="char.averageHP">
                         {{$parent.char.hp=calculateHp(char, char.classMeta.first, classes)}}
                     </div>
-                    <div ng-if="!averageHP">
+                    <div ng-if="!char.averageHP">
                         <input type="text" ng-model="$parent.char.hp"/>
                     </div>
                 </div>

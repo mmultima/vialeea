@@ -54,6 +54,27 @@ app.controller('skillsController', function ($scope) {
                 points += levels * classes[classIndex].Skills.Points; 
             }
         }
+
+        if ($scope.$parent.char.race.name === "Human") {
+            points+=util.hd($scope.$parent.char, classes);
+        }
+
+        if ($scope.$parent.char.classMeta) {
+            /**/
+            var fav = $scope.$parent.char.classMeta.favourite;
+
+            if (fav) {
+                /**/
+                for (var i = 0; i < $scope.$parent.char.classes[fav]; i++) {
+                    if ($scope.$parent.char.favouriteBonuses[i]==="skill") {
+                        points++;
+                    }
+                }
+                /**/
+            }
+            /**/
+        }
+
         return points;
     }
 
