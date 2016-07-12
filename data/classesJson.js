@@ -7,6 +7,7 @@ var classes =
            'domains': 2,
            'channel energy': 'align'
         },
+        'HD': 8,
         'BAB': 'medium',
         'Saves': {
             'Fort': 'Good',
@@ -30,6 +31,7 @@ var classes =
         'name': 'Commoner',
         'class abilities': {
         },
+        'HD': 6,
         'BAB': 'medium', 
         'Saves': {
             'Fort': 'Bad',
@@ -55,6 +57,7 @@ var classes =
             'Trapfinding' : 'normal',
             "Sleuth's luck" : 'normal'
         },
+        'HD': 8,
         'BAB': 'medium', 
         'Saves': {
             'Fort': 'Bad',
@@ -80,6 +83,7 @@ var classes =
            'domains': 4,
            'nature bond': 'choose'
         },
+        'HD': 8,
         'BAB': 'medium',
         'Saves': {
             'Fort': 'Good',

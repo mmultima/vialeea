@@ -47,4 +47,29 @@ app.controller('classController', function ($scope) {
         }
         return value;
     };
+
+    $scope.findClass = function(classes, name) {
+        for (var i = 0; i < classes.length; i++) {
+            if (classes[i].name === name) {
+                return classes[i];
+            }
+        }
+    };
+
+    $scope.calculateHp = function(char, first, classes) {
+        var myClasses=$scope.getClasses();
+        var hp = 0;
+        for (var i = 0; i < myClasses.length; i++) {
+            var levels = char.classes[myClasses[i].name];
+            if (myClasses[i].name === first) {
+                hp += $scope.findClass(classes,first).HD;
+                levels--;
+            }
+            for (var j = 0; j<levels; j++) {
+                hp += $scope.findClass(classes,myClasses[i].name).HD/2+1;
+            }
+        }
+        hp+=util.hd(char, classes)*util.statBonus(char.totalstat['con']);
+        return hp;
+    };
 });
