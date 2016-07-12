@@ -43,7 +43,7 @@ var classes =
         'Weapon proficiencies': [
             ],
         'Skills': {
-            'Points': 5,
+            'Points': 2,
             'Class skills': [
                 'Climb','Craft','Handle Animal','Perception','Profession','Ride','Swim'
                         ]
