@@ -116,10 +116,10 @@
                         <tr ng-repeat="index in getRange(myClass.level)">
                             <td>{{index}}</td>
                             <td>
-                                <input type="radio"/>
+                                <input type="radio" name="fav{{$index}}" ng-model="$parent.char.favouriteBonuses[$index]" value="hp"/>
                             </td>
                             <td>
-                                <input type="radio"/>
+                                <input type="radio" name="fav{{$index}}" ng-model="$parent.char.favouriteBonuses[$index]" value="skill"/>
                             </td>
                         </tr>
                     </table>

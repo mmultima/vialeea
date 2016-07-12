@@ -70,6 +70,17 @@ app.controller('classController', function ($scope) {
             }
         }
         hp+=util.hd(char, classes)*util.statBonus(char.totalstat['con']);
+
+        var favLevel = char.classes[char.classMeta.favourite];
+
+        if(favLevel) {
+            for (var k = 0; k < favLevel; k++) {
+                if (char.favouriteBonuses[k] === "hp") {
+                    hp++;
+                }
+            }
+        }
+
         return hp;
     };
 });
