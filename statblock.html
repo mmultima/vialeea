@@ -26,6 +26,7 @@
         <script src="data/skills.js"></script>
         <script src="data/classesJson.js"></script>
         <script src="data/weapons.js"></script>
+        <script src="data/armors.js"></script>
         <script src="data/classAbilityDescriptions.js"></script>
         <script src="data/deeds.js"></script>
         <script src="lib/underscore.js"></script>
@@ -43,8 +44,8 @@
                     <div>
                         {{sexName($parent.char.sex)}} {{$parent.char.race.name}} 
                         <span ng-repeat="myclass in classes">
-                            <span ng-show="char.classes[myclass.name]">
-                                <span ng-show="!isFirst(myclass.name)">/</span>
+                            <span ng-if="$parent.char.classes[myclass.name]">
+                                <span ng-if="!isFirst(myclass.name)">/</span>
                                 {{myclass.name}} {{char.classes[myclass.name]}}
                             </span>
                         </span>
@@ -63,7 +64,7 @@
                         <b>Defense</b>
                     </div>
                     <div ng-controller='statsController'>
-                        <b>AC</b> {{10 + statBonus($parent.char.totalstat['dex'])}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10}}
+                        <b>AC</b> {{10 + statBonus($parent.char.totalstat['dex']) + armorBonus(char)}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10 + armorBonus(char)}}
                     </div>
                     <div>
                         <b>hp</b>

@@ -1,4 +1,19 @@
 app.controller('statsController', function ($scope) {
+    //Weird place for this?
+    $scope.armorBonus = function(char) {
+        var bonus = 0;
+        if (char.equipment) {
+            if (char.equipment.armors) {
+                for (var i = 0; i < char.equipment.armors.length; i++) {
+                    if (char.equipment.armors[i].bonus > bonus) {
+                        bonus = char.equipment.armors[i].bonus;
+                    }
+                }
+            }
+        }
+        return bonus;
+    };
+
     $scope.calculateBab = function(char) {
         var bab=0;
         for (var i = 0; i < classes.length; i++) {
