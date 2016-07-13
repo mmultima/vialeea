@@ -69,6 +69,8 @@
                             <th>
                                 Arcane fail
                             </th>
+                            <th>
+                            </th>
                         </tr>
                         <tr ng-repeat="armor in char.equipment.armors">
                             <td>
@@ -81,10 +83,18 @@
                                 {{armor.ACP}}
                             </td>
                             <td>
-                                {{armor.arcanefail}}
+                                {{armor.fail}}
+                            </td>
+                            <td>
+                                <button type="button" ng-click="removeArmor(armor)">
+                                    Remove
+                                </button>
                             </td>
                         </tr>
                     </table>
+                    <div>
+                        <button type="button" data-toggle="modal" data-target="#armorModal">Add new</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,6 +154,29 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" ng-click="addWeaponAndClose(newWeapon)">Add</button>
+                    <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="armorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose an armor</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="armor in armors">
+                        {{armor.name}}
+                        <input type="radio" ng-model='$parent.newArmor' ng-value='armor' name='newArmorRadio'/>
+                    </div>
+                </div>
+                <div>
+                    Chosen armor: {{newArmor.name}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addArmorAndClose(newArmor)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>
