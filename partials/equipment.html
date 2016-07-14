@@ -120,6 +120,28 @@
                                 Price
                             </th>
                         </tr>
+                        <tr ng-repeat="item in char.equipment.weapons">
+                            <td>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                {{item.weight}}
+                            </td>
+                            <td>
+                                {{item.price}}
+                            </td>
+                        </tr>
+                        <tr ng-repeat="item in char.equipment.armors">
+                            <td>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                {{item.weight}}
+                            </td>
+                            <td>
+                                {{item.price}}
+                            </td>
+                        </tr>
                         <tr ng-repeat="item in char.equipment.all">
                             <td>
                                 {{item.name}}
@@ -177,6 +199,29 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" ng-click="addArmorAndClose(newArmor)">Add</button>
+                    <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="itemModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose an item</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="item in items">
+                        {{item.name}}
+                        <input type="radio" ng-model='$parent.newItem' ng-value='item' name='newItemRadio'/>
+                    </div>
+                </div>
+                <div>
+                    Chosen item: {{newItem.name}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addItemAndClose(newItem)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>
