@@ -33,17 +33,21 @@ app.controller('equipmentController', function ($scope) {
 
     $scope.calculateTotal = function(field, arr1, arr2, arr3) {
         var total = 0;
-        for (var i = 0; i < arr1.length; i++) {
-            total += arr1[i][field];
+        if (arr1) {
+            for (var i = 0; i < arr1.length; i++) {
+                total += arr1[i][field];
+            }
         }
-        for (var j = 0; j < arr1.length; j++) {
-            total += arr2[j][field];
+        if (arr2) {
+            for (var j = 0; j < arr1.length; j++) {
+                total += arr2[j][field];
+            }
         }
-        /*
-        for (var k = 0; k < arr1.length; k++) {
-            total += arr3[k][field];
+        if (arr3) {
+            for (var k = 0; k < arr1.length; k++) {
+                total += arr3[k][field];
+            }
         }
-        */
         return total;
     };
 });
