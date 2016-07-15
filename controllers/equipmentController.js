@@ -30,4 +30,20 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.armors.splice(
             $scope.$parent.char.equipment.armors.indexOf(armor), 1);
     };
+
+    $scope.calculateTotal = function(field, arr1, arr2, arr3) {
+        var total = 0;
+        for (var i = 0; i < arr1.length; i++) {
+            total += arr1[i][field];
+        }
+        for (var j = 0; j < arr1.length; j++) {
+            total += arr2[j][field];
+        }
+        /*
+        for (var k = 0; k < arr1.length; k++) {
+            total += arr3[k][field];
+        }
+        */
+        return total;
+    };
 });

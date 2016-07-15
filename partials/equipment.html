@@ -153,6 +153,17 @@
                                 {{item.price}}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <b>Total</b>
+                            </td>
+                            <td>
+                                {{calculateTotal('weight', char.equipment.weapons, char.equipment.armors, char.equipment.all)}}
+                            </td>
+                            <td>
+                                {{calculateTotal('price', char.equipment.weapons, char.equipment.armors, char.equipment.all)}}
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
