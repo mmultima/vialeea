@@ -1,6 +1,7 @@
 app.controller('equipmentController', function ($scope) {
     $scope.weapons = weapons;
     $scope.armors = armors;
+    $scope.items = items;
 
     if (!$scope.$parent.char.equipment) {
         $scope.$parent.char.equipment = {};
@@ -10,6 +11,9 @@ app.controller('equipmentController', function ($scope) {
     }
     if (!$scope.$parent.char.equipment.armors) {
         $scope.$parent.char.equipment.armors = [];
+    }
+    if (!$scope.$parent.char.equipment.items) {
+        $scope.$parent.char.equipment.items = [];
     }
 
     $scope.addWeaponAndClose = function(weapon) {
@@ -30,6 +34,14 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.armors.splice(
             $scope.$parent.char.equipment.armors.indexOf(armor), 1);
     };
+    $scope.addItemAndClose = function(item) {
+        $scope.$parent.char.equipment.items.push(item);
+        $("#itemModal .mmclose").click();
+    };
+    $scope.removeItem = function (item) {
+        $scope.$parent.char.equipment.items.splice(
+            $scope.$parent.char.equipment.items.indexOf(item), 1);
+    };
 
     $scope.calculateTotal = function(field, arr1, arr2, arr3) {
         var total = 0;
@@ -39,12 +51,12 @@ app.controller('equipmentController', function ($scope) {
             }
         }
         if (arr2) {
-            for (var j = 0; j < arr1.length; j++) {
+            for (var j = 0; j < arr2.length; j++) {
                 total += arr2[j][field];
             }
         }
         if (arr3) {
-            for (var k = 0; k < arr1.length; k++) {
+            for (var k = 0; k < arr3.length; k++) {
                 total += arr3[k][field];
             }
         }

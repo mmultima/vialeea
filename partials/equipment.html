@@ -119,6 +119,8 @@
                             <th>
                                 Price
                             </th>
+                            <th>
+                            </th>
                         </tr>
                         <tr ng-repeat="item in char.equipment.weapons">
                             <td>
@@ -129,6 +131,8 @@
                             </td>
                             <td>
                                 {{item.price}}
+                            </td>
+                            <td>
                             </td>
                         </tr>
                         <tr ng-repeat="item in char.equipment.armors">
@@ -141,8 +145,10 @@
                             <td>
                                 {{item.price}}
                             </td>
+                            <td>
+                            </td>
                         </tr>
-                        <tr ng-repeat="item in char.equipment.all">
+                        <tr ng-repeat="item in char.equipment.items">
                             <td>
                                 {{item.name}}
                             </td>
@@ -152,19 +158,29 @@
                             <td>
                                 {{item.price}}
                             </td>
+                            <td>
+                                <button type="button" ng-click="removeItem(item)">
+                                    Remove
+                                </button>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <b>Total</b>
                             </td>
                             <td>
-                                {{calculateTotal('weight', char.equipment.weapons, char.equipment.armors, char.equipment.all)}}
+                                {{calculateTotal('weight', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}
                             </td>
                             <td>
-                                {{calculateTotal('price', char.equipment.weapons, char.equipment.armors, char.equipment.all)}}
+                                {{calculateTotal('price', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}
+                            </td>
+                            <td>
                             </td>
                         </tr>
                     </table>
+                    <div>
+                        <button type="button" data-toggle="modal" data-target="#itemModal">Add new</button>
+                    </div>
                 </div>
             </div>
         </div>
