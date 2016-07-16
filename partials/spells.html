@@ -1,3 +1,16 @@
 <div>
-    <H1>Nothing yet!</H1>
+    <div class="col-md-6" ng-repeat="spellList in spellLists(char)">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{spellList}}
+                </h3>
+            </div>
+            <div class="panel-body">
+                No body
+            </div>
+        </div>
+    </div>
+    <div ng-if="spellLists(char).length===0">
+        <H1>No spells</H1>
+    </div>
 </div>
