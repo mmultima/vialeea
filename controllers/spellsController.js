@@ -1,5 +1,11 @@
 app.controller('spellsController', function ($scope) {
     $scope.spellLists = function(char) {
+        $scope.spells = spells;
+        $scope.spellLists = {
+            Cleric: spellsCleric,
+            Druid: spellsDruid
+        };
+
         var value = [];
         for (var myclass in char.classes) {
             if (char.classes.hasOwnProperty(myclass)) {

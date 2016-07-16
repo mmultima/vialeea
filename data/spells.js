@@ -10,6 +10,9 @@ var spells = {
     },
     'Stabilize': {
         range: 'close'
+    },
+    'Snowball': {
+        range: 'close'
     }
 };
 
