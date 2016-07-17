@@ -1,27 +1,23 @@
 <div>
-    <div class="col-md-6" ng-repeat="spellList in spellLists(char)">
+    <div class="col-md-6" ng-repeat="spellList in charSpellLists(char)">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">{{spellList}}
                 </h3>
             </div>
             <div class="panel-body">
-                <div>
-                    Level 0
-                </div>
-                <div ng-repeat="spell in spellLists[spellList][0]">
-                    {{spell}}
-                </div>
-                <div>
-                    Level 1
-                </div>
-                <div ng-repeat="spell in spellLists[spellList][1]">
-                    {{spell}}
+                <div ng-repeat='level in "0123456789".split("")'>
+                    <div>
+                        Level {{level}}
+                    </div>
+                    <div ng-repeat="spell in spellLists[spellList][level]">
+                        {{spell}}
+                    </div>  
                 </div>
             </div>
         </div>
     </div>
-    <div ng-if="spellLists(char).length===0">
+    <div ng-if="charSpellLists(char).length===0">
         <H1>No spells</H1>
     </div>
 </div>
