@@ -9,21 +9,24 @@ $type = -1;
 $description = "";
 $name="";
 
-print "[\n";
+print "var traits = [\n";
 $printed = 0;
 while (<FILE>) {
 
     if (/(\d+) (.*):\s+(.*)$/) {
         if ($1 == '1') {
             #print "$types[$type]\n";
-            if (!$printed) {
-                print qq#    "description": "$prevdesc"\n  }\n#;
+            if ($description ne " Combat traits") {
+                if (!$printed) {
+                    #print "\n###$description\n";
+                    print qq#    "description": "$prevdesc"\n  },\n#;
+                }
             }
             $type++;
             $name="";
         }
         if ($name) {
-            print qq#    "description": "$description"\n  }\n#;
+            print qq#    "description": "$description"\n  },\n#;
             $printed = 1;
             $description = "";
         }
@@ -35,29 +38,56 @@ while (<FILE>) {
         #print "  $2\n";
     }
     else {
-        s/\S\s+$/ /;
+        s/(\S)\s+$/\1/;
         $prevdesc = $description; 
-        $description .=$_;
+        $description .=" $_";
     }
 }
 
-$description =~ s/\S\s+$//;
-print qq#    "description": "$description"\n  }\n#;
+$description =~ s/(\S)\s+$/\1/;
+print qq#    "description": "$description"\n  },\n#;
 
-print "\nFaction traits\n\n";
+#print "\nFaction traits\n\n";
 
 open (FILE, '<', 'traits.guide.src') or die("Could not open!");
 #WTF is the character in Liberty?
 @factions = ('Dark Archive', 'The Exchange', 'Grand Lodge', "Liberty’s Edge", 'Scarab Sages', 'Silver Crusade', 'Sovereign Court');
 $faction = 0;
+$name = "";
 while (<FILE>) {
+    $factLine = 0;
     foreach $f (@factions) {
         if (/^$f/) {
-            print "$f\n";
+            if ($name ne "") {
+                print qq#    {\n        name: "$name",\n        type: "Faction",\n        faction: "$faction",\n        description: "$description"\n    },\n#;
+            }
+            #print "$description\n";
+            #print "$f\n";
+            $faction = $f;
+            $factLine=1;
         }
     }
-
-    if (/(.*):/) {
-        print "  $1\n";
+    if (!$factLine) {
+        if (/(.*): (.*)/) {
+            #print "$description\n";
+            if ($name ne "") {
+                print qq#    {\n        name: "$name",\n        type: "Faction",\n        faction: "$faction",\n        description: "$description"\n    },\n#;
+            }
+            #print "$description\n";
+            #print "  $1\n";
+            $name = $1;
+            $description=$2;
+        }
+        else {
+            chomp;
+            $description.=" $_";
+        }
     }
 }
+
+#print "$description\n";
+if ($name ne "") {
+    print qq#    {\n        name: "$name",\n        type: "Faction",\n        faction: "$faction",\n        description: "$description"\n    }\n#;
+}
+print "];\n";
+#print "$description\n";
