@@ -1,0 +1,45 @@
+<div>
+    <H1>Under construction</H1>
+    <TABLE ng-controller="featsController">
+        <TR>
+            <TH>
+                Selected ({{$parent.char.feats.length}})
+            </TH>
+            <TH>
+                All feats
+            </TH>
+        </TR>
+        <TR>
+            <TD valign="top">
+                <UL>
+                    <LI ng-repeat="feat in $parent.char.feats" ng-click="removeFeat(feat)">
+                    {{feat.name}}
+                        <span ng-show='!prereqsValid(feat)' style='color:red'>
+                            <span ng-repeat="afeat in feat.prereq.feats">
+                                missing {{afeat.name}}
+                            </span>
+                        </span> 
+                        <span ng-show='!babValid(feat)' style='color:red'>
+                            missing BAB {{feat.prereq.bab}}
+                        </span>
+                    </LI>
+                </UL>
+            </TD>
+            <TD valign="top">
+                <UL>
+                    <LI ng-repeat="feat in feats" ng-click="addFeat(feat)">
+                        {{feat.name}}  
+                        <span ng-show='!prereqsValid(feat)' style='color:red'>
+                            <span ng-repeat="afeat in feat.prereq.feats">
+                                missing {{afeat.name}} 
+                            </span>
+                        </span> 
+                        <span ng-show='!babValid(feat)' style='color:red'>
+                            missing BAB {{feat.prereq.bab}}
+                        </span>
+                    </LI>
+                </UL>
+            </TD>
+        </TR>
+    </TABLE>
+</div>

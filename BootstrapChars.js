@@ -89,6 +89,10 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/feats.html',
                 controller: 'featsController'
             });
+            $routeProvider.when('/traits', {
+                templateUrl: 'partials/traits.html',
+                controller: 'traitsController'
+            });
             $routeProvider.when('/damage', {
                 templateUrl: 'partials/damage.html',
                 controller: 'damageController'
