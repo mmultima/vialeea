@@ -1,91 +1,26 @@
 app.controller('traitsController', function($scope) {
 	$scope.selectedFeats = [];
 
-    if ($scope.$parent.char.feats === undefined) {
-        $scope.$parent.char.feats = [];
+    if ($scope.$parent.char.traits === undefined) {
+        $scope.$parent.char.traits = [];
     }
-
-	$scope.feats = [
-		{
-			name: 'Power attack',
-			prereq: { bab: 1}
-		},
-		{
-			name: 'Point-blank shot',
-			prereq: {}
-		},
-		{
-			name: 'Precise shot',
-			prereq: { feat: 'Point-blank shot' }
-		},
-		{
-			name: 'Rapid shot',
-			prereq: {feat: 'Point-blank shot' }
-		},
-		{
-			name: 'Multishot',
-			prereq: {feat: 'Rapid shot', bab: 6 }
-		},
-		{
-			name: 'Weapon focus',
-			prereq: {}
-		},
-		{
-			name: 'Weapon specialization',
-			prereq: {}
-		},
-		{
-			name: 'Toughness',
-			prereq: {}
-		}
-	];
 
 	$scope.feats = featData;
 
+    $scope.traits = traits;
+
 	$scope.BAB = 0;
 
-	$scope.babValid = function(feat) {
-		if (feat.prereq.bab) {
-			return $scope.BAB >= feat.prereq.bab;
-		}
-
-		return true;
-	};
+	$scope.babValid = function(trait) {
+        return true;
+    };
 
 	$scope.maybeDecrease = function(value, limit) {
 		return value > limit?value-1:value;	
 	};
 
-	$scope.prereqsValid = function(feat) {
-
-		if (feat.prereq.feats) {
-			for (var j = 0; j < feat.prereq.feats.length; j++) {
-			var curFeat =  feat.prereq.feats[j].name;
-			var prereqFeat = null;
-			for (var i = 0; i < $scope.feats.length; i ++) {
-				if (curFeat === $scope.feats[i].name) {
-					prereqFeat = $scope.feats[i];
-				}
-}
-			if (!inArray(prereqFeat, $scope.$parent.char.feats)) {
-				return false;
-			}
-			}
-		}
-		return true;
-
-/*
-		if (feat.prereq.feat) {
-			var prereqFeat = null;
-			for (var i = 0; i < $scope.feats.length; i ++) {
-				if (feat.prereq.feat === $scope.feats[i].name) {
-					prereqFeat = $scope.feats[i];
-				}
-}
-			return inArray(prereqFeat, $scope.selectedFeats);
-		}
-		return true;
-*/
+	$scope.prereqsValid = function(trait) {
+        return true;
 	};
 
 	var inArray = function(object, myArray) {
@@ -97,22 +32,22 @@ app.controller('traitsController', function($scope) {
 		return false;
 	};
 
-	$scope.addFeat = function(feat) {
-		if (!inArray(feat, $scope.$parent.char.feats)) {				if ($scope.prereqsValid(feat) && $scope.babValid(feat)) {
-				$scope.$parent.char.feats.push(feat);
+	$scope.addTrait = function(trait) {
+		if (!inArray(trait, $scope.$parent.char.traits)) {				if ($scope.prereqsValid(trait) && $scope.babValid(trait)) {
+				$scope.$parent.char.traits.push(trait);
 			}
 		}
 	}
 	
-	$scope.removeFeat = function (feat) {
+	$scope.removeTrait = function (trait) {
 		var newList = [];
 
-		for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
-			if ($scope.$parent.char.feats[i] !== feat) {
-				newList.push($scope.$parent.char.feats[i]);
+		for (var i = 0; i < $scope.$parent.char.traits.length; i++) {
+			if ($scope.$parent.char.traits[i] !== trait) {
+				newList.push($scope.$parent.char.traits[i]);
 			}
 		}
-		$scope.$parent.char.feats = newList;
+		$scope.$parent.char.traits = newList;
 	}	
 
 });

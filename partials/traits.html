@@ -1,42 +1,42 @@
 <div>
     <H1>Under construction</H1>
-    <TABLE ng-controller="featsController">
+    <TABLE ng-controller="traitsController">
         <TR>
             <TH>
-                Selected ({{$parent.char.feats.length}})
+                Selected ({{$parent.char.traits.length}})
             </TH>
             <TH>
-                All feats
+                All traits
             </TH>
         </TR>
         <TR>
             <TD valign="top">
                 <UL>
-                    <LI ng-repeat="feat in $parent.char.feats" ng-click="removeFeat(feat)">
-                    {{feat.name}}
-                        <span ng-show='!prereqsValid(feat)' style='color:red'>
-                            <span ng-repeat="afeat in feat.prereq.feats">
-                                missing {{afeat.name}}
+                    <LI ng-repeat="trait in $parent.char.traits" ng-click="removeTrait(trait)">
+                    {{trait.name}}
+                        <!--span ng-show='!prereqsValid(trait)' style='color:red'>
+                            <span ng-repeat="atrait in trait.prereq.traits">
+                                missing {{atrait.name}}
                             </span>
                         </span> 
-                        <span ng-show='!babValid(feat)' style='color:red'>
-                            missing BAB {{feat.prereq.bab}}
-                        </span>
+                        <span ng-show='!babValid(trait)' style='color:red'>
+                            missing BAB {{trait.prereq.bab}}
+                        </span-->
                     </LI>
                 </UL>
             </TD>
             <TD valign="top">
                 <UL>
-                    <LI ng-repeat="feat in feats" ng-click="addFeat(feat)">
-                        {{feat.name}}  
-                        <span ng-show='!prereqsValid(feat)' style='color:red'>
-                            <span ng-repeat="afeat in feat.prereq.feats">
-                                missing {{afeat.name}} 
+                    <LI ng-repeat="trait in traits" ng-click="addTrait(trait)">
+                        {{trait.name}}  
+                        <!--span ng-show='!prereqsValid(trait)' style='color:red'>
+                            <span ng-repeat="atrait in trait.prereq.feats">
+                                missing {{atrait.name}} 
                             </span>
                         </span> 
-                        <span ng-show='!babValid(feat)' style='color:red'>
-                            missing BAB {{feat.prereq.bab}}
-                        </span>
+                        <span ng-show='!babValid(trait)' style='color:red'>
+                            missing BAB {{trait.prereq.bab}}
+                        </span-->
                     </LI>
                 </UL>
             </TD>
