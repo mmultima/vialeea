@@ -13,7 +13,7 @@
             <TD valign="top">
                 <UL>
                     <LI ng-repeat="trait in $parent.char.traits" ng-click="removeTrait(trait)">
-                    {{trait.name}}
+                    {{trait.name}} ({{trait.type}}<span ng-if="trait.subtype">, {{trait.subtype}}</span>) <span ng-if="checkConflict(trait, char)" style='color:red'>Conflict</span> 
                         <!--span ng-show='!prereqsValid(trait)' style='color:red'>
                             <span ng-repeat="atrait in trait.prereq.traits">
                                 missing {{atrait.name}}
@@ -28,7 +28,7 @@
             <TD valign="top">
                 <UL>
                     <LI ng-repeat="trait in traits" ng-click="addTrait(trait)">
-                        {{trait.name}}  
+                    {{trait.name}} ({{trait.type}}<span ng-if="trait.subtype">, {{trait.subtype}}</span>) <span ng-if="checkConflict(trait, char)" style='color:red'>Conflict</span> 
                         <!--span ng-show='!prereqsValid(trait)' style='color:red'>
                             <span ng-repeat="atrait in trait.prereq.feats">
                                 missing {{atrait.name}} 

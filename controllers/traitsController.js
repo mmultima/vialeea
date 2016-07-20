@@ -1,4 +1,20 @@
 app.controller('traitsController', function($scope) {
+    $scope.checkConflict = function(trait, char) {
+        for (var i = 0; i < char.traits.length; i++) {
+            var trait2 = char.traits[i];
+            if (trait.type === trait2.type && trait.name !== trait2.name) {
+                if (trait.type === 'Basic') {
+                    if (trait.subtype === trait2.subtype) {
+                        return true;
+                    }
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+    };
+
 	$scope.selectedFeats = [];
 
     if ($scope.$parent.char.traits === undefined) {

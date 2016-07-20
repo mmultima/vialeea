@@ -31,7 +31,8 @@ while (<FILE>) {
             $description = "";
         }
         print qq#  {\n    "name": "$2",\n#;
-        print qq#    "type": "$types[$type]",\n#;
+        print qq#    "type": "Basic",\n#;
+        print qq#    "subtype": "$types[$type]",\n#;
         $name=$2;
         $description = $3;
         $printed=0;
@@ -75,7 +76,7 @@ while (<FILE>) {
         if (/([A-Z].*): (.*)/) {
             #print "$description\n";
             if ($name ne "") {
-                print qq#    {\n        name: "$name",\n        type: "Faction",\n        faction: "$printFaction",\n        description: "$description"\n    },\n#;
+                print qq#    {\n        name: "$name",\n        type: "Faction",\n        subtype: "$printFaction",\n        description: "$description"\n    },\n#;
             }
             #print "$description\n";
             #print "  $1\n";
@@ -92,7 +93,7 @@ while (<FILE>) {
 
 #print "$description\n";
 if ($name ne "") {
-    print qq#    {\n        name: "$name",\n        type: "Faction",\n        faction: "$faction",\n        description: "$description"\n    }\n#;
+    print qq#    {\n        name: "$name",\n        type: "Faction",\n        subtype: "$faction",\n        description: "$description"\n    }\n#;
 }
 print "];\n";
 #print "$description\n";
