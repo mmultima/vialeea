@@ -14,7 +14,24 @@ app.controller('spellsController', function ($scope) {
         if (!char.spells[list][level]) {
             char.spells[list][level] = [];
         }
-        char.spells[list][level].push(spell);
+        var index = -1;
+        for (var i = 0; i < char.spells[list][level].length; i++) {
+            var spellObj = char.spells[list][level][i];
+            if (spellObj.name === spell) {
+                index = i;
+            }
+        }
+        if (index === -1) {
+            char.spells[list][level].push(
+                    {
+                        name: spell,
+                        amount: 1
+                    }
+                    );
+        }
+        else {
+            char.spells[list][level][index].amount++;
+        }
 
     };
 
