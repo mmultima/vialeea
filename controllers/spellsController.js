@@ -1,9 +1,21 @@
 app.controller('spellsController', function ($scope) {
+    if (!$scope.$parent.char.spells) {
+        $scope.$parent.char.spells = {};
+    }
 
     $scope.spells = spells;
     $scope.spellLists = {
         Cleric: spellsCleric,
         Druid: spellsDruid
+    };
+
+    $scope.addSpell = function(level, spell, list, char) {
+        console.log(level + "#" + spell + "#" + list + "#" + char.name);
+        if (!char.spells[list][level]) {
+            char.spells[list][level] = [];
+        }
+        char.spells[list][level].push(spell);
+
     };
 
     $scope.charSpellLists = function(char) {
@@ -20,6 +32,10 @@ app.controller('spellsController', function ($scope) {
 
                     if (theClass && theClass['class abilities']['spells']) {
                         value.push(myclass);
+
+                        if (!char.spells[myclass]) {
+                            char.spells[myclass] = {};
+                        }
                     }
                 }
             }

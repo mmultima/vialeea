@@ -12,7 +12,18 @@
                     </div>
                     <div ng-repeat="spell in spellLists[spellList][level]">
                         {{spell}}
-                    </div>  
+                        <button type="button" ng-click="addSpell(level, spell, spellList, $parent.$parent.char)">Add</button>
+                    </div> 
+                </div>
+                <div>
+                    Chosen:
+                    <div ng-repeat='level in "0123456789".split("")'>
+                        <div ng-if='char.spells[spellList][level]'>
+                            <div ng-repeat='spell in char.spells[spellList][level]'>
+                                {{level}}: {{spell}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
