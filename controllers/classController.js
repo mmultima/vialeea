@@ -9,6 +9,7 @@ app.controller('classController', function ($scope) {
 
     $scope.util = util;
     $scope.classes = classes;
+    $scope.domains = domains;
 
     $scope.getClassArray = function() {
         var character = $scope.$parent.char;

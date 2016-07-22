@@ -101,6 +101,9 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                    <div ng-if='findClass(classes, myClass.name)["class abilities"].domains'>
+                        Domains!
+                    </div>
                     <table ng-if='char.classMeta.favourite===myClass.name'>
                         <tr>
                             <th>
