@@ -21,6 +21,7 @@
                         <div ng-if='char.spells[spellList][level]'>
                             <div ng-repeat='spell in char.spells[spellList][level]'>
                                 {{level}}: {{spell.name}}<span ng-if="spell.amount>1">x{{spell.amount}}</span>
+                        <button type="button" ng-click="removeSpell(level, spell.name, spellList, $parent.$parent.char)">Remove</button>
                             </div>
                         </div>
                     </div>

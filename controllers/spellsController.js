@@ -35,6 +35,27 @@ app.controller('spellsController', function ($scope) {
 
     };
 
+    $scope.removeSpell = function(level, spell, list, char) {
+        console.log(level + "#" + spell + "#" + list + "#" + char.name);
+        if (!char.spells[list][level]) {
+            return; //You shouldn't be able to get here
+        }
+        var index = -1;
+        for (var i = 0; i < char.spells[list][level].length; i++) {
+            var spellObj = char.spells[list][level][i];
+            if (spellObj.name === spell) {
+                index = i;
+            }
+        }
+        if (char.spells[list][level][index].amount === 1) {
+            char.spells[list][level].splice(index, 1);
+        }
+        else {
+            char.spells[list][level][index].amount--;
+        }
+
+    };
+
     $scope.charSpellLists = function(char) {
         var value = [];
         for (var myclass in char.classes) {
