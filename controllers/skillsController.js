@@ -14,6 +14,9 @@ app.controller('skillsController', function ($scope) {
     }
 
     $scope.maxLanguages = function() {
+        if (!$scope.$parent.char || !$scope.$parent.char.totalstat) {
+            return 0;
+        }
         var max = $scope.statBonus($scope.$parent.char.totalstat['int']);
         if ($scope.$parent.char.skills.linguistics) {
             max += $scope.$parent.char.skills.linguistics;
@@ -45,6 +48,9 @@ app.controller('skillsController', function ($scope) {
    
     $scope.calculatePoints = function() {
         var points = 0;
+        if (!$scope.$parent.char || !$scope.$parent.char.totalstat) {
+            return 0;
+        }
 
         points += $scope.calculateHd() * $scope.statBonus($scope.$parent.char.totalstat['int']);
 

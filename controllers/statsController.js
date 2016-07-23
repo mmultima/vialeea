@@ -50,6 +50,9 @@ app.controller('statsController', function ($scope) {
             }
         }
         var stat = 'Fort'===save?'con':'Ref'===save?'dex':'wis';
+        if (!$scope.$parent.char || !$scope.$parent.char.totalstat) {
+            return 0;
+        }
         value += $scope.statBonus($scope.$parent.char.totalstat[stat]);	
         return value;
     }

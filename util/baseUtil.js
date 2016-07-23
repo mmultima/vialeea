@@ -19,6 +19,10 @@ var util = {
             Math.floor(level/3));
     },
     totalSave: function(save, char, classes) {
+        if (!char || !char.totalstat) {
+            return 0;
+        }
+
         var value = 0;
         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
             var level = char.classes[classes[classIndex].name]||0;
