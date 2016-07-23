@@ -84,4 +84,43 @@ app.controller('classController', function ($scope) {
 
         return hp;
     };
+
+    $scope.addDomain = function(char, name, myclass) {
+        if (!char.classMeta[myclass]) {
+            char.classMeta[myclass]={};
+        }
+        if (!char.classMeta[myclass].domains) {
+            char.classMeta[myclass].domains = [];
+        }
+        var found = false;
+        for (var i = 0; i < char.classMeta[myclass].domains.length; i++) {
+            if (char.classMeta[myclass].domains[i] === name) {
+                found = true;
+            }
+        }
+        if (!found) {
+            char.classMeta[myclass].domains.push(name);
+        }
+    };
+
+    $scope.removeDomain = function(char, dname, myclass) {
+        if (!char.classMeta[myclass]) {
+            char.classMeta[myclass]={};
+        }
+        if (!char.classMeta[myclass].domains) {
+            char.classMeta[myclass].domains = [];
+        }
+        var index = -1;
+        for (var i = 0; i < char.classMeta[myclass].domains.length; i++) {
+            var domain = char.classMeta[myclass].domains[i];
+            if (domain === dname) {
+                index = i;
+            }
+        }
+        var arr = char.classMeta[myclass].domains;
+            
+        if (index !== -1) {
+            arr.splice(index, 1);
+        }
+    };
 });

@@ -8,6 +8,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                    {{char.classMeta}}
                     <table>
                         <tr>
                             <th>
@@ -102,7 +103,14 @@
                 </div>
                 <div class="panel-body">
                     <div ng-if='findClass(classes, myClass.name)["class abilities"].domains'>
-                        Domains!
+                        All domains
+                        <div ng-repeat="(name, domain) in domains">
+                            {{name}} <button type="button" ng-click="addDomain(char, name, myClass.name)">Add</button>
+                        </div>
+                        Chosen domains
+                        <div ng-repeat="myDomain in char.classMeta[myClass.name].domains">
+                            {{myDomain}} <button type="button" ng-click="removeDomain(char, myDomain, myClass.name)">Remove</button>
+                        </div>
                     </div>
                     <table ng-if='char.classMeta.favourite===myClass.name'>
                         <tr>
