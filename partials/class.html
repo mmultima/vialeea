@@ -8,7 +8,6 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    {{char.classMeta}}
                     <table>
                         <tr>
                             <th>
@@ -107,7 +106,7 @@
                         <div ng-repeat="(name, domain) in domains">
                             {{name}} <button type="button" ng-click="addDomain(char, name, myClass.name)">Add</button>
                         </div>
-                        Chosen domains
+                        Chosen domains ({{0+char.classMeta[myClass.name].domains.length}}/)
                         <div ng-repeat="myDomain in char.classMeta[myClass.name].domains">
                             {{myDomain}} <button type="button" ng-click="removeDomain(char, myDomain, myClass.name)">Remove</button>
                         </div>

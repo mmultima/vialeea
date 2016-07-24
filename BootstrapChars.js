@@ -45,6 +45,10 @@ app.controller("myController", function($scope, $resource) {
 	$scope.classes = classes;
 
     $scope.isFirst = function(classname) {
+        if (!$scope.char.classes) {
+            return false;
+        }
+
         for (var i = 0; i < classes.length; i++) {
             var cur = classes[i];
             if ($scope.char.classes[cur.name]) {
