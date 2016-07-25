@@ -24,5 +24,18 @@ var domains = {
         spells: {
             1: "Cure light wounds"
         }
+    },
+    Trickery: {
+        abilities: {
+            1: [
+            {
+                name: "Copycat",
+                effect: "Single mirror image lvl rounds"
+            }
+            ]
+        },
+        spells: {
+            1: "Disguise self"
+        }
     }
 };

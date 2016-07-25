@@ -98,6 +98,10 @@ app.controller('classController', function ($scope) {
                 found = true;
             }
         }
+        var classData = $scope.findClass(classes, myclass);
+        if (classData["class abilities"].domains <= char.classMeta[myclass].domains.length) {
+            found = true;
+        }
         if (!found) {
             char.classMeta[myclass].domains.push(name);
         }
