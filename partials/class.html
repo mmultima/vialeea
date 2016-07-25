@@ -16,12 +16,12 @@
                             <th>
                             </th>
                         </tr>
-                        <tr ng-repeat='myClass in getClasses()'>
+                        <tr ng-repeat='(myClass,level) in char.classes'>
                             <td>
-                                <input type="radio" name="favouriteClassRadio" ng-model="$parent.char.classMeta.favourite" ng-value="myClass.name"/>
+                                <input type="radio" name="favouriteClassRadio" ng-model="$parent.char.classMeta.favourite" ng-value="myClass"/>
                             </td>
                             <td>
-                                {{myClass.name}}
+                                {{myClass}}
                             </td>
                         </tr>
                     </table>
@@ -33,12 +33,12 @@
                             <th>
                             </th>
                         </tr>
-                        <tr ng-repeat='myClass in getClasses()'>
+                        <tr ng-repeat='(myClass, level) in char.classes'>
                             <td>
-                                <input type="radio" name="firstClassRadio" ng-model="$parent.char.classMeta.first" ng-value="myClass.name"/>
+                                <input type="radio" name="firstClassRadio" ng-model="$parent.char.classMeta.first" ng-value="myClass"/>
                             </td>
                             <td>
-                                {{myClass.name}}
+                                {{myClass}}
                             </td>
                         </tr>
                     </table>
@@ -80,38 +80,38 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-repeat="myClass in getClassArray()">
-        <div class="col-md-6">
+    <div class="row" ng-repeat="(myClass,level) in char.classes">
+        <div class="col-md-6" ng-if="level">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        {{myClass.name}}
+                        {{myClass}}
                     </h3>
                 </div>
                 <div class="panel-body">
-                    Level: {{myClass.level}}
+                    Level: {{level}}
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" ng-if="level">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        {{myClass.name}}
+                        {{myClass}}
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <div ng-if='findClass(classes, myClass.name)["class abilities"].domains'>
+                    <div ng-if='findClass(classes, myClass)["class abilities"].domains'>
                         All domains
                         <div ng-repeat="(name, domain) in domains">
-                            {{name}} <button type="button" ng-click="addDomain(char, name, myClass.name)">Add</button>
+                            {{name}} <button type="button" ng-click="addDomain(char, name, myClass)">Add</button>
                         </div>
                         Chosen domains ({{0+char.classMeta[myClass.name].domains.length}}/)
-                        <div ng-repeat="myDomain in char.classMeta[myClass.name].domains">
-                            {{myDomain}} <button type="button" ng-click="removeDomain(char, myDomain, myClass.name)">Remove</button>
+                        <div ng-repeat="myDomain in char.classMeta[myClass].domains">
+                            {{myDomain}} <button type="button" ng-click="removeDomain(char, myDomain, myClass)">Remove</button>
                         </div>
                     </div>
-                    <table ng-if='char.classMeta.favourite===myClass.name'>
+                    <table ng-if='char.classMeta.favourite===myClass'>
                         <tr>
                             <th>
                                 Level
@@ -123,7 +123,7 @@
                                 Skill
                             </th>
                         </tr>
-                        <tr ng-repeat="index in getRange(myClass.level)">
+                        <tr ng-repeat="index in getRange(level)">
                             <td>{{index}}</td>
                             <td>
                                 <input type="radio" name="fav{{$index}}" ng-model="$parent.char.favouriteBonuses[$index]" value="hp"/>
