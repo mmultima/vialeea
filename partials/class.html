@@ -106,7 +106,7 @@
                         <div ng-repeat="(name, domain) in domains">
                             {{name}} <button type="button" ng-click="addDomain(char, name, myClass)">Add</button>
                         </div>
-                        Chosen domains ({{0+char.classMeta[myClass.name].domains.length}}/)
+                        Chosen domains ({{0+char.classMeta[myClass].domains.length}}/{{findClass(classes, myClass)["class abilities"].domains}})
                         <div ng-repeat="myDomain in char.classMeta[myClass].domains">
                             {{myDomain}} <button type="button" ng-click="removeDomain(char, myDomain, myClass)">Remove</button>
                         </div>
