@@ -10,23 +10,7 @@ app.controller('classController', function ($scope) {
     $scope.util = util;
     $scope.classes = classes;
     $scope.domains = domains;
-
-    $scope.getClassArray = function() {
-        var character = $scope.$parent.char;
-        var value = [];
-        for (var key in character.classes) {
-            if (character.classes.hasOwnProperty(key)) {
-                if (character.classes[key] > 0) {
-                    value.push({
-                        name: key, 
-                        level: character.classes[key]
-                    });
-                }
-            }
-        }
-        return value;
-    };
-
+    
     $scope.getClasses = function() {
         var value = [];
         for (var key in $scope.$parent.char.classes) {
@@ -36,8 +20,6 @@ app.controller('classController', function ($scope) {
                 }
             }
         }
-        //value = ['a', 'b', 'c'];
-
         return value;
     };
 
