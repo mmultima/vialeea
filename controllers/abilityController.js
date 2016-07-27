@@ -19,13 +19,16 @@ app.controller('abilityController', function ($scope) {
                      
                     for (var abil in abilities) {
                         if (abilities.hasOwnProperty(abil)) {
-                            value.push(
-                                {
-                                    name: abil,
-                                    Text: classAbilityDescriptions[abil].Text,
-                                    deeds: classAbilityDescriptions[abil].Deeds
-                                }
-                            );
+                            var entry = {
+                                name: abil,
+                                Text: "<no text>",
+                                deeds: []
+                            };
+                            if (classAbilityDescriptions[abil]) {
+                                entry.Text = classAbilityDescriptions[abil].Text;
+                                entry.deeds = classAbilityDescriptions[abil].Deeds;
+                            }
+                            value.push(entry);
                         } 
                     }
                 }
