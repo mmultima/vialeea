@@ -21,7 +21,7 @@ app.controller('abilityController', function ($scope) {
                         if (abilities.hasOwnProperty(abil)) {
                             var entry = {
                                 name: abil,
-                                Text: "<no text>",
+                                Text: ["<no text>"],
                                 deeds: []
                             };
                             if (classAbilityDescriptions[abil]) {
