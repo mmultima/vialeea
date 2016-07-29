@@ -17,10 +17,10 @@
                             </th>
                         </tr>
                         <tr ng-repeat='(myClass,level) in char.classes'>
-                            <td>
+                            <td ng-if='level > 0'>
                                 <input type="radio" name="favouriteClassRadio" ng-model="$parent.char.classMeta.favourite" ng-value="myClass"/>
                             </td>
-                            <td>
+                            <td ng-if='level > 0'>
                                 {{myClass}}
                             </td>
                         </tr>
@@ -34,10 +34,10 @@
                             </th>
                         </tr>
                         <tr ng-repeat='(myClass, level) in char.classes'>
-                            <td>
+                            <td ng-if='level > 0'>
                                 <input type="radio" name="firstClassRadio" ng-model="$parent.char.classMeta.first" ng-value="myClass"/>
                             </td>
-                            <td>
+                            <td ng-if='level > 0'>
                                 {{myClass}}
                             </td>
                         </tr>
