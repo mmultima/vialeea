@@ -243,6 +243,13 @@
                         {{item.name}}
                         <input type="radio" ng-model='$parent.newItem' ng-value='item' name='newItemRadio'/>
                     </div>
+                    <div>
+                        Custom item
+                        <input type="radio" name='newItemRadio' id='custom'/>
+                    </div>
+                    <div ng-if='custom'>
+                        <input type='text' ng-model='$parent.newItem'/>
+                    </div>
                 </div>
                 <div>
                     Chosen item: {{newItem.name}}
