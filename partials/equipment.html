@@ -244,15 +244,16 @@
                         <input type="radio" ng-model='$parent.newItem' ng-value='item' name='newItemRadio'/>
                     </div>
                     <div>
-                        Custom item
-                        <input type="radio" ng-model='$parent.newItem' name='newItemRadio' id='custom' ng-value='{name:"<custom>", custom: true}'/>
+                        Custom item 2
+                        <input type="radio" ng-model='newItem' name='newItemRadio' ng-value='{name:"<custom>", custom: true}'/>
                     </div>
-                    <div ng-if='$parent.newItem.custom'>
+                    <div ng-if='newItem.custom'>
                         <input type='text' ng-model='$parent.newItem.name'/>
                     </div>
                 </div>
                 <div>
                     Chosen item: {{newItem.name}}
+                    Custom: {{newItem.custom}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" ng-click="addItemAndClose(newItem)">Add</button>
