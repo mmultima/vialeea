@@ -245,10 +245,10 @@
                     </div>
                     <div>
                         Custom item
-                        <input type="radio" name='newItemRadio' id='custom'/>
+                        <input type="radio" ng-model='$parent.newItem' name='newItemRadio' id='custom' ng-value='{name:"<custom>", custom: true}'/>
                     </div>
-                    <div ng-if='custom'>
-                        <input type='text' ng-model='$parent.newItem'/>
+                    <div ng-if='$parent.newItem.custom'>
+                        <input type='text' ng-model='$parent.newItem.name'/>
                     </div>
                 </div>
                 <div>
