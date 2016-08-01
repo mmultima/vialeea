@@ -248,9 +248,26 @@
                         <input type="radio" ng-model='newItem' name='newItemRadio' ng-value='customItem'/>
                     </div>
                     <div ng-if='newItem.custom'>
-                        Name: <input type='text' ng-model='$parent.newItem.name'/>
-                        Price: <input type='number' ng-model='$parent.newItem.price'/>
-                        Weight: <input type='number' ng-model='$parent.newItem.weight'/>
+                        <div>
+                            Name: <input type='text' ng-model='$parent.newItem.name'/>
+                        </div>
+                        <div>
+                            Price: <input type='number' ng-model='$parent.newItem.price'/>
+                        </div>
+                        <div>
+                            Weight: <input type='number' ng-model='$parent.newItem.weight'/>
+                        </div>
+                    </div>
+                    <div ng-if='!newItem.custom'>
+                        <div>
+                            Name: {{newItem.name}}
+                        </div>
+                        <div>
+                            Price: {{newItem.price}}
+                        </div>
+                        <div>
+                            Weight: {{newItem.weight}}
+                        </div>
                     </div>
                 </div>
                 <div>
