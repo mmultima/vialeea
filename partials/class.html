@@ -101,6 +101,9 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+                    <div ng-repeat='(ability, value) in findClass(classes, myClass)["class abilities"]'>
+                        {{ability}} {{value}}
+                    </div>
                     <div ng-if='findClass(classes, myClass)["class abilities"].domains'>
                         All domains
                         <div ng-repeat="(name, domain) in domains">

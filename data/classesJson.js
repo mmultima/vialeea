@@ -80,8 +80,11 @@ var classes =
         'name': 'Druid',
         'class abilities': {
            'spells': 'druid',
-           'domains': 4,
-           'nature bond': 'choose'
+           'nature bond': 
+                {
+                    'domains':1,
+                    'animal': 1
+                }
         },
         'HD': 8,
         'BAB': 'medium',
