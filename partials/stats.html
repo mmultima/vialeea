@@ -95,6 +95,35 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Stat advances
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>
+                            </th>
+                            <th ng-repeat='level in [4,8,12,16,20]'>
+                                {{level}}
+                            </th>
+                        </tr>
+
+                        <tr ng-repeat='stat in stats'>
+                            <td>
+                                {{stat}}
+                            </td>
+                            <td ng-repeat='level in [4,8,12,16,20]'>
+                                <input type='radio' ng-model='$parent.$parent.$parent.char[level]' value='{{stat}}'>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
     <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
