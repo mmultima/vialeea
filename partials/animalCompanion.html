@@ -5,6 +5,10 @@
 HD: {{hd=calculateHd(level)}}
 BAB: {{bab=calculateBab(hd)}}
 Stat incs: {{statincs = calculateStatIncs()}}
+Normal advance <input type='radio' ng-model='$parent.char.notNormalAnimal' value='false'>
+Dex/Con +2 advance <input type='radio' ng-model='$parent.char.notNormalAnimal' value='true'>
+Finesse <input type='checkbox' ng-model='finesse'>
+Agile <input type='checkbox' ng-model='agile'>
 <table border="1">
 <tr>
 <th ng-repeat="stat in stats">
@@ -53,9 +57,9 @@ Stat incs: {{statincs = calculateStatIncs()}}
 </tr>
 <tr ng-repeat="animal in animals">
 <td>{{animal.name}}</td>
-<td>{{animal.stats.curstr=animal.stats.str+calculateLowSave(level) + animal.advanced*animal.advancement.str + incs.str}}</td>
-<td>{{animal.stats.curdex=animal.stats.dex+calculateLowSave(level)+animal.advanced*animal.advancement.dex + incs.dex}}</td>
-<td>{{animal.stats.curcon=animal.stats.con + animal.advanced*animal.advancement.con + incs.con}}</td>
+<td>{{animal.stats.curstr=animal.stats.str+calculateLowSave(level) + isFalse($parent.char.notNormalAnimal)*animal.advanced*animal.advancement.str + incs.str}}</td>
+<td>{{animal.stats.curdex=animal.stats.dex+calculateLowSave(level)+isFalse($parent.char.notNormalAnimal)*animal.advanced*animal.advancement.dex + incs.dex + (1-isFalse($parent.char.notNormalAnimal))*animal.advanced*2}}</td>
+<td>{{animal.stats.curcon=animal.stats.con + isFalse($parent.char.notNormalAnimal)*animal.advanced*animal.advancement.con + incs.con + (1-isFalse($parent.char.notNormalAnimal))*animal.advanced*2}}</td>
 <td>{{animal.stats.int + incs.int}}</td>
 <td>{{animal.stats.wis + incs.wis}}</td>
 <td>{{animal.stats.cha + incs.cha}}</td>
@@ -67,6 +71,6 @@ Stat incs: {{statincs = calculateStatIncs()}}
 <td>{{calculateHighSave(hd)+statBonus(animal.stats.curdex)}}</td>
 <td>{{calculateLowSave(hd)+statBonus(animal.stats.wis)}}</td>
 <td>{{animal.advanced=isAdvanced(level, animal)}}</td>
-<td>{{calculateAttacks(animal, animal.advanced)}}</td>
+<td>{{calculateAttacks(animal, animal.advanced, finesse, agile)}}</td>
 </tr>
 </div>

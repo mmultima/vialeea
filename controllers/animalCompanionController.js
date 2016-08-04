@@ -1,4 +1,7 @@
 app.controller('animalCompanionController', function ($scope) {
+    if (!$scope.$parent.char.notNormalAnimal) {
+        $scope.$parent.char.notNormalAnimal = "false"; 
+    }
 $scope.animals = mmdata.animals;
 
 if ($scope.$parent.char.classes.Druid) {
@@ -10,6 +13,12 @@ $scope.level=1;
 
 $scope.test='testt';
 
+    $scope.isFalse = function(value) {
+        if (!value || value === 'false') {
+            return 1;
+        }
+        return 0;
+    };
 //$scope.level=1;
 
 //Make a "calculate3/4 function
@@ -40,19 +49,23 @@ $scope.maybeAdjust=function(value, amount, min, max) {
     }
     return value+amount;
 };
-$scope.calculateAttacks=function(animal, advanced) {
+$scope.calculateAttacks=function(animal, advanced, finesse, agile) {
     //I could do this with the || trick
     var attacks = animal.attacks;
     var result = "";
-    var statBonus = $scope.statBonus(animal.stats.curstr);
+    var strBonus = $scope.statBonus(animal.stats.curstr);
+    var dexBonus = $scope.statBonus(animal.stats.curdex);
+    var damBonus = agile?dexBonus:strBonus;
+    var hitBonus = finesse?dexBonus:strBonus;
+
     if (advanced) {
         if (animal.advancement.attacks) {
             attacks = animal.advancement.attacks;
         }
     }
     for (var i = 0; i < attacks.length; i++) {
-        bonus = $scope.bab + statBonus + $scope.sizeToAc(animal.cursize);
-        damage = statBonus;
+        bonus = $scope.bab + hitBonus + $scope.sizeToAc(animal.cursize);
+        damage = damBonus;
         if (i > 0) {
             result = result + "; ";
         }
