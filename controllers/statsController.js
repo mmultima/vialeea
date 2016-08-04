@@ -1,4 +1,18 @@
 app.controller('statsController', function ($scope) {
+    $scope.lvlBonuses = function(char, stat, hd) {
+        var values = [4,8,12,16,20];
+        var bonus = 0;
+        for (var i = 0; i < values.length; i++) {
+            if (values[i] > hd) {
+                return bonus;
+            }
+            if (char[values[i]]===stat) {
+                bonus++;
+            }
+        }
+        return bonus;
+    }
+
     //Weird place for this?
     $scope.armorBonus = function(char) {
         var bonus = 0;
