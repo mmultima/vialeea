@@ -49,7 +49,7 @@ $scope.maybeAdjust=function(value, amount, min, max) {
     }
     return value+amount;
 };
-$scope.calculateAttacks=function(animal, advanced, finesse, agile) {
+$scope.calculateAttacks=function(animal, advanced, finesse, agile, notNormal) {
     //I could do this with the || trick
     var attacks = animal.attacks;
     var result = "";
@@ -58,7 +58,7 @@ $scope.calculateAttacks=function(animal, advanced, finesse, agile) {
     var damBonus = agile?dexBonus:strBonus;
     var hitBonus = finesse?dexBonus:strBonus;
 
-    if (advanced) {
+    if (advanced && notNormal) {
         if (animal.advancement.attacks) {
             attacks = animal.advancement.attacks;
         }

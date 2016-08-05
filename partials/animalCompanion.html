@@ -63,14 +63,14 @@ Agile <input type='checkbox' ng-model='agile'>
 <td>{{animal.stats.int + incs.int}}</td>
 <td>{{animal.stats.wis + incs.wis}}</td>
 <td>{{animal.stats.cha + incs.cha}}</td>
-<td>{{animal.cursize=choose(isAdvanced(level,animal), animal.size, animal.advancement.size)}}</td>
-<td>{{animal.armor + 10 + statBonus(animal.stats.curdex) + sizeToAc(animal.cursize) + calculateLowSave(level)*2 + isAdvanced(level, animal) * animal.advancement.armor}}</td>
+<td>{{animal.cursize=choose(isAdvanced(level,animal)*isFalse($parent.char.notNormalAnimal), animal.size, animal.advancement.size)}}</td>
+<td>{{animal.armor + 10 + statBonus(animal.stats.curdex) + sizeToAc(animal.cursize) + calculateLowSave(level)*2 + isAdvanced(level, animal)*isFalse($parent.char.notNormalAnimal) * animal.advancement.armor}}</td>
 <td>{{calculateHp(animal)}}</td>
 <td>{{animal.speed}}</td>
 <td>{{calculateHighSave(hd)+statBonus(animal.stats.curcon)}}</td>
 <td>{{calculateHighSave(hd)+statBonus(animal.stats.curdex)}}</td>
 <td>{{calculateLowSave(hd)+statBonus(animal.stats.wis)}}</td>
 <td>{{animal.advanced=isAdvanced(level, animal)}}</td>
-<td>{{calculateAttacks(animal, animal.advanced, finesse, agile)}}</td>
+<td>{{calculateAttacks(animal, animal.advanced, finesse, agile, isFalse($parent.char.notNormalAnimal))}}</td>
 </tr>
 </div>
