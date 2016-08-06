@@ -64,6 +64,16 @@ app.controller('classController', function ($scope) {
             }
         }
 
+        if (char.feats) {
+            for (var f = 0; f < char.feats.length; f++) {
+                var feat = char.feats[f];
+                if (feat.name === 'Toughness') {
+                    var hd = util.hd(char, classes);
+                    hp += (hd < 3?3:hd);
+                }
+            }
+        }
+
         return hp;
     };
 
