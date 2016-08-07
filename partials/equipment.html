@@ -27,7 +27,7 @@
                                 {{weapon.name}}
                             </td>
                             <td>
-                                {{weapon.dicenum}}d{{weapon.dice}}
+                                {{calculateDiceForSize(weapon.dicenum, weapon.dice, char.race.size)}}
                             </td>
                             <td>
                                 {{weapon.critrange}}

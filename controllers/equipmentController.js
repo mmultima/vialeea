@@ -62,4 +62,54 @@ app.controller('equipmentController', function ($scope) {
         }
         return total;
     };
+
+    $scope.calculateDiceForSize = function(number, dice, size) {
+        console.log(number + "d" + dice + " " + size);
+        var sizes = "FDTSMLHGC";
+        var sizeIndex = sizes.indexOf(size);
+        if (sizeIndex === 4) {
+            return number + "d" + dice;
+        }
+        var damageProgression = [
+    "1", 
+    "1d2",
+    "1d3",
+    "1d4",
+    "1d6",
+    "1d8",
+    "1d10",
+    "2d6",
+    "2d8",
+    "3d6",
+    "3d8",
+    "4d6",
+    "4d8",
+    "6d6",
+    "6d8",
+    "8d6",
+    "8d8",
+    "12d6",
+    "12d8",
+    "16d6"]; 
+
+        var origDice = number + "d" + dice;
+        var damageIndex = damageProgression.indexOf(origDice);
+        if (sizeIndex < 4) {
+            for (var index = 4; index > sizeIndex; index--) {
+                damageIndex--;
+            }
+        }
+        else {
+            for (var indexL = 4; indexL < sizeIndex; indexL++) {
+                if (damageIndex < 5) {
+                    damageIndex++;
+                }
+                else {
+                    damageIndex += 2;
+                }
+            }
+        }
+        return damageProgression[damageIndex]; 
+    };
+
 });
