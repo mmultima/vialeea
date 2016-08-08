@@ -64,7 +64,10 @@ app.controller('equipmentController', function ($scope) {
     };
 
     $scope.calculateDiceForSize = function(number, dice, size) {
-        console.log(number + "d" + dice + " " + size);
+        if (!size) {
+            size = 'M';
+        }
+
         var sizes = "FDTSMLHGC";
         var sizeIndex = sizes.indexOf(size);
         if (sizeIndex === 4) {
@@ -112,4 +115,10 @@ app.controller('equipmentController', function ($scope) {
         return damageProgression[damageIndex]; 
     };
 
+    $scope.adjustWeightForSize = function(item, char) {
+        if (char && char.race && char.race.size === 'S') {
+            return item.weight/2;
+        }
+        return item.weight;
+    };
 });
