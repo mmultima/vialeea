@@ -13,6 +13,20 @@ app.controller('statsController', function ($scope) {
         return bonus;
     }
 
+    $scope.equipmentBonuses = function(char, stat) {
+        if (!char.equipment || !char.equipment.items) {
+            return 0;
+        }
+        var bonus = 0;
+        for (var i = 0; i < char.equipment.items.length; i++) {
+            var item = char.equipment.items[i];
+            if (item.bonus && item.bonus.stat === stat) {
+                bonus += item.bonus.amount;
+            }
+        }
+        return bonus;
+    };
+
     //Weird place for this?
     $scope.armorBonus = function(char) {
         var bonus = 0;

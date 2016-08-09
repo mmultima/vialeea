@@ -48,7 +48,7 @@
                         {{racestat[stat]=$parent.$parent.char.race.scores[stat]}}
                     </td>
                     <td>
-                        {{$parent.$parent.char.totalstat[stat]=$parent.char.base[stat]+racestat[stat] + lvlBonuses(char, stat, calculateHd())}}
+                        {{$parent.$parent.char.totalstat[stat]=$parent.char.base[stat]+racestat[stat] + lvlBonuses(char, stat, calculateHd()) + equipmentBonuses(char, stat)}}
                     </td>
                     <td>
                         <span ng-show="atleast(totalstat[stat],10)">+</span>{{statBonus($parent.$parent.char.totalstat[stat])}}
