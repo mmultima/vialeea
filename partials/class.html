@@ -66,9 +66,9 @@
                 </div>
                 <div class="panel-body">
                     <div>
-                        Fort: {{util.totalSave('Fort',char,classes)}}
-                        Ref: {{util.totalSave('Ref',char,classes)}}
-                        Will: {{util.totalSave('Will',char,classes)}}
+                        Fort: {{util.totalSave('Fort',char,classes) + equipmentBonuses(char, 'saves')}}
+                        Ref: {{util.totalSave('Ref',char,classes) + equipmentBonuses(char, 'saves')}}
+                        Will: {{util.totalSave('Will',char,classes) + equipmentBonuses(char, 'saves')}}
                     </div>
                     <div>
                         BAB: {{util.bab(char, classes)}}

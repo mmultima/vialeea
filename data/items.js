@@ -16,6 +16,16 @@ var items =
         price: 1
     },
     {
+        name: 'cloak of resistance +1',
+        weight: 1,
+        price: 1000,
+        bonus: {
+            stat: 'saves',
+            amount: 1,
+            type: 'resistance'
+        }
+    },
+    {
         name: 'belt of mighty strength +2',
         weight: 1,
         price: 4000,

@@ -202,9 +202,9 @@
 				{{calculateHd()}}
 			    </td>
 			    <td></td>
-			    <td>{{calculateTotalSave('Fort')}}</td>
-			    <td>{{calculateTotalSave('Ref')}}</td>
-			    <td>{{calculateTotalSave('Will')}}</td>
+			    <td>{{calculateTotalSave('Fort') + equipmentBonuses(char, 'saves')}}</td>
+			    <td>{{calculateTotalSave('Ref') + equipmentBonuses(char, 'saves')}}</td>
+			    <td>{{calculateTotalSave('Will') + equipmentBonuses(char, 'saves')}}</td>
 			</tr>	
 
 

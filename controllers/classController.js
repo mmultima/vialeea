@@ -10,7 +10,22 @@ app.controller('classController', function ($scope) {
     $scope.util = util;
     $scope.classes = classes;
     $scope.domains = domains;
-    
+
+    $scope.equipmentBonuses = function(char, stat) {
+                if (!char.equipment || !char.equipment.items) {
+                                return 0;
+                                        }
+                        var bonus = 0;
+                                for (var i = 0; i < char.equipment.items.length; i++) {
+                                                var item = char.equipment.items[i];
+                                                            if (item.bonus && item.bonus.stat === stat) {
+                                                                                bonus += item.bonus.amount;
+                                                                                            }
+                                                                    }
+                                        return bonus;
+                                            };
+
+
     $scope.getClasses = function() {
         var value = [];
         for (var key in $scope.$parent.char.classes) {
