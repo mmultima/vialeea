@@ -1,4 +1,9 @@
 <div ng-controller="animalCompanionController">
+    <div>
+        Feats
+        <div ng-repeat='feat in char.animal.feats'>feat.name</div>
+        <button type="button" data-toggle="modal" data-target="#featModal">Add new</button>
+    </div>        
 <input type="button" value="-" ng-click="(level=maybeAdjust(level,-1,1,20))" />
 {{level}}
 <input type="button" value="+" ng-click="(level=maybeAdjust(level,1,1,20))" />
@@ -73,4 +78,27 @@ Agile <input type='checkbox' ng-model='agile'>
 <td>{{animal.advanced=isAdvanced(level, animal)}}</td>
 <td>{{calculateAttacks(animal, animal.advanced, finesse, agile, isFalse($parent.char.notNormalAnimal))}}</td>
 </tr>
+    <div id="featModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose a feat</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="feat in animalFeats">
+                        {{feat.name}}
+                        <input type="radio" ng-model='$parent.newFeat' ng-value='feat' name='newFeatRadio'/>
+                    </div>
+                </div>
+                <div>
+                    Chosen feat: {{newFeat.name}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addFeatAndClose(newFeat)">Add</button>
+                    <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
