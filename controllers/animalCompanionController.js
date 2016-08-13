@@ -2,7 +2,22 @@ app.controller('animalCompanionController', function ($scope) {
     if (!$scope.$parent.char.notNormalAnimal) {
         $scope.$parent.char.notNormalAnimal = "false"; 
     }
-$scope.animals = mmdata.animals;
+
+    $scope.animalFeats = animalFeats;
+
+    $scope.addFeatAndClose = function(feat, char) {
+        if (!char.animal) {
+            char.animal = {};
+        }
+        if (!char.animal.feats) {
+            char.animal.feats = [];
+        }
+        if (char.animal.feats.indexOf(feat)<0) {
+            char.animal.feats.push(feat);
+        }
+    }
+    
+    $scope.animals = mmdata.animals;
 
 if ($scope.$parent.char.classes.Druid) {
 $scope.level = $scope.$parent.char.classes.Druid;

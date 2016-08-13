@@ -1,7 +1,7 @@
 <div ng-controller="animalCompanionController">
     <div>
         Feats
-        <div ng-repeat='feat in char.animal.feats'>feat.name</div>
+        <div ng-repeat='feat in char.animal.feats'>{{feat}}</div>
         <button type="button" data-toggle="modal" data-target="#featModal">Add new</button>
     </div>        
 <input type="button" value="-" ng-click="(level=maybeAdjust(level,-1,1,20))" />
@@ -87,7 +87,7 @@ Agile <input type='checkbox' ng-model='agile'>
                 </div>
                 <div class="modal-body">
                     <div ng-repeat="feat in animalFeats">
-                        {{feat.name}}
+                        {{feat}}
                         <input type="radio" ng-model='$parent.newFeat' ng-value='feat' name='newFeatRadio'/>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ Agile <input type='checkbox' ng-model='agile'>
                     Chosen feat: {{newFeat.name}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addFeatAndClose(newFeat)">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="addFeatAndClose(newFeat, char)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>
