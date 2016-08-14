@@ -88,9 +88,20 @@ $scope.calculateAttacks=function(animal, advanced, finesse, agile, notNormal) {
     }
     return result;
 };
-$scope.calculateHp=function(animal) {
+$scope.calculateHp=function(animal, char) {
     var baseHp = Math.floor($scope.hd*4.5);
     var bonus = $scope.hd * $scope.statBonus(animal.stats.curcon);
+
+    if (char.animal && char.animal.feats) {
+        if (char.animal.feats.indexOf('Toughness')!== -1) {
+            if ($scope.hd < 3) {
+                bonus += 3;
+            }
+            else {
+                bonus += $scope.hd;
+            }
+        }
+    }
     return baseHp + bonus;
 };
 $scope.stats=['str', 'dex', 'con', 'int', 'wis', 'cha'];

@@ -70,7 +70,7 @@ Agile <input type='checkbox' ng-model='agile'>
 <td>{{animal.stats.cha + incs.cha}}</td>
 <td>{{animal.cursize=choose(isAdvanced(level,animal)*isFalse($parent.char.notNormalAnimal), animal.size, animal.advancement.size)}}</td>
 <td>{{animal.armor + 10 + statBonus(animal.stats.curdex) + sizeToAc(animal.cursize) + calculateLowSave(level)*2 + isAdvanced(level, animal)*isFalse($parent.char.notNormalAnimal) * animal.advancement.armor}}</td>
-<td>{{calculateHp(animal)}}</td>
+<td>{{calculateHp(animal, char)}}</td>
 <td>{{animal.speed}}</td>
 <td>{{calculateHighSave(hd)+statBonus(animal.stats.curcon)}}</td>
 <td>{{calculateHighSave(hd)+statBonus(animal.stats.curdex)}}</td>
