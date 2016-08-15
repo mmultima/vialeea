@@ -1,6 +1,6 @@
 <div ng-controller="animalCompanionController">
     <div>
-        Feats
+        Feats ({{char.animal.feats.length+0}}/{{featNumFromHd(hd)}})
         <div ng-repeat='feat in char.animal.feats'>{{feat}}</div>
         <button type="button" data-toggle="modal" data-target="#featModal">Add new</button>
     </div>        
@@ -95,7 +95,7 @@ Agile <input type='checkbox' ng-model='agile'>
                     Chosen feat: {{newFeat.name}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addFeatAndClose(newFeat, char)">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="addFeatAndClose(newFeat, char, hd)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>

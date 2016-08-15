@@ -5,17 +5,27 @@ app.controller('animalCompanionController', function ($scope) {
 
     $scope.animalFeats = animalFeats;
 
-    $scope.addFeatAndClose = function(feat, char) {
+    $scope.featNumFromHd = function(hd) {
+        return Math.floor((hd+1)/2);  
+    };
+
+    $scope.addFeatAndClose = function(feat, char, hd) {
+
         if (!char.animal) {
             char.animal = {};
         }
         if (!char.animal.feats) {
             char.animal.feats = [];
         }
+        if (!(char.animal.feats.length < Math.floor((hd+1)/2))) {
+            return;
+        }
+
         if (char.animal.feats.indexOf(feat)<0) {
             char.animal.feats.push(feat);
         }
-    }
+        
+    };
     
     $scope.animals = mmdata.animals;
 
