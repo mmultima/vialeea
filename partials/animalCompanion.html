@@ -1,7 +1,7 @@
 <div ng-controller="animalCompanionController">
     <div>
         Feats ({{char.animal.feats.length+0}}/{{featNumFromHd(hd)}})
-        <div ng-repeat='feat in char.animal.feats'>{{feat}}</div>
+        <div ng-repeat='feat in char.animal.feats'>{{feat}} <button type="button" ng-click="removeFeat(feat, char)">Remove</button></div>
         <button type="button" data-toggle="modal" data-target="#featModal">Add new</button>
     </div>        
 <input type="button" value="-" ng-click="(level=maybeAdjust(level,-1,1,20))" />

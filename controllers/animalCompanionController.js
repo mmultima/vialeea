@@ -9,6 +9,13 @@ app.controller('animalCompanionController', function ($scope) {
         return Math.floor((hd+1)/2);  
     };
 
+    $scope.removeFeat = function(feat, char) {
+        if (!char.animal || !char.animal.feats || char.animal.feats.indexOf(feat) === -1) {
+            return;
+        }
+        char.animal.feats.splice(char.animal.feats.indexOf(feat), 1);
+    };
+
     $scope.addFeatAndClose = function(feat, char, hd) {
 
         if (!char.animal) {
