@@ -57,6 +57,22 @@ app.controller('featsController', function($scope) {
 	};
 
 	$scope.prereqsValid = function(feat) {
+        var myChar = $scope.$parent.char;
+        var clAbil = [];
+
+        for (var cli = 0; cli < classes.length; cli++) {
+            var curClass = classes[cli];
+            if (myChar.classes[curClass.name]) {
+                for (var api = 0; api < curClass['Armor proficiencies'].length; api++) {
+                    var aName = curClass['Armor proficiencies'][api];
+                    aName = aName[0].toUpperCase() + aName.slice(1);
+                    aName = "Armor Proficiency, " + aName;
+                    clAbil.push(aName);
+
+                    //console.log(aName);
+                }
+            }
+        }
 
 		if (feat.prereq.feats) {
 			for (var j = 0; j < feat.prereq.feats.length; j++) {
@@ -68,7 +84,12 @@ app.controller('featsController', function($scope) {
 				}
 }
 			if (!inArray(prereqFeat, $scope.$parent.char.feats)) {
-				return false;
+                if (!prereqFeat) {
+                    return false;
+                }
+                if (!inArray(prereqFeat.name, clAbil)) {
+				    return false;
+                }
 			}
 			}
 		}
