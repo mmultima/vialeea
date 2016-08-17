@@ -2,6 +2,7 @@ app.controller('equipmentController', function ($scope) {
     $scope.weapons = weapons;
     $scope.armors = armors;
     $scope.items = items;
+    $scope.materials = materials;
 
     if (!$scope.$parent.char.equipment) {
         $scope.$parent.char.equipment = {};
@@ -16,7 +17,10 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.items = [];
     }
 
-    $scope.addWeaponAndClose = function(weapon) {
+    $scope.addWeaponAndClose = function(weapon, material) {
+        if (material && material !== 'normal') {
+            weapon.material = material;
+        }
         $scope.$parent.char.equipment.weapons.push(weapon);
         $("#weaponModal .mmclose").click();
     };
@@ -35,6 +39,7 @@ app.controller('equipmentController', function ($scope) {
             $scope.$parent.char.equipment.armors.indexOf(armor), 1);
     };
     $scope.addItemAndClose = function(item) {
+        //item.material = material;
         $scope.$parent.char.equipment.items.push(item);
         $("#itemModal .mmclose").click();
     };

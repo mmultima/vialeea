@@ -24,7 +24,7 @@
                         </tr>
                         <tr ng-repeat="weapon in char.equipment.weapons">
                             <td>
-                                {{weapon.name}}
+                                {{weapon.material}} {{weapon.name}}
                             </td>
                             <td>
                                 {{calculateDiceForSize(weapon.dicenum, weapon.dice, char.race.size)}}
@@ -199,10 +199,22 @@
                     </div>
                 </div>
                 <div>
+                    Material
+                </div>
+                <div>
+                    normal
+                    <input type="radio" ng-model='$parent.material' ng-value='normal' name='newWeaponMaterial'/>
+                </div>
+                <div ng-repeat="(name,material) in materials">
+                    {{name}}
+                    <input type="radio" ng-model='$parent.material' ng-value='name'/ name='newWeaponMaterial'>
+                </div>
+                <div>
                     Chosen weapon: {{newWeapon.name}}
+                    Chosen material: {{material}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addWeaponAndClose(newWeapon)">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="addWeaponAndClose(newWeapon, material)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>
