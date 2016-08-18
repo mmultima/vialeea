@@ -127,7 +127,7 @@
                                 {{item.name}}
                             </td>
                             <td>
-                                {{adjustWeightForSize(item,char)}}
+                                {{item.adjustedWeight = adjustWeightForSize(item,char)}}
                             </td>
                             <td>
                                 {{item.price}}
@@ -140,7 +140,7 @@
                                 {{item.name}}
                             </td>
                             <td>
-                                {{item.weight}}
+                                {{item.adjustedWeight = item.weight}}
                             </td>
                             <td>
                                 {{item.price}}
@@ -153,7 +153,7 @@
                                 {{item.name}}
                             </td>
                             <td>
-                                {{item.weight}}
+                                {{item.adjustedWeight = item.weight}}
                             </td>
                             <td>
                                 {{item.price}}
@@ -169,7 +169,7 @@
                                 <b>Total</b>
                             </td>
                             <td>
-                                {{calculateTotal('weight', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}
+                                {{calculateTotal('adjustedWeight', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}
                             </td>
                             <td>
                                 {{calculateTotal('price', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}
