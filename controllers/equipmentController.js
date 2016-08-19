@@ -24,6 +24,23 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.weapons.push(weapon);
         $("#weaponModal .mmclose").click();
     };
+ 
+    $scope.calculatePrice = function(item, type, weight) {
+        var value = item.price;
+        if (type ==='weapon') {
+            var material = materials[item.material];
+            if (item.material !== 'normal' && item.material) {
+                if (material.weapons.price.weight) {
+                    value += weight*material.weapons.price.weight;
+
+                }
+                if (material.weapons.price.price) {
+                    value += item.price * material.weapons.price.price;
+                }
+            }
+        };
+        return value;
+    };
 
     $scope.removeWeapon = function (weapon) {
         $scope.$parent.char.equipment.weapons.splice(

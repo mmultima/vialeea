@@ -22,7 +22,7 @@
                             <th>
                             </th>
                         </tr>
-                        <tr ng-repeat="weapon in char.equipment.weapons">
+                        <tr ng-repeat="weapon in char.equipment.weapons track by $index">
                             <td>
                                 {{weapon.material}} {{weapon.name}}
                             </td>
@@ -72,7 +72,7 @@
                             <th>
                             </th>
                         </tr>
-                        <tr ng-repeat="armor in char.equipment.armors">
+                        <tr ng-repeat="armor in char.equipment.armors track by $index">
                             <td>
                                 {{armor.name}}
                             </td>
@@ -122,7 +122,7 @@
                             <th>
                             </th>
                         </tr>
-                        <tr ng-repeat="item in char.equipment.weapons">
+                        <tr ng-repeat="item in char.equipment.weapons track by $index">
                             <td>
                                 {{item.name}}
                             </td>
@@ -130,12 +130,12 @@
                                 {{item.adjustedWeight = adjustWeightForSize(item,char)}}
                             </td>
                             <td>
-                                {{item.price}}
+                                {{item.adjustedPrice = calculatePrice(item, 'weapon', item.adjustedWeight)}}
                             </td>
                             <td>
                             </td>
                         </tr>
-                        <tr ng-repeat="item in char.equipment.armors">
+                        <tr ng-repeat="item in char.equipment.armors track by $index">
                             <td>
                                 {{item.name}}
                             </td>
@@ -143,12 +143,12 @@
                                 {{item.adjustedWeight = item.weight}}
                             </td>
                             <td>
-                                {{item.price}}
+                                {{item.adjustedPrice = calculatePrice(item, 'armor', item.adjustedWeight)}}
                             </td>
                             <td>
                             </td>
                         </tr>
-                        <tr ng-repeat="item in char.equipment.items">
+                        <tr ng-repeat="item in char.equipment.items track by $index">
                             <td>
                                 {{item.name}}
                             </td>
@@ -156,7 +156,7 @@
                                 {{item.adjustedWeight = item.weight}}
                             </td>
                             <td>
-                                {{item.price}}
+                                {{item.adjustedPrice = calculatePrice(item, 'item', item.adjustedWeight)}}
                             </td>
                             <td>
                                 <button type="button" ng-click="removeItem(item)">
