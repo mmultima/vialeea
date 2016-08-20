@@ -17,7 +17,10 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.items = [];
     }
 
-    $scope.addWeaponAndClose = function(weapon, material) {
+    $scope.addWeaponAndClose = function(baseWeapon, material) {
+        var weapon = JSON.parse(JSON.stringify(baseWeapon))
+
+
         if (material && material !== 'normal') {
             weapon.material = material;
         }
