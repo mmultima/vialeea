@@ -18,7 +18,7 @@ app.controller('equipmentController', function ($scope) {
     }
 
     $scope.addWeaponAndClose = function(baseWeapon, material) {
-        var weapon = JSON.parse(JSON.stringify(baseWeapon))
+        var weapon = JSON.parse(JSON.stringify(baseWeapon));
 
 
         if (material && material !== 'normal') {
@@ -34,8 +34,15 @@ app.controller('equipmentController', function ($scope) {
             var material = materials[item.material];
             if (item.material !== 'normal' && item.material) {
                 if (material.weapons.price.weight) {
-                    value += weight*material.weapons.price.weight;
+                    var origWeight = weight;
 
+
+                    if (material.weight) {
+                        if (material.weight.mult) {
+                            origWeight = origWeight / material.weight.mult; 
+                        }
+                    }
+                    value += origWeight*material.weapons.price.weight;
                 }
                 if (material.weapons.price.price) {
                     value += item.price * material.weapons.price.price;
@@ -139,11 +146,22 @@ app.controller('equipmentController', function ($scope) {
         }
         return damageProgression[damageIndex]; 
     };
-
+ 
     $scope.adjustWeightForSize = function(item, char) {
-        if (char && char.race && char.race.size === 'S') {
-            return item.weight/2;
+        var value = item.weight;
+        
+        if (item.material) {
+            var material = materials[item.material];
+            if (material.weapons && material.weight) {
+                if (material.weight.mult) {
+                    value = value * material.weight.mult;
+                }
+            }
         }
-        return item.weight;
+
+        if (char && char.race && char.race.size === 'S') {
+            return value/2;
+        }
+        return value;
     };
 });
