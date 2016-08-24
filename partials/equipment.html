@@ -74,7 +74,7 @@
                         </tr>
                         <tr ng-repeat="armor in char.equipment.armors track by $index">
                             <td>
-                                {{armor.name}}
+                                {{armor.material}} {{armor.name}}
                             </td>
                             <td>
                                 {{armor.bonus}}
@@ -140,7 +140,7 @@
                                 {{item.name}}
                             </td>
                             <td>
-                                {{item.adjustedWeight = item.weight}}
+                                {{item.adjustedWeight = adjustWeightForSize(item, char)}}
                             </td>
                             <td>
                                 {{item.adjustedPrice = calculatePrice(item, 'armor', item.adjustedWeight)}}
@@ -234,10 +234,21 @@
                     </div>
                 </div>
                 <div>
+                    Material
+                </div>
+                <div>
+                    normal
+                    <input type="radio" ng-model='material' ng-value='normal' name='newArmorMaterial'/>
+                </div>
+                <div ng-repeat="(name,material) in materials">
+                    {{name}}
+                    <input type="radio" ng-model='$parent.material' ng-value='name'/ name='newArmorMaterial'>
+                </div>
+                <div>
                     Chosen armor: {{newArmor.name}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addArmorAndClose(newArmor)">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="addArmorAndClose(newArmor, material)">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>

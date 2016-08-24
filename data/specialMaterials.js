@@ -5,10 +5,14 @@ var materials = {
                 weight: 500
                 }
             },
-            weight: {
-                mult: 0.5
-            }
+        weight: {
+            mult: 0.5
         },
+        armors: {
+            price: {
+            }
+        }
+    },
     'cold iron': {
         weapons: {
             price: {

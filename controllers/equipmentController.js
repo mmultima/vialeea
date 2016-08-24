@@ -33,7 +33,7 @@ app.controller('equipmentController', function ($scope) {
         if (type ==='weapon') {
             var material = materials[item.material];
             if (item.material !== 'normal' && item.material) {
-                if (material.weapons.price.weight) {
+                if (material.weapons && material.weapons.price && material.weapons.price.weight) {
                     var origWeight = weight;
 
 
@@ -48,7 +48,28 @@ app.controller('equipmentController', function ($scope) {
                     value += item.price * material.weapons.price.price;
                 }
             }
-        };
+        }
+        
+        if (type ==='armor') {
+
+            var material = materials[item.material];
+            
+            if (item.material !== 'normal' && item.material) {
+                if (material.armors && material.armors.price && material.armors.price.weight) {
+                    var origWeight = weight;
+                    if (material.weight) {
+                        if (material.weight.mult) {
+                            origWeight = origWeight / material.weight.mult; 
+                        }
+                    }
+                    value += origWeight*material.armors.price.weight;
+                }
+                if (material.armors && material.armors.price && material.armors.price.price) {
+                    value += item.price * material.armors.price.price;
+                }
+            }
+        }
+        
         return value;
     };
 
@@ -56,7 +77,13 @@ app.controller('equipmentController', function ($scope) {
         $scope.$parent.char.equipment.weapons.splice(
             $scope.$parent.char.equipment.weapons.indexOf(weapon), 1);
     };
-    $scope.addArmorAndClose = function(armor) {
+    $scope.addArmorAndClose = function(baseArmor, material) {
+        var armor = JSON.parse(JSON.stringify(baseArmor));
+
+
+        if (material && material !== 'normal') {
+            armor.material = material;
+        }
         $scope.$parent.char.equipment.armors.push(armor);
         $("#armorModal .mmclose").click();
     };
@@ -152,7 +179,7 @@ app.controller('equipmentController', function ($scope) {
         
         if (item.material) {
             var material = materials[item.material];
-            if (material.weapons && material.weight) {
+            if ((material.weapons || material.armor) && material.weight) {
                 if (material.weight.mult) {
                     value = value * material.weight.mult;
                 }
