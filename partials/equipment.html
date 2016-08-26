@@ -137,7 +137,7 @@
                         </tr>
                         <tr ng-repeat="item in char.equipment.armors track by $index">
                             <td>
-                                {{item.name}}
+                                {{item.material}} {{item.name}}
                             </td>
                             <td>
                                 {{item.adjustedWeight = adjustWeightForSize(item, char)}}
@@ -150,7 +150,7 @@
                         </tr>
                         <tr ng-repeat="item in char.equipment.items track by $index">
                             <td>
-                                {{item.name}}
+                                {{item.material}} {{item.name}}
                             </td>
                             <td>
                                 {{item.adjustedWeight = item.weight}}

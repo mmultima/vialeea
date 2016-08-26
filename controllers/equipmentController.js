@@ -29,7 +29,7 @@ app.controller('equipmentController', function ($scope) {
     };
 
     $scope.calculatePrice = function (item, type, weight) {
-        var value = item.price, material = materials[item.material], origWeight = weight;
+        var value = item.price, material = materials[item.material], origWeight = weight, atype = item.type;
         if (type === 'weapon') {
             if (item.material !== 'normal' && item.material) {
                 if (material.weapons && material.weapons.price && material.weapons.price.weight) {
@@ -47,7 +47,8 @@ app.controller('equipmentController', function ($scope) {
         }
         if (type === 'armor') {
             if (item.material !== 'normal' && item.material) {
-                if (material.armors && material.armors.price && material.armors.price.weight) {
+                
+                if (material.armors && material.armors.price && material.armors.price[atype] && material.armors.price[atype].weight) {
                     if (material.weight) {
                         if (material.weight.mult) {
                             origWeight = origWeight / material.weight.mult;
@@ -55,8 +56,8 @@ app.controller('equipmentController', function ($scope) {
                     }
                     value += origWeight * material.armors.price.weight;
                 }
-                if (material.armors && material.armors.price && material.armors.price.price) {
-                    value += item.price * material.armors.price.price;
+                if (material.armors && material.armors.price && material.armors.price[atype] && material.armors.price[atype].add) {
+                    value += material.armors.price[atype].add;
                 }
             }
         }

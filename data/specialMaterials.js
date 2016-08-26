@@ -10,6 +10,15 @@ var materials = {
         },
         armors: {
             price: {
+                light: {
+                    add: 1000
+                },
+                medium: {
+                    add: 4000
+                },
+                heavy: {
+                    add: 9000
+                }
             }
         }
     },
