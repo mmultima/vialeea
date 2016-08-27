@@ -153,7 +153,7 @@
                                 {{item.material}} {{item.name}}
                             </td>
                             <td>
-                                {{item.adjustedWeight = item.weight}}
+                                {{item.adjustedWeight = adjustWeightForSize(item, char)}} 
                             </td>
                             <td>
                                 {{item.adjustedPrice = calculatePrice(item, 'item', item.adjustedWeight)}}
@@ -294,11 +294,22 @@
                     </div>
                 </div>
                 <div>
+                    Material
+                </div>
+                <div>
+                    normal
+                    <input type="radio" ng-model='material' ng-value='normal' name='newItemMaterial'/>
+                </div>
+                <div ng-repeat="(name,material) in materials">
+                    {{name}}
+                    <input type="radio" ng-model='$parent.material' ng-value='name'/ name='newItemMaterial'>
+                </div>
+                <div>
                     Chosen item: {{newItem.name}}
                     Custom: {{newItem.custom}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="addItemAndClose(newItem)+(newItem={})">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="addItemAndClose(newItem, material)+(newItem={})">Add</button>
                     <button type="button" class="btn btn-default mmclose" data-dismiss="modal" id="languageClose">Close</button>
                 </div>
             </div>

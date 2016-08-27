@@ -61,6 +61,21 @@ app.controller('equipmentController', function ($scope) {
                 }
             }
         }
+        if (type === 'item') {
+            if (item.material !== 'normal' && item.material) {
+                if (material.items && material.items.price && material.items.price.weight) {
+                    if (material.weight) {
+                        if (material.weight.mult) {
+                            origWeight = origWeight / material.weight.mult;
+                        }
+                    }
+                    value += origWeight * material.items.price.weight;
+                }
+                if (material.items.price.price) {
+                    value += item.price * material.items.price.price;
+                }
+            }
+        }
         return value;
     };
 
@@ -85,8 +100,12 @@ app.controller('equipmentController', function ($scope) {
             1
         );
     };
-    $scope.addItemAndClose = function (item) {
+    $scope.addItemAndClose = function (baseItem, material) {
         //item.material = material;
+        var item = JSON.parse(JSON.stringify(baseItem));
+        if (material && material !== 'normal') {
+            item.material = material;
+        }
         $scope.$parent.char.equipment.items.push(item);
         $("#itemModal .mmclose").click();
     };

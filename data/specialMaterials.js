@@ -20,6 +20,11 @@ var materials = {
                     add: 9000
                 }
             }
+        },
+        items: {
+            price: {
+                weight: 500
+            }
         }
     },
     'cold iron': {
