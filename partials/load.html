@@ -19,13 +19,13 @@
                             <th>
                                 Load
                             </th>
+                            <th>
+                                Statblock
+                            </th>
+                            <th>
+                                Mekanismi
+                            </th>
                         </tr>
-                        <th>
-                            statblock
-                        </th>
-                        <th>
-                            mekanismi
-                        </th>
                         <tr ng-repeat="character in allCharacters">
                             <td>
                                 {{character.name}}
@@ -40,7 +40,7 @@
                                 <A HREF="statblock.html?char={{character._id}}">statblock</A>
                             </td>
                             <td>
-                                <A HREF="mekanismi.html?char={{character._id}}">statblock</A>
+                                <A HREF="mekanismi.html?char={{character._id}}">mekanismi</A>
                             </td>
                         </tr>
                     </table>
