@@ -20,6 +20,12 @@
                                 Load
                             </th>
                         </tr>
+                        <th>
+                            statblock
+                        </th>
+                        <th>
+                            mekanismi
+                        </th>
                         <tr ng-repeat="character in allCharacters">
                             <td>
                                 {{character.name}}
@@ -29,6 +35,12 @@
                             </td>
                             <td>
                                 <button ng-click='load(character._id)'>Load</button>
+                            </td>
+                            <td>
+                                <A HREF="statblock.html?char={{character._id}}">statblock</A>
+                            </td>
+                            <td>
+                                <A HREF="mekanismi.html?char={{character._id}}">statblock</A>
                             </td>
                         </tr>
                     </table>
