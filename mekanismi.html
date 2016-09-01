@@ -175,16 +175,17 @@
 ->''Shelyn!''
 
 Female Elf ''Paladin of Shelyn 3''\\
-{{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span>{{myclass.name}} {{char.classes[myclass.name]}}</span></span>
+{{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span>{{myclass.name}} {{char.classes[myclass.name]}}</span></span>\\
 Lawful Good Medium Humanoid (Elf)\\
+{{$parent.char.alignment}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}\\
 '''Player''' [[~mmultima]] (97350-12)\\
 '''Xp''' 7\\
 '''Faction''' Liberty's Edge\\
 '''Prestige/Fame''' 10/14\\
 '''Profession''' Musician
 ----
-'''Init''' +3 (+3 dex)\\
-'''Senses''' Perception +0
+'''Init''' <span ng-controller='statsController'>+{{calculateInit()}}</span> (+X dex)\\
+'''Senses''' <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
 ----
 '''AC''' 19, touch 13, flat-footed 16; (+6 armor, +3 Dex)\\
 '''hp''' 31 (22 base, 3 con, 3 fc, 3 toughness)\\
