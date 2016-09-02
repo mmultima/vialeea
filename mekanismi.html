@@ -203,7 +203,9 @@ Spells known:\\
 none yet
 ----
 '''Str''' 15, '''Dex''' 16, '''Con''' 12, '''Int''' 12, '''Wis''' 7, '''Cha''' 15\\
+'''Str''' {{$parent.char.totalstat['str']}}, '''Dex''' {{$parent.char.totalstat['dex']}}, '''Con''' {{$parent.char.totalstat['con']}}, '''Int''' {{$parent.char.totalstat['int']}}, '''Wis''' {{$parent.char.totalstat['wis']}}, '''Cha''' {{$parent.char.totalstat['cha']}}\\
 '''Base Atk''' +3; '''CMB''' +5 (+3 BAB +2 Str); '''CMD''' 18 (+5 CMB, +3 dex)\\
+'''Base Atk''' +{{char.BAB}} '''CMB''' +{{cmb = char.BAB + statBonus($parent.char.totalstat['str'])}} '''CMD''' {{10+cmb+statBonus($parent.char.totalstat['dex'])}}\\
 '''Weight''' 120 lbs\\
 '''Height''' 5' 8"\\
 '''Feats''' Toughness, Power Attack\\
