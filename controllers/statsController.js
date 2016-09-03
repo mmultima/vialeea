@@ -55,15 +55,28 @@ app.controller('statsController', function ($scope) {
     };
 
     $scope.calculateInit = function() {
-        var init = $scope.statBonus($scope.$parent.char.totalstat['dex']);
-        
-        for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
-           if ($scope.$parent.char.feats[i].name === 'Improved Initiative') {
-               init += 4;
-           }
+        if (!$scope.$parent || !$scope.$parent.char) {
+            return 0;
         }
-        if ($scope.$parent.char.classes['Investigator (sleuth)']) {
-            init += 2;
+
+        var dex = 0;
+        if ($scope.$parent.char.totalstat) {
+            dex = $scope.statBonus($scope.$parent.char.totalstat['dex']);
+        }
+
+        var init = dex;
+        
+        if ($scope.$parent.char.feats) {
+            for (var i = 0; i < $scope.$parent.char.feats.length; i++) {
+                if ($scope.$parent.char.feats[i].name === 'Improved Initiative') {
+                    init += 4;
+                }
+            }
+        }
+        if ($scope.$parent.char.classes) {
+            if ($scope.$parent.char.classes['Investigator (sleuth)']) {
+                init += 2;
+            }
         }
         return init;
     };

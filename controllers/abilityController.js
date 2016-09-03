@@ -1,6 +1,8 @@
 app.controller('abilityController', function ($scope) {
     $scope.deeds = deeds;
 
+    $scope.classAbilityDescriptions = classAbilityDescriptions;
+
     var getClass = function(key) {
         for (var i = 0; i < classes.length; i++) {
             if (key === classes[i].name) {

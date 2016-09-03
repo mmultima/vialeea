@@ -139,16 +139,29 @@
                         <div>
                             <b>Special abilities</b>
                         </div>
-                        <div ng-repeat='ability in getClassAbilities(char)'>
-                            <p ng-repeat='pg in ability.Text'>
-                                <span ng-if='$first'><b>{{ability.name}}</b></span>
-                                {{pg}}
-                            </p>
-                            <div ng-repeat='deed in ability.deeds'>
-                                <p ng-repeat="deedtext in deeds[deed]">
-                                    <span ng-if="$first"><b>{{deed}}</b></span>
-                                    {{deedtext}}
-                                </p>
+                        <div ng-repeat='(key, value) in char.classes'>
+                            <div ng-if='value > 0'>
+                                <div ng-repeat='myClass in classes | filter:{name:key}'>
+                                    <div ng-repeat="(ability, value) in myClass['class abilities']">
+                                        <div ng-if='classAbilityDescriptions[ability]'>
+                                            <p ng-repeat='pg in classAbilityDescriptions[ability].Text'>
+                                            <span ng-if='$first'><b>{{ability}}</b></span>
+                                            {{pg}}
+                                            </p>
+                                            <div ng-repeat='deed in classAbilityDescriptions[ability].Deeds'>
+                                                <p ng-repeat="deedtext in deeds[deed]">
+                                                    <span ng-if="$first"><b>{{deed}}</b></span>
+                                                    {{deedtext}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div ng-if='!classAbilityDescriptions[ability]'>
+                                            <p>
+                                            <b>{{ability}}</b> No description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
