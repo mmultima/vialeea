@@ -146,23 +146,6 @@
                         <span ng-repeat='language in char.race.languages'>{{language}}<span ng-if="!$last">, </span></span><span ng-if="char.languages.length > 0">,</span>
                         <span ng-repeat='language in char.languages'>{{language}}<span ng-if="!$last">, </span></span>
                     </div>
-                    <div ng-controller='abilityController'>
-                        <div>
-                            <b>Special abilities</b>
-                        </div>
-                        <div ng-repeat='ability in getClassAbilities(char)'>
-                            <p ng-repeat='pg in ability.Text'>
-                                <span ng-if='$first'><b>{{ability.name}}</b></span>
-                                {{pg}}
-                            </p>
-                            <div ng-repeat='deed in ability.deeds'>
-                                <p ng-repeat="deedtext in deeds[deed]">
-                                    <span ng-if="$first"><b>{{deed}}</b></span>
-                                    {{deedtext}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div ng-controller="statblockController">
@@ -175,7 +158,7 @@
 ->''Shelyn!''
 
 Female Elf ''Paladin of Shelyn 3''\\
-{{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span>{{myclass.name}} {{char.classes[myclass.name]}}</span></span>\\
+{{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span><span ng-if="char.classMeta.favourite===myclass.name">''</span>{{myclass.name}} {{char.classes[myclass.name]}}<span ng-if="char.classMeta.favourite===myclass.name">''</span></span></span>\\
 Lawful Good Medium Humanoid (Elf)\\
 {{expandAlignment($parent.char.alignment)}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}\\
 '''Player''' [[~mmultima]] (97350-12)\\
