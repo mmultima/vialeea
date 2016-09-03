@@ -14,4 +14,20 @@ app.controller('statblockController', function ($scope) {
         return size==='M'?'Medium':'Small';
     };
 
+    $scope.expandAlignment = function(abbr) {
+        //return;
+        if(!abbr) {
+            return;
+        }
+
+        if (abbr.length > 1) {
+            abbr = abbr.substring(0,1) + " " + abbr.substring(1);
+        }
+        abbr = abbr.replace('L', 'Lawful');
+        abbr = abbr.replace('N', 'Neutral');
+        abbr = abbr.replace('C', 'Chaotic');
+        abbr = abbr.replace('G', 'Good');
+        abbr = abbr.replace('E', 'Evil');
+        return abbr;
+    };
 });
