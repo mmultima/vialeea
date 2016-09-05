@@ -171,8 +171,11 @@ Lawful Good Medium Humanoid (Elf)\\
 '''Senses''' <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
 ----
 '''AC''' 19, touch 13, flat-footed 16; (+6 armor, +3 Dex)\\
+'''AC''' <span ng-controller='statsController'>{{10 + statBonus($parent.char.totalstat['dex']) + armorBonus(char)}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10 + armorBonus(char)}}; (+X armor, +Y Dex)</span>\\
 '''hp''' 31 (22 base, 3 con, 3 fc, 3 toughness)\\
+'''hp''' {{$parent.char.hp}} (X base, Y con)\\
 '''Fort''' +6, '''Ref''' +6, '''Will''' +3\\
+<span ng-controller='statsController'>'''Fort''' +{{calculateTotalSave('Fort')}}, '''Ref''' +{{calculateTotalSave('Ref')}}, '''Will''' +{{calculateTotalSave('Will')}}</span>\\
 '''Special Defenses''' Immune to sleep, ghoul, +2 enchantment save.
 ----
 '''Speed''' 20 ft\\
