@@ -200,6 +200,7 @@ none yet
 '''Skills''' Skill points 9 (6 class, 3 int), Knowledge: Nature +7 (2), Perform: Wind +3 (1), Stealth +6-4 (1), Diplomacy +8 (3), Knowledge: Religion +5 (1), ACP -4\\
 '''Skills'''<span ng-controller='skillsController'><span ng-repeat='skill in skills'><span ng-if='!skill.subtype'><span ng-if='char.skills[skill.name]'> {{skill.name}} +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}}<span ng-if='!$last'>,</span></span></span><span ng-if='skill.subtype'><span ng-repeat='subtype in skill.subtypes'><span ng-if="char.skills[skill.name+'('+subtype+')']"> {{skill.name+'('+subtype+')'}} +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name+'('+subtype+')']&&isClassSkill(skill.name+'('+subtype+')'))*3}},</span></span></span></span></span>\\
 '''Traits''' Devotee of the Green (+1 Kn: N/G, Kn:N class), Freedom Fighter (+1 Stealth, +1 Attacks on surprise rounds)\\
+'''Traits''' <span ng-repeat="trait in char.traits">{{trait.name}}<span ng-if="!$last">, </span></span>\\
 '''Languages''' Taldane, Elf, Celestial\\
 '''Homeland''' Kyonin\\
 '''SQ''' Elf, Lay on Hands 3/day 1d6, Mercy: remove Sickened\\
