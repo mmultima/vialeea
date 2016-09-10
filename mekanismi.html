@@ -207,7 +207,7 @@ none yet
 '''SQ''' Elf, Lay on Hands 3/day 1d6, Mercy: remove Sickened\\
 '''Racial''' Low-light vision, +2 perc.
 ----
-'''Equipment''' <span ng-repeat="item in char.equipment.weapons track by $index"><span ng-if="$!first">, </span>{{item.material}} {{item.name}}</span><span ng-repeat="item in char.equipment.armors track by $index"><span ng-if="$!first">, </span>{{item.material}} {{item.name}}</span><span ng-repeat="item in char.equipment.items track by $index"><span ng-if="$!first">, </span>{{item.material}} {{item.name}}</span>
+'''Equipment''' <span ng-repeat="item in char.equipment.weapons track by $index"><span ng-if="!$first">, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.armors track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.items track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span>
 '''On person''' Explorer's Outfit 8, Breastplate 30, Elven Curve Blade 7, Longsword 4, Cold Iron Dagger 1, Silver Light Mace 4, Heavy Wooden Shield 10, 2 Alchemist's Fire 2, Glaive 10, Wayfinder 1, Wand of Cure Light Wounds (19) 0, Wand of Bless Weapon (34) 0, Longbow 3, 14 Arrows 3, Cold Iron Arrows (20) 3, Silver Arrows (20) 3, Adamantine Elven Curve Blade 'Ainulindale' 7\\
 '''In backpack''' Backpack 2, Grappling Hook 4, Silk Rope 5, Flute 3\\
 '''Wealth''' 71g\\
