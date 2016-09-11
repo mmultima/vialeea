@@ -125,6 +125,10 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/class.html',
                 controller: 'classController'
             });
+            $routeProvider.when('/appearance', {
+                templateUrl: 'partials/appearance.html',
+                controller: 'appearanceController'
+            });
             $routeProvider.otherwise({
                 redirectTo: '/stats'
             });
