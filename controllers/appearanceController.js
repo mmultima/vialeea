@@ -1,3 +1,3 @@
-app.controller('loadController', function ($scope, $resource) {
+app.controller('appearanceController', function ($scope, $resource) {
     //Nothing yet.
 });
