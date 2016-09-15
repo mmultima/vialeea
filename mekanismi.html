@@ -162,10 +162,15 @@ Female Elf ''Paladin of Shelyn 3''\\
 Lawful Good Medium Humanoid (Elf)\\
 {{expandAlignment($parent.char.alignment)}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}\\
 '''Player''' [[~mmultima]] (97350-12)\\
-'''Xp''' 7\\
+'''Player''' [[~{{$parent.char.misc.player}}]]
+'''XP''' 7\\
+'''XP''' {{$parent.char.misc.xp}}\\
 '''Faction''' Liberty's Edge\\
+'''Faction''' {{$parent.char.misc.faction}}
 '''Prestige/Fame''' 10/14\\
+'''Prestige/Fame''' {{$parent.char.misc.prestige}}/{{$parent.char.misc.prestige}}\\
 '''Profession''' Musician
+'''Profession''' {{$parent.char.misc.profession}}
 ----
 '''Init''' <span ng-controller='statsController'>+{{calculateInit()}}</span> (+X dex)\\
 '''Senses''' <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
