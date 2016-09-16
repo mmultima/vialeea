@@ -217,6 +217,7 @@ none yet
 '''In backpack''' Backpack 2, Grappling Hook 4, Silk Rope 5, Flute 3\\
 '''Wealth''' 71g\\
 '''Encumbrance'''  96 lb. without backpack, 110 lb. with backpack ( 66 lb. light/ 133 lb. medium/ 200 lb. heavy)
+'''Encumbrance''' <span ng-controller='statsController'>({{floor(calculateCarryingCapacity(char.totalstat['str'])/3)}}/{{floor(2*calculateCarryingCapacity(char.totalstat['str'])/3)}}/{{(calculateCarryingCapacity(char.totalstat['str']))}})</span>
 ----
 '''Notes'''
 \\
