@@ -199,7 +199,9 @@ none yet
 '''Base Atk''' +3; '''CMB''' +5 (+3 BAB +2 Str); '''CMD''' 18 (+5 CMB, +3 dex)\\
 '''Base Atk''' +{{char.BAB}} '''CMB''' +{{cmb = char.BAB + statBonus($parent.char.totalstat['str'])}} '''CMD''' {{10+cmb+statBonus($parent.char.totalstat['dex'])}}\\
 '''Weight''' 120 lbs\\
+'''Weight''' {{$parent.char.appearance.weight}} lbs\\
 '''Height''' 5' 8"\\
+'''Height''' {{$parent.char.appearance.height}}' {{$parent.char.appearance.heightin}}"\\
 '''Feats''' Toughness, Power Attack\\
 '''Feats''' <span ng-repeat="feat in char.feats">{{feat.name}}<span ng-if="!$last">, </span></span>\\
 '''Skills''' Skill points 9 (6 class, 3 int), Knowledge: Nature +7 (2), Perform: Wind +3 (1), Stealth +6-4 (1), Diplomacy +8 (3), Knowledge: Religion +5 (1), ACP -4\\
