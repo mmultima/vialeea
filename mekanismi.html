@@ -210,7 +210,7 @@ none yet
 '''Traits''' <span ng-repeat="trait in char.traits">{{trait.name}}<span ng-if="!$last">, </span></span>\\
 '''Languages''' Taldane, Elf, Celestial\\
 '''Languages''' <span ng-repeat="racelang in char.race.languages">{{racelang}}, </span><span ng-repeat="lang in char.languages">{{lang}}<span ng-if='!$last'>, </span></span>
-'''Homeland''' Kyonin\\
+'''Homeland''' {{$parent.char.misc.homeland}}\\
 '''SQ''' Elf, Lay on Hands 3/day 1d6, Mercy: remove Sickened\\
 '''Racial''' Low-light vision, +2 perc.
 ----
