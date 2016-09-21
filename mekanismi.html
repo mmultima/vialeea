@@ -193,6 +193,9 @@ Lawful Good Medium Humanoid (Elf)\\
 ----
 Spells known:\\
 none yet
+<span ng-controller='spellsController'><span ng-repeat="spellList in charSpellLists(char)">
+{{spellList}}<span ng-repeat='level in "0123456789".split("")'><span ng-if='char.spells[spellList][level]'>
+{{level}}: <span ng-repeat='spell in char.spells[spellList][level]'>{{spell.name}}<span ng-if="spell.amount>1"> x{{spell.amount}}</span><span ng-if='!$last'>,</span> </span></span></span></span></span>
 ----
 '''Str''' 15, '''Dex''' 16, '''Con''' 12, '''Int''' 12, '''Wis''' 7, '''Cha''' 15\\
 '''Str''' {{$parent.char.totalstat['str']}}, '''Dex''' {{$parent.char.totalstat['dex']}}, '''Con''' {{$parent.char.totalstat['con']}}, '''Int''' {{$parent.char.totalstat['int']}}, '''Wis''' {{$parent.char.totalstat['wis']}}, '''Cha''' {{$parent.char.totalstat['cha']}}\\
