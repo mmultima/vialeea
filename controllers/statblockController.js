@@ -14,6 +14,20 @@ app.controller('statblockController', function ($scope) {
         return size==='M'?'Medium':'Small';
     };
 
+    $scope.getNumEnd = function(num) {
+        if (num === 1 || num === '1') {
+            return 'st';
+        }
+        if (num === 2 || num === '2') {
+            return 'nd';
+        }
+        if (num === 3 || num === '3') {
+            return 'rd';
+        }
+        return 'th';
+    };
+
+
     $scope.expandAlignment = function(abbr) {
         //return;
         if(!abbr) {
