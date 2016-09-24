@@ -46,19 +46,10 @@
         <div class="container-fluid" ng-controller='myController'>
             <div ng-controller="statblockController">
             <pre>
-[-[[!Pathfinder Society -hahmot]]-]
-
-%rfloat width=280px%Attach:.jpg%%
-
-!!{{$parent.char.name}}
-->''Shelyn!''
-
-Female Elf ''Paladin of Shelyn 3''\\
-{{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span><span ng-if="char.classMeta.favourite===myclass.name">''</span>{{myclass.name}} {{char.classes[myclass.name]}}<span ng-if="char.classMeta.favourite===myclass.name">''</span></span></span>\\
-Lawful Good Medium Humanoid (Elf)\\
-{{expandAlignment($parent.char.alignment)}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}\\
-'''Player''' [[~mmultima]] (97350-12)\\
-'''Player''' [[~{{$parent.char.misc.player}}]]
+[b]Character[/b] {{$parent.char.name}}
+[b]Sex and classes[/b] {{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span><span ng-if="char.classMeta.favourite===myclass.name">''</span>{{myclass.name}} {{char.classes[myclass.name]}}<span ng-if="char.classMeta.favourite===myclass.name">''</span></span></span>
+[b]Alignment and type[/b] {{expandAlignment($parent.char.alignment)}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
+[b]PFS number[/b] [[~{{$parent.char.misc.number}}]]
 '''XP''' 7\\
 '''XP''' {{$parent.char.misc.xp}}\\
 '''Faction''' Liberty's Edge\\
