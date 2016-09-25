@@ -50,14 +50,10 @@
 [b]Sex and classes[/b] {{sexName($parent.char.sex)}} {{$parent.char.race.name}} <span ng-repeat="myclass in classes"><span ng-if="$parent.char.classes[myclass.name]"><span ng-if="!isFirst(myclass.name)">/</span><span ng-if="char.classMeta.favourite===myclass.name">''</span>{{myclass.name}} {{char.classes[myclass.name]}}<span ng-if="char.classMeta.favourite===myclass.name">''</span></span></span>
 [b]Alignment and type[/b] {{expandAlignment($parent.char.alignment)}} {{getSizeName($parent.char.race.size)}} {{$parent.char.race.types}}
 [b]PFS number[/b] [[~{{$parent.char.misc.number}}]]
-'''XP''' 7\\
-'''XP''' {{$parent.char.misc.xp}}\\
-'''Faction''' Liberty's Edge\\
-'''Faction''' {{$parent.char.misc.faction}}
-'''Prestige/Fame''' 10/14\\
-'''Prestige/Fame''' {{$parent.char.misc.prestige}}/{{$parent.char.misc.prestige}}\\
-'''Profession''' Musician
-'''Profession''' {{$parent.char.misc.profession}}
+[b]XP[/b]{{$parent.char.misc.xp}}
+[b]Faction[/b]{{$parent.char.misc.faction}}
+[b]Prestige/Fame[/b]{{$parent.char.misc.prestige}}/{{$parent.char.misc.fame}}
+[b]XP[/b]{{$parent.char.misc.profession}}
 ----
 '''Init''' <span ng-controller='statsController'>+{{calculateInit()}}</span> (+X dex)\\
 '''Senses''' <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
