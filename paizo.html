@@ -55,24 +55,17 @@
 [b]Prestige/Fame[/b]{{$parent.char.misc.prestige}}/{{$parent.char.misc.fame}}
 [b]XP[/b]{{$parent.char.misc.profession}}
 ----
-'''Init''' <span ng-controller='statsController'>+{{calculateInit()}}</span> (+X dex)\\
-'''Senses''' <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
+[b]Init[/b] <span ng-controller='statsController'>+{{calculateInit()}}</span> (+X dex)\\
+[b]Senses[/b] <span ng-controller='skillsController'>Perception +{{$parent.char.skills['Perception'] + statBonus($parent.$parent.char.totalstat['wis']) + ($parent.char.skills['Perception']&&isClassSkill('Perception'))*3}}</span>
 ----
-'''AC''' 19, touch 13, flat-footed 16; (+6 armor, +3 Dex)\\
-'''AC''' <span ng-controller='statsController'>{{10 + statBonus($parent.char.totalstat['dex']) + armorBonus(char)}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10 + armorBonus(char)}}; (+X armor, +Y Dex)</span>\\
-'''hp''' 31 (22 base, 3 con, 3 fc, 3 toughness)\\
-'''hp''' {{$parent.char.hp}} (X base, Y con)\\
-'''Fort''' +6, '''Ref''' +6, '''Will''' +3\\
-<span ng-controller='statsController'>'''Fort''' +{{calculateTotalSave('Fort')}}, '''Ref''' +{{calculateTotalSave('Ref')}}, '''Will''' +{{calculateTotalSave('Will')}}</span>\\
-'''Special Defenses''' Immune to sleep, ghoul, +2 enchantment save.
+[b]AC[/b] <span ng-controller='statsController'>{{10 + statBonus($parent.char.totalstat['dex']) + armorBonus(char)}}, touch {{10+statBonus($parent.char.totalstat['dex'])}}, flat-footed {{10 + armorBonus(char)}}; (+X armor, +Y Dex)</span>\\
+[b]hp[/b] {{$parent.char.hp}} (X base, Y con)\\
+<span ng-controller='statsController'>[b]Fort[/b] +{{calculateTotalSave('Fort')}}, [b]Ref[/b] +{{calculateTotalSave('Ref')}}, [b]Will[/b] +{{calculateTotalSave('Will')}}</span>\\
+[b]Special Defenses[/b] Immune to sleep, ghoul, +2 enchantment save.
 ----
-'''Speed''' 20 ft\\
-'''Speed''' {{char.race.speed}} ft\\
-'''Melee''' Adamantine Elven curve blade +6 (1d10+3) (18-20 x2) S\\
-'''Melee''' Smite Adamantine Elven curve blade +8 (1d10+6) (18-20 x2) S\\
-'''Melee''' PA Adamantine Elven curve blade +5 (1d10+6) (18-20 x2) S\\
-'''Melee''' PA Adamantine Smite Elven curve blade +7 (1d10+9) (18-20 x2) S\\
-'''Special Attacks''' Smite evil 1/day +cha hit +lvl dam, +2 to hit evil 1/day, +1 attack on suprise round
+[b]Speed[/b] {{char.race.speed}} ft\\
+[b]Melee[/b] Adamantine Elven curve blade +6 (1d10+3) (18-20 x2) S\\
+[b]Special Attacks[/b] Smite evil 1/day +cha hit +lvl dam, +2 to hit evil 1/day, +1 attack on suprise round
 ----
 Spells known:\\
 none yet
@@ -80,39 +73,23 @@ none yet
 {{spellList}}<span ng-repeat='level in "0123456789".split("")'><span ng-if='char.spells[spellList][level]'>
 {{level}}{{getNumEnd(level)}} — <span ng-repeat='spell in char.spells[spellList][level]'>{{spell.name}}<span ng-if="spell.amount>1"> x{{spell.amount}}</span><span ng-if='!$last'>,</span> </span></span></span></span></span>
 ----
-'''Str''' 15, '''Dex''' 16, '''Con''' 12, '''Int''' 12, '''Wis''' 7, '''Cha''' 15\\
-'''Str''' {{$parent.char.totalstat['str']}}, '''Dex''' {{$parent.char.totalstat['dex']}}, '''Con''' {{$parent.char.totalstat['con']}}, '''Int''' {{$parent.char.totalstat['int']}}, '''Wis''' {{$parent.char.totalstat['wis']}}, '''Cha''' {{$parent.char.totalstat['cha']}}\\
-'''Base Atk''' +3; '''CMB''' +5 (+3 BAB +2 Str); '''CMD''' 18 (+5 CMB, +3 dex)\\
-'''Base Atk''' +{{char.BAB}} '''CMB''' +{{cmb = char.BAB + statBonus($parent.char.totalstat['str'])}} '''CMD''' {{10+cmb+statBonus($parent.char.totalstat['dex'])}}\\
-'''Weight''' 120 lbs\\
-'''Weight''' {{$parent.char.appearance.weight}} lbs\\
-'''Height''' 5' 8"\\
-'''Height''' {{$parent.char.appearance.height}}' {{$parent.char.appearance.heightin}}"\\
-'''Feats''' Toughness, Power Attack\\
-'''Feats''' <span ng-repeat="feat in char.feats">{{feat.name}}<span ng-if="!$last">, </span></span>\\
-'''Skills''' Skill points 9 (6 class, 3 int), Knowledge: Nature +7 (2), Perform: Wind +3 (1), Stealth +6-4 (1), Diplomacy +8 (3), Knowledge: Religion +5 (1), ACP -4\\
-'''Skills'''<span ng-controller='skillsController'><span ng-repeat='skill in skills'><span ng-if='!skill.subtype'><span ng-if='char.skills[skill.name]'> {{skill.name}} +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}}<span ng-if='!$last'>,</span></span></span><span ng-if='skill.subtype'><span ng-repeat='subtype in skill.subtypes'><span ng-if="char.skills[skill.name+'('+subtype+')']"> {{skill.name+'('+subtype+')'}} +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name+'('+subtype+')']&&isClassSkill(skill.name+'('+subtype+')'))*3}},</span></span></span></span></span>\\
-'''Traits''' Devotee of the Green (+1 Kn: N/G, Kn:N class), Freedom Fighter (+1 Stealth, +1 Attacks on surprise rounds)\\
-'''Traits''' <span ng-repeat="trait in char.traits">{{trait.name}}<span ng-if="!$last">, </span></span>\\
-'''Languages''' Taldane, Elf, Celestial\\
-'''Languages''' <span ng-repeat="racelang in char.race.languages">{{racelang}}, </span><span ng-repeat="lang in char.languages">{{lang}}<span ng-if='!$last'>, </span></span>
-'''Homeland''' {{$parent.char.misc.homeland}}\\
-'''SQ''' Elf, Lay on Hands 3/day 1d6, Mercy: remove Sickened\\
-'''Racial''' Low-light vision, +2 perc.
+[b]Str[/b] {{$parent.char.totalstat['str']}}, [b]Dex[/b] {{$parent.char.totalstat['dex']}}, [b]Con[/b] {{$parent.char.totalstat['con']}}, [b]Int[/b] {{$parent.char.totalstat['int']}}, [b]Wis[/b] {{$parent.char.totalstat['wis']}}, [b]Cha[/b] {{$parent.char.totalstat['cha']}}\\
+[b]Base Atk[/b] +{{char.BAB}} [b]CMB[/b] +{{cmb = char.BAB + statBonus($parent.char.totalstat['str'])}} [b]CMD[/b] {{10+cmb+statBonus($parent.char.totalstat['dex'])}}\\
+[b]Weight[/b] {{$parent.char.appearance.weight}} lbs\\
+[b]Height[/b] {{$parent.char.appearance.height}}' {{$parent.char.appearance.heightin}}"\\
+[b]Feats[/b] <span ng-repeat="feat in char.feats">{{feat.name}}<span ng-if="!$last">, </span></span>\\
+[b]Skills[/b]<span ng-controller='skillsController'><span ng-repeat='skill in skills'><span ng-if='!skill.subtype'><span ng-if='char.skills[skill.name]'> {{skill.name}} +{{$parent.char.skills[skill.name] + statBonus($parent.$parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name]&&isClassSkill(skill.name))*3}}<span ng-if='!$last'>,</span></span></span><span ng-if='skill.subtype'><span ng-repeat='subtype in skill.subtypes'><span ng-if="char.skills[skill.name+'('+subtype+')']"> {{skill.name+'('+subtype+')'}} +{{$parent.char.skills[skill.name+'('+subtype+')'] + statBonus($parent.char.totalstat[skill.stat]) + ($parent.char.skills[skill.name+'('+subtype+')']&&isClassSkill(skill.name+'('+subtype+')'))*3}},</span></span></span></span></span>\\
+[b]Traits[/b] <span ng-repeat="trait in char.traits">{{trait.name}}<span ng-if="!$last">, </span></span>\\
+[b]Languages[/b] <span ng-repeat="racelang in char.race.languages">{{racelang}}, </span><span ng-repeat="lang in char.languages">{{lang}}<span ng-if='!$last'>, </span></span>
+[b]Homeland[/b] {{$parent.char.misc.homeland}}\\
+[b]SQ[/b] Elf, Lay on Hands 3/day 1d6, Mercy: remove Sickened\\
+[b]Racial[/b] Low-light vision, +2 perc.
 ----
-'''Equipment''' <span ng-repeat="item in char.equipment.weapons track by $index"><span ng-if="!$first">, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.armors track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.items track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span>
-'''On person''' Explorer's Outfit 8, Breastplate 30, Elven Curve Blade 7, Longsword 4, Cold Iron Dagger 1, Silver Light Mace 4, Heavy Wooden Shield 10, 2 Alchemist's Fire 2, Glaive 10, Wayfinder 1, Wand of Cure Light Wounds (19) 0, Wand of Bless Weapon (34) 0, Longbow 3, 14 Arrows 3, Cold Iron Arrows (20) 3, Silver Arrows (20) 3, Adamantine Elven Curve Blade 'Ainulindale' 7\\
-'''In backpack''' Backpack 2, Grappling Hook 4, Silk Rope 5, Flute 3\\
-'''Wealth''' 71g\\
-'''Encumbrance'''  96 lb. without backpack, 110 lb. with backpack ( 66 lb. light/ 133 lb. medium/ 200 lb. heavy)
-'''Encumbrance''' <span ng-controller='equipmentController'>{{calculateTotal('adjustedWeight', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}</span> lbs. <span ng-controller='statsController'>( {{floor(calculateCarryingCapacity(char.totalstat['str'])/3)}} lb. light / {{floor(2*calculateCarryingCapacity(char.totalstat['str'])/3)}} lb. medium / {{(calculateCarryingCapacity(char.totalstat['str']))}} lb. heavy )</span>
+[b]Equipment[/b] <span ng-repeat="item in char.equipment.weapons track by $index"><span ng-if="!$first">, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.armors track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span><span ng-repeat="item in char.equipment.items track by $index"><span>, </span><span ng-if="item.material">{{item.material}} </span>{{item.name}}</span>
+[b]Wealth[/b] 71g\\
+[b]Encumbrance[/b] <span ng-controller='equipmentController'>{{calculateTotal('adjustedWeight', char.equipment.weapons, char.equipment.armors, char.equipment.items)}}</span> lbs. <span ng-controller='statsController'>( {{floor(calculateCarryingCapacity(char.totalstat['str'])/3)}} lb. light / {{floor(2*calculateCarryingCapacity(char.totalstat['str'])/3)}} lb. medium / {{(calculateCarryingCapacity(char.totalstat['str']))}} lb. heavy )</span>
 ----
-'''Notes'''
-\\
-\\
-'''Pelatut Skenaariot'''
-||!Tunnus ||!Skenaario ||!Päivä ||!GM ||!Ryhmä ||
-|| ||The Confirmation||9.2.2015||[[~mosillan]]||Lini Nassaler XX||
+[b]Notes[/b]
 \\
 </pre>
             </div>
