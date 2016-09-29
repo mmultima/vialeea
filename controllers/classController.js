@@ -5,6 +5,7 @@ app.controller('classController', function ($scope) {
     if (!$scope.$parent.char.classMeta) {
         $scope.$parent.char.classMeta = {};
         $scope.$parent.char.favouriteBonuses={};
+        $scope.$parent.char.classMeta.archetypes = {};
     }
 
     $scope.util = util;

@@ -91,6 +91,9 @@
                 <div class="panel-body">
                     Level: {{level}}
                 </div>
+                <div>
+                    Archetypes: <span ng-if='!char.classMeta.archetypes[myClass]'>none</span>
+                </div>
             </div>
         </div>
         <div class="col-md-6" ng-if="level">
