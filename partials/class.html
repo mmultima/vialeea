@@ -143,4 +143,24 @@
             </div>
         </div>
     </div>
+    <div id="archetypeModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose an archetype</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="archetype in archetypes">
+                        {{archetype.name}}
+                        <input type="radio" ng-model='$parent.newArchetype' ng-value='archetype' name='newArchetypeRadio'/>
+                    </div>
+                    <div>
+                        Custom item
+                        <input type="radio" ng-model='newArchetype' name='newArchetypeRadio' ng-value='customArchetype'/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
