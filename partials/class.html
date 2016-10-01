@@ -89,10 +89,19 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    Level: {{level}}
-                </div>
-                <div>
-                    Archetypes: <span ng-if='!char.classMeta.archetypes[myClass]'>none</span>
+                    <div>
+                        Level: {{level}}
+                    </div>
+                    <div>
+                        Archetypes: 
+                        <span ng-if='!char.classMeta.archetypes[myClass]'>none</span>
+                    </div>
+                    <div>
+                        <button type="button" data-toggle="modal" data-target="#archetypeModal" ng-click="$parent.$parent.archetypeFor=myClass">Add archetype</button>
+                    </div>
+                    <div>
+                        {{$parent.$parent.archetypeFor}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,7 +157,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Choose an archetype</h4>
+                    <h4 class="modal-title">Choose an archetype for {{archetypeFor}}</h4>
                 </div>
                 <div class="modal-body">
                     <div ng-repeat="archetype in archetypes">
