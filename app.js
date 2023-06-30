@@ -106,4 +106,7 @@ app.post('/rest/char/:id', update);
 
 app.use(express.static('static'));
 
-app.listen(28888);
+module.exports = app;
+
+
+//app.listen(28888);
