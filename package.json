@@ -2,7 +2,7 @@
   "name": "vialeea-character-builder",
   "version": "0.0.1",
   "scripts": {
-    "start-local": "node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
