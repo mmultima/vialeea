@@ -104,6 +104,6 @@ app.get('/rest/char', getOneChar);
 app.post('/rest/char', store);
 app.post('/rest/char/:id', update);
 
-app.use(express.static('..'));
+app.use(express.static('static'));
 
 app.listen(28888);
