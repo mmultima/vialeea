@@ -56,7 +56,7 @@ run().catch(console.dir);
 var uri = "mongodb://vialeea-db:QcGXxHOMnaLJ2ej2CLPrvklVD32xlUgvmYIZ0JMLFThHB1g0EkESip3kmgVMBWvzCokMGyxkf0QJACDbdSBawQ==@vialeea-db.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@vialeea-db@";
 
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // Replace the placeholder with your Atlas connection string
 //const uri = "<connection string>";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -71,6 +71,8 @@ const client = new MongoClient(uri,  {
 );
 */
 
+var db;
+
 const client = new MongoClient(uri);
 
 async function run() {
@@ -80,9 +82,30 @@ async function run() {
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+    db = client.db("vialeea-test");
+    var collection = db.collection("pfusers");
+    var users = await collection.find().toArray();
+
+    for(var i = 0; i < users.length; i++) {
+        var user = users[i];
+        console.log("ID: " + user._id + " name: " + user.name);
+        //users.foreach(user => console.log("ID: " + user.id + " name: " + user.name));
+    }
+    //console.log("Users: " + users);
+    /*
+    db.collection('pfusers', function(err, collection) {
+        collection.find({}, {name:1, _id:1}).toArray(function (err, items) {
+            console.log(items);
+        });
+    });  
+    */
+   //collection.
+
+
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+    //await client.close();
   }
 }
 run().catch(console.dir);
@@ -97,19 +120,37 @@ app.get('/testdata', function(req, res) {
     res.send({jotain: 'arvo'});
 });
 
-app.get('/rest/char/:id', function(req, res) {
+app.get('/rest/char2/:id', async function(req, res) {
     var id = req.params.id;
+
+    var collection = db.collection("characters");
+    //var users = await collection.find({name: id}).toArray();
+
+    var char = await collection.findOne({_id: new ObjectId(id)});
+
+
+    res.send(char);
+
+    //res.send(db.collection('pfusers').find().toArray());
+
+    /*
     db.collection('characters', function(err, collection) {
         collection.findOne({'_id':new mongo.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
-    });    
+    });   
+    */
 });
 
-var store = function(req, res) {
+var store = async function(req, res) {
     console.log("Trying to save a new item");
     var character = req.body;
     console.log(character);
+
+    var collection = db.collection('characters');
+    await collection.insertOne(character);
+    res.send("OK");
+    /*
     db.collection('characters', function(err, collection) {
         if (err) {
             console.log("Error trying to open collection");
@@ -127,15 +168,29 @@ var store = function(req, res) {
             });
         }
     });    
+    */
 };
 
-var update = function(req, res) {
+var update = async function(req, res) {
     var id = req.params.id;
     console.log("Trying to update an item with id " + id);
     var character = req.body;
     console.log(character);
-    id = new mongo.ObjectID(id);
+    id = new ObjectId(id);
     character._id = id;
+
+    var collection = db.collection('characters');
+    //We could be more efficient by using updateOne and setting only changed fields.
+    //Needs a ton of logic to frontend, though.
+    var result = await collection.replaceOne({_id:id}, character);
+
+    //console.log("Saved character:");
+    console.log(result);
+
+    getOneChar(req, res);
+    //res.send(savedcharacter);
+
+/*
     db.collection('characters', function(err, collection) {
         collection.update({'_id':id}, character, {safe:true}, function(err, result) {
             if (err) {
@@ -148,18 +203,42 @@ var update = function(req, res) {
             }
         });
     });
+    */
 };
 
-var charlist = function(req, res) {
+var charlist = async function(req, res) {
+    //var id = req.params.id;
 
+    var collection = db.collection("characters");
+    //var users = await collection.find({name: id}).toArray();
+
+    var chars = await collection.find().project({name:1, _id:1}).toArray();
+
+
+    res.send(chars);
+
+
+    /*
     db.collection('characters', function(err, collection) {
         collection.find({}, {name:1, _id:1}).toArray(function (err, items) {
             res.send(items);
         });
     });
+    */
 };
 
-var getOneChar = function(req, res) {
+var getOneChar = async function(req, res) {
+    var id = req.params.id;
+
+    var collection = db.collection("characters");
+    //var users = await collection.find({name: id}).toArray();
+
+    var char = await collection.findOne({_id: new ObjectId(id)});
+
+
+    res.send(char);
+
+    /*
     var id = req.params.id;
     id = new mongo.ObjectID(id);
     db.collection('characters', function(err, collection) {
@@ -167,12 +246,13 @@ var getOneChar = function(req, res) {
             res.send(item);
         }); 
     });
+    */
 };
 
 app.get('/rest/char/:id', getOneChar);
 app.get('/rest/allchars', charlist);
 
-app.get('/rest/char', getOneChar);
+//app.get('/rest/char', getOneChar);
 
 app.post('/rest/char', store);
 app.post('/rest/char/:id', update);
