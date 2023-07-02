@@ -85,8 +85,11 @@
                         <b>Speed</b> {{$parent.char.race.speed}} ft
                     </div>
                     <div ng-controller='statsController'>
-                        <div ng-repeat='weapon in char.equipment.weapons'>
-                            <b>Melee</b> {{weapon.name}} +{{char.BAB + statBonus($parent.char.totalstat['str'])}} ({{weapon.dicenum}}d{{weapon.dice}}+{{statBonus(char.totalstat['str'])}}/{{weapon.critrange}})
+                        <div ng-repeat='weapon in getWeapons(char, "melee")'>
+                            <b>Melee</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}+{{statBonus(char.totalstat['str'])}}/{{weapon.critrange}})
+                        </div>
+                        <div ng-repeat='weapon in getWeapons(char, "ranged")'>
+                            <b>Ranged</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}+{{statBonus(char.totalstat['str'])}}/{{weapon.critrange}})
                         </div>
                     </div>
                     <div>

@@ -221,6 +221,7 @@ app.controller('statsController', function ($scope) {
     };
 
     $scope.statBonus=function(stat){
+        console.log("Call statBonus");
         return (Math.floor(stat/2))-5;
     };
     $scope.threequarterbab = function(lvl){
@@ -404,4 +405,30 @@ app.controller('statsController', function ($scope) {
         }
         return cost;
     };
+
+    $scope.attackBonus = function(char, weapon) {
+        //char.BAB + statBonus($parent.char.totalstat['str'])
+        console.log("Function called!");
+        console.log(weapon);
+
+        var stat = weapon.hands === "ranged" ? $scope.statBonus(char.totalstat['dex']) : $scope.statBonus(char.totalstat['str']);
+        var total = stat + char.BAB;
+        return total < 0 ? "" + total : "+" + total;        
+    }
+
+    $scope.getWeapons = function(char, style) {
+        var value = [];
+
+        for (var i = 0; i < char.equipment.weapons.length; i++) {
+            var weapon = char.equipment.weapons[i];
+            if (style === "ranged" && weapon.hands === "ranged") {
+                value.push(weapon);
+            }
+            if (style !== "ranged" && weapon.hands !== "ranged") {
+                value.push(weapon);
+            }
+        }
+        return value;
+    }
+
 });
