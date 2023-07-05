@@ -133,7 +133,7 @@ var armors = [
     },
     {
         name: 'Full plate',
-        price: 1,500,
+        price: 1.500,
         bonus: +9, 
         dex: +1,
         ACP: -6,
