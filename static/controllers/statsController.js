@@ -434,6 +434,10 @@ app.controller('statsController', function ($scope) {
     $scope.getWeapons = function(char, style) {
         var value = [];
 
+        if (!char || !char.equipment) {
+            return value;
+        }
+
         for (var i = 0; i < char.equipment.weapons.length; i++) {
             var weapon = char.equipment.weapons[i];
             if (style === "ranged" && weapon.hands === "ranged") {
