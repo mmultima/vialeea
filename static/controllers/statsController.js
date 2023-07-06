@@ -411,6 +411,26 @@ app.controller('statsController', function ($scope) {
         return total < 0 ? "" + total : "+" + total;        
     }
 
+    $scope.damageBonus = function(char, weapon) {
+        var total = 0;
+        if (weapon.hands === "ranged") {
+            if (weapon.name.startsWith("Crossbow")) {
+                total = 0;
+            } else if (weapon.name.startsWith("Longbow") || weapon.name.startsWith("Shortbow")) {
+                var strbonus = $scope.statBonus(char.totalstat['str']);
+                if (strbonus < 0) {
+                    total = Math.floor(strbonus / 2);
+                }
+            } else {
+                total + $scope.statBonus(char.totalstat['str']);
+            }
+        } else {
+            total = total + $scope.statBonus(char.totalstat['str']);
+        }
+
+        return total < 0 ? "" + total : "+" + total;        
+    }
+
     $scope.getWeapons = function(char, style) {
         var value = [];
 

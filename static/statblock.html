@@ -86,10 +86,10 @@
                     </div>
                     <div ng-controller='statsController'>
                         <div ng-repeat='weapon in getWeapons(char, "melee")'>
-                            <b>Melee</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}+{{statBonus(char.totalstat['str'])}}/{{weapon.critrange}})
+                            <b>Melee</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}{{damageBonus(char,weapon)}}/{{weapon.critrange}})
                         </div>
                         <div ng-repeat='weapon in getWeapons(char, "ranged")'>
-                            <b>Ranged</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}+{{statBonus(char.totalstat['str'])}}/{{weapon.critrange}})
+                            <b>Ranged</b> {{weapon.name}} {{attackBonus(char,weapon)}} ({{weapon.dicenum}}d{{weapon.dice}}{{damageBonus(char,weapon)}}/{{weapon.critrange}})
                         </div>
                     </div>
                     <div>
